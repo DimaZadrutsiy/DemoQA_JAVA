@@ -752,5 +752,7 @@ public abstract class BaseTest {
         getWait10().until(ExpectedConditions.visibilityOf(getDriver().findElement(by)));
 
         return getDriver().findElement(by).getCssValue("font-size");
+
+
     }
 }
