@@ -210,6 +210,7 @@ public abstract class BaseTest {
     }
 
     public String getTitle() {
+
         return getDriver().getTitle();
     }
 
