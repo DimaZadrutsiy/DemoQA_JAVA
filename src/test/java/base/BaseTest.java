@@ -75,28 +75,28 @@ public abstract class BaseTest {
 
     public void openBaseURL() {
         getDriver().get(BASE_URL);
-        waitForGrayContainerDisappeared();
-
-        if (reloadPageIfElementNotFound(By.xpath("//div[@id = 'weather-widget']//h2"))) {
-            Reporter.log("BaseURL page was loaded successfully ", true);
-        } else {
-            Reporter.log("!!!!! Error !!!!! BaseURL page was NOT loaded. \n "
-                    + "Cancel current run and Re-Run jobs\n", true);
-        }
+//        waitForGrayContainerDisappeared();
+//
+//        if (reloadPageIfElementNotFound(By.xpath("//div[@id = 'weather-widget']//h2"))) {
+//            Reporter.log("BaseURL page was loaded successfully ", true);
+//        } else {
+//            Reporter.log("!!!!! Error !!!!! BaseURL page was NOT loaded. \n "
+//                    + "Cancel current run and Re-Run jobs\n", true);
+//        }
     }
 
-    private boolean reloadPageIfElementNotFound(By by) {
-        int count = 0;
-
-        while (count <= 3 && !(isElementExists(by))) {
-            getDriver().navigate().refresh();
-            Reporter.log("Re-loading base URL page", true);
-            waitForGrayContainerDisappeared();
-            count++;
-        }
-
-        return isElementExists(by);
-    }
+//    private boolean reloadPageIfElementNotFound(By by) {
+//        int count = 0;
+//
+//        while (count <= 3 && !(isElementExists(by))) {
+//            getDriver().navigate().refresh();
+//            Reporter.log("Re-loading base URL page", true);
+//            waitForGrayContainerDisappeared();
+//            count++;
+//        }
+//
+//        return isElementExists(by);
+//    }
 
     public void waitForGrayContainerDisappeared() {
         getWait20().until(ExpectedConditions.invisibilityOfElementLocated(
