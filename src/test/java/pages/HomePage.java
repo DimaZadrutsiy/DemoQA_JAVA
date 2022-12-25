@@ -29,36 +29,42 @@ public class HomePage extends BasePage {
     }
 
    public ElementsPage clickElementsMenu() {
+        scrollByVisibleElement(elementsMenu);
         click(elementsMenu);
 
         return new ElementsPage(getDriver());
    }
 
    public FormsPage clickFormsMenu() {
+        scrollByVisibleElement(formsMenu);
         click(formsMenu);
 
         return new FormsPage(getDriver());
    }
 
    public AlertsFramesWindowsPage clickAlertsFramesWindowsMenu() {
+        scrollByVisibleElement(alertsMenu);
         click(alertsMenu);
 
         return new AlertsFramesWindowsPage(getDriver());
    }
 
    public WidgetsPage clickWidgetsMenu() {
+        scrollByVisibleElement(widgetsMenu);
         click(widgetsMenu);
 
         return new WidgetsPage(getDriver());
    }
 
    public InteractionsPage clickInteractionsMenu() {
+        scrollByVisibleElement(interactionsMenu);
         click(interactionsMenu);
 
         return new InteractionsPage(getDriver());
    }
 
    public BookStoreApplicationPage clickBookStoreApplicationMenu() {
+        scrollByVisibleElement(bookStoreMenu);
         click(bookStoreMenu);
 
         return new BookStoreApplicationPage(getDriver());

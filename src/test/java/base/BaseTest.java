@@ -1,5 +1,6 @@
 package base;
 
+import com.beust.ah.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -74,37 +75,26 @@ public abstract class BaseTest {
         return webDriverWait10;
     }
 
-    public void openBaseURL() {
+    // вместо void поставила возврат Homepage
+    public HomePage openBaseURL() {
         getDriver().get(BASE_URL);
-//        waitForGrayContainerDisappeared();
-//
-//        if (reloadPageIfElementNotFound(By.xpath("//div[@id = 'weather-widget']//h2"))) {
-//            Reporter.log("BaseURL page was loaded successfully ", true);
-//        } else {
-//            Reporter.log("!!!!! Error !!!!! BaseURL page was NOT loaded. \n "
-//                    + "Cancel current run and Re-Run jobs\n", true);
-//        }
+
+        return new HomePage(getDriver());
     }
 
-//    private boolean reloadPageIfElementNotFound(By by) {
-//        int count = 0;
-//
-//        while (count <= 3 && !(isElementExists(by))) {
-//            getDriver().navigate().refresh();
-//            Reporter.log("Re-loading base URL page", true);
-//            waitForGrayContainerDisappeared();
-//            count++;
-//        }
-//
-//        return isElementExists(by);
-//    }
+    private boolean reloadPageIfElementNotFound(By by) {
+        int count = 0;
 
-//    public void waitForGrayContainerDisappeared() {
-//        getWait20().until(ExpectedConditions.invisibilityOfElementLocated(
-//                By.className("owm-loader-container")));
-//    }
+        while (count <= 3 && !(isElementExists(by))) {
+            getDriver().navigate().refresh();
+            Reporter.log("Re-loading base URL page", true);
+            count++;
+        }
 
-    //новые методы
+        return isElementExists(by);
+    }
+
+    //новые методы getPages
     public HomePage getHomePage() {
 
         return new HomePage(getDriver());
