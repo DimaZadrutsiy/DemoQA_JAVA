@@ -12,6 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.reporters.jq.Main;
+import pages.*;
 import utils.ReportUtils;
 import utils.TestUtils;
 
@@ -98,11 +99,48 @@ public abstract class BaseTest {
 //        return isElementExists(by);
 //    }
 
-    public void waitForGrayContainerDisappeared() {
-        getWait20().until(ExpectedConditions.invisibilityOfElementLocated(
-                By.className("owm-loader-container")));
+//    public void waitForGrayContainerDisappeared() {
+//        getWait20().until(ExpectedConditions.invisibilityOfElementLocated(
+//                By.className("owm-loader-container")));
+//    }
+
+    //новые методы
+    public HomePage getHomePage() {
+
+        return new HomePage(getDriver());
     }
 
+    public AlertsFramesWindowsPage getAlertsFramesWindowsPage() {
+
+        return new AlertsFramesWindowsPage(getDriver());
+    }
+
+    public BookStoreApplicationPage getBookStoreApplicationPage() {
+
+        return new BookStoreApplicationPage(getDriver());
+    }
+
+    public ElementsPage getElementsPage() {
+
+        return new ElementsPage(getDriver());
+    }
+
+    public FormsPage getFormsPage() {
+
+        return new FormsPage(getDriver());
+    }
+
+    public InteractionsPage getInteractionsPage() {
+
+        return new InteractionsPage(getDriver());
+    }
+
+    public WidgetsPage getWidgetsPage() {
+
+        return new WidgetsPage(getDriver());
+    }
+
+    // нужно пересмотреть все методы ниже и удалить ненужные
     public String getText(By by) {
         WebElement element = getDriver().findElement(by);
         if (!element.getText().isEmpty()) {
