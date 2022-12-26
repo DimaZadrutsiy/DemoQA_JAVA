@@ -1,6 +1,5 @@
 package base;
 
-import com.beust.ah.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -571,52 +570,6 @@ public abstract class BaseTest {
         } else {
             return String.valueOf(date);
         }
-    }
-
-    public String printEightDaysFromDate(String day, int month, int date, int year) {
-
-        int currentYear = year;
-        StringBuilder stringBuilder = new StringBuilder();
-
-        if (day == null || returnDayOfTheWeek(day) == 0 ||
-                returnMonth(month).equals("Error") ||
-                month <= 0 ||
-                date <= 0 ||
-                date > (daysInMonth(month, year))) {
-
-            return "Please enter correct data.";
-
-        } else {
-            int currentDay = returnDayOfTheWeek(day);
-            int currentMonth = month;
-            int currentDate = date;
-
-            for (int i = 0; i <= 7; i++) {
-                if (currentDay != 7) {
-                    stringBuilder.append(returnDayOfTheWeek(currentDay)).append(", ");
-                    currentDay++;
-                } else {
-                    stringBuilder.append(returnDayOfTheWeek(currentDay)).append(", ");
-                    currentDay = 1;
-                }
-
-                if (currentDate <= daysInMonth(currentMonth, currentYear)) {
-                    stringBuilder.append(returnMonth(currentMonth)).append(" ").append(returnDate(currentDate)).append(", ");
-                    currentDate++;
-                } else {
-                    if (currentMonth != 12) {
-                        currentMonth++;
-                    } else {
-                        currentMonth = 1;
-                        currentYear = year + 1;
-                    }
-                    currentDate = 1;
-                    stringBuilder.append(returnMonth(currentMonth)).append(" ").append(returnDate(currentDate)).append(", ");
-                    currentDate++;
-                }
-            }
-        }
-        return stringBuilder.substring(0, stringBuilder.length() - 2);
     }
 
     public void clear(By by) {
