@@ -12,6 +12,7 @@ public class FormsTest extends BaseTest {
         String expectedUrl = "https://demoqa.com/forms";
         String expectedTitle = "ToolsQA";
         String expectedHeader = "Forms";
+
         FormsPage formsPage = openBaseURL().clickFormsMenu();
 
         String actualUrl = formsPage.getCurrentURL();
