@@ -1,5 +1,6 @@
 package base;
 
+import com.beust.ah.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,6 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.reporters.jq.Main;
+import pages.*;
 import utils.ReportUtils;
 import utils.TestUtils;
 
@@ -73,36 +75,62 @@ public abstract class BaseTest {
         return webDriverWait10;
     }
 
-    public void openBaseURL() {
+    // вместо void поставила возврат Homepage
+    public HomePage openBaseURL() {
         getDriver().get(BASE_URL);
-//        waitForGrayContainerDisappeared();
-//
-//        if (reloadPageIfElementNotFound(By.xpath("//div[@id = 'weather-widget']//h2"))) {
-//            Reporter.log("BaseURL page was loaded successfully ", true);
-//        } else {
-//            Reporter.log("!!!!! Error !!!!! BaseURL page was NOT loaded. \n "
-//                    + "Cancel current run and Re-Run jobs\n", true);
-//        }
+
+        return new HomePage(getDriver());
     }
 
-//    private boolean reloadPageIfElementNotFound(By by) {
-//        int count = 0;
-//
-//        while (count <= 3 && !(isElementExists(by))) {
-//            getDriver().navigate().refresh();
-//            Reporter.log("Re-loading base URL page", true);
-//            waitForGrayContainerDisappeared();
-//            count++;
-//        }
-//
-//        return isElementExists(by);
-//    }
+    private boolean reloadPageIfElementNotFound(By by) {
+        int count = 0;
 
-    public void waitForGrayContainerDisappeared() {
-        getWait20().until(ExpectedConditions.invisibilityOfElementLocated(
-                By.className("owm-loader-container")));
+        while (count <= 3 && !(isElementExists(by))) {
+            getDriver().navigate().refresh();
+            Reporter.log("Re-loading base URL page", true);
+            count++;
+        }
+
+        return isElementExists(by);
     }
 
+    //новые методы getPages
+    public HomePage getHomePage() {
+
+        return new HomePage(getDriver());
+    }
+
+    public AlertsFramesWindowsPage getAlertsFramesWindowsPage() {
+
+        return new AlertsFramesWindowsPage(getDriver());
+    }
+
+    public BookStoreApplicationPage getBookStoreApplicationPage() {
+
+        return new BookStoreApplicationPage(getDriver());
+    }
+
+    public ElementsPage getElementsPage() {
+
+        return new ElementsPage(getDriver());
+    }
+
+    public FormsPage getFormsPage() {
+
+        return new FormsPage(getDriver());
+    }
+
+    public InteractionsPage getInteractionsPage() {
+
+        return new InteractionsPage(getDriver());
+    }
+
+    public WidgetsPage getWidgetsPage() {
+
+        return new WidgetsPage(getDriver());
+    }
+
+    // нужно пересмотреть все методы ниже и удалить ненужные
     public String getText(By by) {
         WebElement element = getDriver().findElement(by);
         if (!element.getText().isEmpty()) {

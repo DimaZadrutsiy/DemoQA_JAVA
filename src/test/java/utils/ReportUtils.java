@@ -48,7 +48,7 @@ public class ReportUtils {
 
         String header = "\tTest Report\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
         String currentDate = "\tDate: " + getCurrentDateTime() + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
-        String projectName = "\tProject: OpenWeatherJava_05" + "\n";
+        String projectName = "\tProject: DemoQA_JAVA" + "\n";
         String baseURL = "\tBASE_URL: " + TestUtils.getBaseUrl() + "\t\t\t\t\t\t\t\t\t\t\t" + "\n";
 
         return H_LINE + header + currentDate + projectName + baseURL + H_LINE;
