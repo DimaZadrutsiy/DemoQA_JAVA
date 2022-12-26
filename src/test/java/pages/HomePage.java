@@ -24,8 +24,16 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//h5[contains(text(),'Book Store Application')]")
     private WebElement bookStoreMenu;
 
+    @FindBy(xpath = "//div[@class='main-header']")
+    private WebElement h2LogoHeader;
+
     public HomePage(WebDriver driver) {
         super(driver);
+    }
+
+    public String getH2LogoHeaderText() {
+
+        return getText(h2LogoHeader);
     }
 
    public ElementsPage clickElementsMenu() {
@@ -69,5 +77,4 @@ public class HomePage extends BasePage {
 
         return new BookStoreApplicationPage(getDriver());
    }
-
 }
