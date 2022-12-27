@@ -14,13 +14,13 @@ public class PracticeFormTest extends BaseTest {
         String expectedTitle = "ToolsQA";
         String expectedHeader = "Practice Form";
 
-        FormsPage AutomationPracticeFormPage = openBaseURL()
+        FormsPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
                 .clickPracticeForm();
 
-        String actualUrl = AutomationPracticeFormPage.getCurrentURL();
-        String actualTitle = AutomationPracticeFormPage.getTitle();
-        String actualHeader = AutomationPracticeFormPage.getH2LogoHeaderText();
+        String actualUrl = practiceFormPage.getCurrentURL();
+        String actualTitle = practiceFormPage.getTitle();
+        String actualHeader = practiceFormPage.getH2LogoHeaderText();
 
         Assert.assertNotEquals(actualUrl, BASE_URL);
         Assert.assertEquals(actualUrl, expectedUrl);
@@ -36,20 +36,20 @@ public class PracticeFormTest extends BaseTest {
         String gender = "Male";
         String number = "0123456789";
 
-        PracticeFormPage automationPracticeFormPage = openBaseURL()
+        PracticeFormPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
                 .clickPracticeForm();
 
-        automationPracticeFormPage
+        practiceFormPage
                 .inputPracticeFormFirstName(name)
                 .inputPracticeFormLastName(sureName)
                 .inputPracticeFormEmail(email)
                 .inputPracticeFormGender()
                 .inputPracticeFormNumber(number);
 
-        Assert.assertEquals(automationPracticeFormPage.getNamePracticeForm(), name + " " + sureName);
-        Assert.assertEquals(automationPracticeFormPage.getEmailPracticeForm(), email);
-        Assert.assertEquals(automationPracticeFormPage.getGenderPracticeForm(), gender);
-        Assert.assertEquals(automationPracticeFormPage.getNumberPracticeForm(), number);
+        Assert.assertEquals(practiceFormPage.getNamePracticeForm(), name + " " + sureName);
+        Assert.assertEquals(practiceFormPage.getEmailPracticeForm(), email);
+        Assert.assertEquals(practiceFormPage.getGenderPracticeForm(), gender);
+        Assert.assertEquals(practiceFormPage.getNumberPracticeForm(), number);
     }
 }
