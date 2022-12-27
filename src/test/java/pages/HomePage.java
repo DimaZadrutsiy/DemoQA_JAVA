@@ -75,5 +75,4 @@ public class HomePage extends BasePage {
 
         return new BookStoreApplicationPage(getDriver());
    }
-
 }

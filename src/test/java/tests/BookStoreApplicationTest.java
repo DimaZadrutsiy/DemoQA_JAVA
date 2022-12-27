@@ -1,7 +1,6 @@
 package tests;
 
 import base.BaseTest;
-import com.beust.ah.A;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BookStoreApplication.RegisterPage;
@@ -30,6 +29,4 @@ public class BookStoreApplicationTest extends BaseTest {
 
         Assert.assertEquals(actualCaptchaMessage, expectedCaptchaMessage);
     }
-
-
 }
