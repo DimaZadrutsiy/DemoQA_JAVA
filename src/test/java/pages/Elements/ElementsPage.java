@@ -1,12 +1,13 @@
-package pages;
+package pages.Elements;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
 
 import java.util.List;
 
-public class ElementsPage extends BasePage{
+public class ElementsPage extends BasePage {
     
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//span")
     private List<WebElement> elementsList;

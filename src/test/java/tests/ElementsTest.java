@@ -3,7 +3,7 @@ package tests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ElementsPage;
+import pages.Elements.ElementsPage;
 
 import java.util.Arrays;
 import java.util.List;
