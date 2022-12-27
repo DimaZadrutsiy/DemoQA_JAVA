@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class PracticeFormPage extends FormsPage {
+public class PracticeFormPage extends FormsPage{
 
     @FindBy(id = "firstName")
     private WebElement firstName;

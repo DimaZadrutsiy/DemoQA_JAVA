@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BookStoreApplicationPage {
 
-    @FindBy (xpath = "//div/button[@id='newUser']")
+    @FindBy(xpath = "//div/button[@id='newUser']")
     private WebElement newUserButton;
 
     public LoginPage(WebDriver driver) {
@@ -18,6 +18,4 @@ public class LoginPage extends BookStoreApplicationPage {
 
         return new RegisterPage(getDriver());
     }
-
-
 }
