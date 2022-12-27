@@ -13,6 +13,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.reporters.jq.Main;
 import pages.*;
+import pages.AlertsFramesWindows.AlertsFramesWindowsPage;
+import pages.BookStoreApplication.BookStoreApplicationPage;
+import pages.Elements.ElementsPage;
+import pages.Forms.FormsPage;
+import pages.Interactions.InteractionsPage;
+import pages.Widgets.WidgetsPage;
 import utils.ReportUtils;
 import utils.TestUtils;
 

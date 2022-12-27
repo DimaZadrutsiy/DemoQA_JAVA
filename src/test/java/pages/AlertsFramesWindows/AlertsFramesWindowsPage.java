@@ -1,6 +1,7 @@
-package pages;
+package pages.AlertsFramesWindows;
 
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 public class AlertsFramesWindowsPage extends BasePage {
 
