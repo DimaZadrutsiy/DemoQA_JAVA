@@ -80,6 +80,4 @@ public class RegisterPage extends LoginPage{
 
         return getText(captchaBlockMessage);
     }
-
-
 }
