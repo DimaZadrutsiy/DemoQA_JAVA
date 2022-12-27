@@ -2,9 +2,9 @@ package pages.Forms;
 
 import org.openqa.selenium.WebDriver;
 
-public class Page extends FormsPage{
+public class PracticeFormPage extends FormsPage{
 
-    public Page(WebDriver driver) {
+    public PracticeFormPage(WebDriver driver) {
         super(driver);
     }
 }
