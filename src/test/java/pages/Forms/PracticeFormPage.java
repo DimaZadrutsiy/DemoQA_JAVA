@@ -33,33 +33,6 @@ public class PracticeFormPage extends FormsPage {
     @FindBy(xpath = "//tbody/tr[4]/td[2]")
     private WebElement getNumber;
 
-    @FindBy(id = "firstName")
-    private WebElement firstName;
-
-    @FindBy(id = "lastName")
-    private WebElement lastName;
-
-    @FindBy(id = "userEmail")
-    private WebElement userEmail;
-
-    @FindBy(id = "userNumber")
-    private WebElement userNumber;
-
-    @FindBy(xpath = "//div[@id='genterWrapper']//div/label")
-    private WebElement userGender;
-
-    @FindBy(xpath = "//tbody/tr[1]/td[2]")
-    private WebElement getFullName;
-
-    @FindBy(xpath = "//tbody/tr[2]/td[2]")
-    private WebElement getEmail;
-
-    @FindBy(xpath = "//tbody/tr[3]/td[2]")
-    private WebElement getGender;
-
-    @FindBy(xpath = "//tbody/tr[4]/td[2]")
-    private WebElement getNumber;
-
     public PracticeFormPage(WebDriver driver) {
         super(driver);
     }
