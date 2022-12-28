@@ -14,6 +14,7 @@ public class TestData {
 
     @DataProvider(name = "PracticeFormsAttribute")
     public static Object[][] attributeDataProvider() {
+
         return new Object[][]{
                 {"https://demoqa.com/automation-practice-form", "ToolsQA", "Practice Form"}
         };
