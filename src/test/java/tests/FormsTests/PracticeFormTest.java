@@ -5,14 +5,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Forms.FormsPage;
 import pages.Forms.PracticeFormPage;
+import testData.TestData;
 
 public class PracticeFormTest extends BaseTest {
 
-    @Test
-    public void testNavigationToPracticeFormPage() {
-        String expectedUrl = "https://demoqa.com/automation-practice-form";
-        String expectedTitle = "ToolsQA";
-        String expectedHeader = "Practice Form";
+    @Test(dataProviderClass = TestData.class, dataProvider = "PracticeFormsAttribute")
+    public void testNavigationToPracticeFormPage(
+            String expectedUrl, String expectedTitle, String expectedHeader) {
 
         FormsPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
@@ -28,13 +27,9 @@ public class PracticeFormTest extends BaseTest {
         Assert.assertEquals(actualHeader, expectedHeader);
     }
 
-    @Test
-    public void testStudentRegistrationPracticeFormPage() {
-        String name = "Vasily";
-        String sureName = "Peremoga";
-        String email = "peremoga@google.com";
-        String gender = "Male";
-        String number = "0123456789";
+    @Test(dataProviderClass = TestData.class, dataProvider = "FormsRegistrationData")
+    public void testStudentRegistrationPracticeFormPage(
+            String name, String sureName, String email, String gender, String number) {
 
         PracticeFormPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
