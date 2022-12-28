@@ -12,6 +12,9 @@ public class ElementsPage extends BasePage {
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//span")
     private List<WebElement> elementsList;
 
+    @FindBy(xpath = "//div[@class='element-list collapse show']/ul[@class='menu-list']/li[5]")
+    WebElement Buttons;
+
     public ElementsPage(WebDriver driver) {
         super(driver);
     }
@@ -25,5 +28,12 @@ public class ElementsPage extends BasePage {
     }
     public void checkAllElementsIsVisibleAndClickable() {
         clickAllElementsInList(elementsList);
+    }
+
+    public ButtonsPage clickButtons() {
+        scrollByVisibleElement(Buttons);
+        click(Buttons);
+
+        return new ButtonsPage(getDriver());
     }
 }
