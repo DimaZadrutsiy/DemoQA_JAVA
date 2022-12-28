@@ -1,4 +1,4 @@
-package tests;
+package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
