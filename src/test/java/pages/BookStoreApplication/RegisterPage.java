@@ -64,7 +64,10 @@ public class RegisterPage extends LoginPage{
 
     public RegisterPage clickCaptcha() {
         scrollByVisibleElement(captchaCheckBox);
+        wait20ElementToBeVisible(captchaCheckBox);
+        //getDriver().switchTo().frame(captchaCheckBox);
         click(captchaCheckBox);
+        getWait20();
 
         return new RegisterPage(getDriver());
     }
