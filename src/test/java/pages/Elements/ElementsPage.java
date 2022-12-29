@@ -41,7 +41,7 @@ public class ElementsPage extends BasePage {
         click(textBoxSubMenu);
 
         return new TextBoxPage(getDriver());
-        
+    }
     public ButtonsPage clickButtons() {
         scrollByVisibleElement(Buttons);
         click(Buttons);
