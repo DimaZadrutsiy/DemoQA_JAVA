@@ -14,7 +14,9 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.reporters.jq.Main;
 import pages.*;
 import pages.AlertsFramesWindows.AlertsFramesWindowsPage;
-import pages.BookStoreApplication.BookStoreApplicationPage;
+import pages.BookStoreApplication.BookStorePage;
+import pages.BookStoreApplication.LoginPage;
+import pages.BookStoreApplication.ProfilePage;
 import pages.Elements.ElementsPage;
 import pages.Forms.FormsPage;
 import pages.Interactions.InteractionsPage;
@@ -110,9 +112,9 @@ public abstract class BaseTest {
         return new AlertsFramesWindowsPage(getDriver());
     }
 
-    public BookStoreApplicationPage getBookStoreApplicationPage() {
+    public BookStorePage getBookStorePage() {
 
-        return new BookStoreApplicationPage(getDriver());
+        return new BookStorePage(getDriver());
     }
 
     public ElementsPage getElementsPage() {
@@ -133,6 +135,16 @@ public abstract class BaseTest {
     public WidgetsPage getWidgetsPage() {
 
         return new WidgetsPage(getDriver());
+    }
+
+    public LoginPage getLoginPage() {
+
+        return new LoginPage(getDriver());
+    }
+
+    public ProfilePage getProfilePage() {
+
+        return new ProfilePage(getDriver());
     }
 
     // нужно пересмотреть все методы ниже и удалить ненужные
