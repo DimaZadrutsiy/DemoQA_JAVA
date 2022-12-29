@@ -307,7 +307,8 @@ public abstract class BasePage {
         return elementsSize == count;
     }
 
-    public void waitForGreyContainerDisappeared(WebElement element) {
-        getWait20().until(ExpectedConditions.invisibilityOf(element));
+    protected boolean isTextContains(WebElement webElement, String text) {
+
+        return getText(webElement).contains(text);
     }
 }

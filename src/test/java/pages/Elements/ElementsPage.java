@@ -9,6 +9,9 @@ import java.util.List;
 
 public class ElementsPage extends BasePage {
 
+    @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-0']")
+    private WebElement textBoxSubMenu;
+    
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//span")
     private List<WebElement> elementsList;
 
@@ -33,6 +36,12 @@ public class ElementsPage extends BasePage {
         clickAllElementsInList(elementsList);
     }
 
+    public TextBoxPage clickTextBox() {
+        scrollByVisibleElement(textBoxSubMenu);
+        click(textBoxSubMenu);
+
+        return new TextBoxPage(getDriver());
+    }
     public ButtonsPage clickButtons() {
         scrollByVisibleElement(Buttons);
         click(Buttons);
