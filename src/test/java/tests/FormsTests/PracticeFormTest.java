@@ -5,22 +5,21 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Forms.FormsPage;
 import pages.Forms.PracticeFormPage;
+import testData.TestData;
 
 public class PracticeFormTest extends BaseTest {
 
-    @Test
-    public void testNavigationToPracticeFormPage() {
-        String expectedUrl = "https://demoqa.com/automation-practice-form";
-        String expectedTitle = "ToolsQA";
-        String expectedHeader = "Practice Form";
+    @Test(dataProviderClass = TestData.class, dataProvider = "PracticeFormsAttribute")
+    public void testNavigationToPracticeFormPage(
+            String expectedUrl, String expectedTitle, String expectedHeader) {
 
-        FormsPage AutomationPracticeFormPage = openBaseURL()
+        FormsPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
                 .clickPracticeForm();
 
-        String actualUrl = AutomationPracticeFormPage.getCurrentURL();
-        String actualTitle = AutomationPracticeFormPage.getTitle();
-        String actualHeader = AutomationPracticeFormPage.getH2LogoHeaderText();
+        String actualUrl = practiceFormPage.getCurrentURL();
+        String actualTitle = practiceFormPage.getTitle();
+        String actualHeader = practiceFormPage.getH2LogoHeaderText();
 
         Assert.assertNotEquals(actualUrl, BASE_URL);
         Assert.assertEquals(actualUrl, expectedUrl);
@@ -28,28 +27,24 @@ public class PracticeFormTest extends BaseTest {
         Assert.assertEquals(actualHeader, expectedHeader);
     }
 
-    @Test
-    public void testStudentRegistrationPracticeFormPage() {
-        String name = "Vasily";
-        String sureName = "Peremoga";
-        String email = "peremoga@google.com";
-        String gender = "Male";
-        String number = "0123456789";
+    @Test(dataProviderClass = TestData.class, dataProvider = "FormsRegistrationData")
+    public void testStudentRegistrationPracticeFormPage(
+            String name, String sureName, String email, String gender, String number) {
 
-        PracticeFormPage automationPracticeFormPage = openBaseURL()
+        PracticeFormPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
                 .clickPracticeForm();
 
-        automationPracticeFormPage
+        practiceFormPage
                 .inputPracticeFormFirstName(name)
                 .inputPracticeFormLastName(sureName)
                 .inputPracticeFormEmail(email)
                 .inputPracticeFormGender()
                 .inputPracticeFormNumber(number);
 
-        Assert.assertEquals(automationPracticeFormPage.getNamePracticeForm(), name + " " + sureName);
-        Assert.assertEquals(automationPracticeFormPage.getEmailPracticeForm(), email);
-        Assert.assertEquals(automationPracticeFormPage.getGenderPracticeForm(), gender);
-        Assert.assertEquals(automationPracticeFormPage.getNumberPracticeForm(), number);
+        Assert.assertEquals(practiceFormPage.getNamePracticeForm(), name + " " + sureName);
+        Assert.assertEquals(practiceFormPage.getEmailPracticeForm(), email);
+        Assert.assertEquals(practiceFormPage.getGenderPracticeForm(), gender);
+        Assert.assertEquals(practiceFormPage.getNumberPracticeForm(), number);
     }
 }
