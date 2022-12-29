@@ -14,7 +14,7 @@ public class BookStoreApplicationTest extends BaseTest {
         String userName = "TesterUserName";
         String password = "Tester_1234!";
 
-        String expectedCaptchaMessage = "Please verify reCaptcha to register!";
+        final String expectedCaptchaMessage = "Please verify reCaptcha to register!";
 
         String actualCaptchaMessage = openBaseURL()
                 .clickBookStoreApplicationMenu()
@@ -35,7 +35,7 @@ public class BookStoreApplicationTest extends BaseTest {
         String userName = "abcde";
         String password = "adcde";
 
-        String expectedErrorMessage = "Invalid username or password!";
+        final String expectedErrorMessage = "Invalid username or password!";
 
          openBaseURL()
                 .clickBookStoreApplicationMenu()
@@ -54,7 +54,7 @@ public class BookStoreApplicationTest extends BaseTest {
         String userName = "TesterUserName";
         String password = "Tester_1234!";
 
-        String expectedUserNameValue = "TesterUserName";
+        final String expectedUserNameValue = "TesterUserName";
 
         openBaseURL()
                 .clickBookStoreApplicationMenu()
@@ -77,7 +77,7 @@ public class BookStoreApplicationTest extends BaseTest {
         String userName = "TesterUserName";
         String password = "Tester_1234!";
 
-        String expectedCaptchaMessage = "Please verify reCaptcha to register!";
+        final String expectedCaptchaMessage = "Please verify reCaptcha to register!";
 
         String actualCaptchaMessage = openBaseURL()
                 .clickBookStoreApplicationMenu()
