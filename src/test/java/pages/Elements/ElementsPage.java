@@ -11,6 +11,9 @@ public class ElementsPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-0']")
     private WebElement textBoxSubMenu;
+
+    @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-1']")
+    private WebElement checkBoxSubMenu;
     
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//span")
     private List<WebElement> elementsList;
@@ -47,5 +50,12 @@ public class ElementsPage extends BasePage {
         click(Buttons);
 
         return new ButtonsPage(getDriver());
+    }
+
+    public CheckBoxPage openCheckBoxPage() {
+        scrollByVisibleElement(checkBoxSubMenu);
+        click(checkBoxSubMenu);
+
+        return new CheckBoxPage(getDriver());
     }
 }
