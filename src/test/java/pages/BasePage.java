@@ -311,4 +311,27 @@ public abstract class BasePage {
 
         return getText(webElement).contains(text);
     }
+
+    protected boolean isElementEnabled(WebElement webElement){
+        return webElement.isEnabled();
+    }
+
+    protected boolean isElementSelected(WebElement webElement){
+        return webElement.isSelected();
+    }
+
+    protected boolean isElementsInListSelected(List<WebElement> list) {
+        boolean result = false;
+
+        for (WebElement element : list) {
+            if (element.isSelected()) {
+                result = true;
+            } else {
+
+                return false;
+            }
+        }
+
+        return result;
+    }
 }
