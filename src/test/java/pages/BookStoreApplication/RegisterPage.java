@@ -66,18 +66,16 @@ public class RegisterPage extends LoginPage{
     }
 
     public RegisterPage clickCaptcha() {
-        wait20ElementToBeVisible(iframeCaptchaCheckBox);
+        scrollByVisibleElement(registerButton);
         swithToIframe(iframeCaptchaCheckBox);
         click(recaptchaBlock);
         swithToParentFrame();
-        //wait20ElementToBeClickable(registerButton);
 
         return new RegisterPage(getDriver());
     }
 
     public RegisterPage clickRegisterButton() {
         scrollByVisibleElement(registerButton);
-        wait20ElementToBeClickable(registerButton);
         click(registerButton);
 
         return new RegisterPage(getDriver());
