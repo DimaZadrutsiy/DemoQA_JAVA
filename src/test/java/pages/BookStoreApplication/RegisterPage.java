@@ -66,7 +66,6 @@ public class RegisterPage extends LoginPage{
     }
 
     public RegisterPage clickCaptcha() {
-        scrollByVisibleElement(registerButton);
         wait20ElementToBeVisible(iframeCaptchaCheckBox);
         swithToIframe(iframeCaptchaCheckBox);
         click(recaptchaBlock);
