@@ -334,4 +334,12 @@ public abstract class BasePage {
 
         return result;
     }
+
+    public void swithToIframe(WebElement iframe) {
+        getDriver().switchTo().frame(iframe);
+    }
+
+    public void swithToParentFrame() {
+        getDriver().switchTo().parentFrame();
+    }
 }
