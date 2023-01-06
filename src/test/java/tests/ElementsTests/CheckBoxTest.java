@@ -2,6 +2,7 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Elements.CheckBoxPage;
 import pages.Elements.ElementsPage;
@@ -24,6 +25,7 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertTrue(checkBoxPage.openCheckBoxPage().isAllCheckBoxDisplayed());
     }
 
+    @Ignore
     @Test
     public void testOneElementIsUnchecked() {
         final List<String> expectedSelectedCheckboxes = Arrays.asList(

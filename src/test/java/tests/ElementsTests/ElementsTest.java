@@ -2,6 +2,7 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Elements.ElementsPage;
 
@@ -20,6 +21,7 @@ public class ElementsTest extends BaseTest {
 
         Assert.assertEquals(actualURL, expectedURL);
     }
+
     @Test
     public void testElementsList() {
         final List<String> expectedSubMenuHeaders = Arrays.asList(

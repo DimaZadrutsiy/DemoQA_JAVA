@@ -34,7 +34,6 @@ public class LoginTest extends BaseTest {
      при логине юзера с валидными даными мы через раз попадаем на
      разные страницы или books или profile
       */
-    @Ignore
     @Test
     public void testLoginValidData() {
         String userName = "TesterUserName";
