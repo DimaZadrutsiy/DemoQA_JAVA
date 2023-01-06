@@ -3,7 +3,6 @@ package pages.BookStoreApplication;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.BasePage;
 
 public class LoginPage extends BookStorePage {
 
@@ -57,11 +56,11 @@ public class LoginPage extends BookStorePage {
             return (T) new BookStorePage(getDriver());
     }
 
-    public RegisterPage clickNewUserButton() {
+    public RegisterNewUserPage clickNewUserButton() {
         wait20ElementToBeVisible(newUserButton);
         click(newUserButton);
 
-        return new RegisterPage(getDriver());
+        return new RegisterNewUserPage(getDriver());
     }
 
     public String getErrorMessage() {
