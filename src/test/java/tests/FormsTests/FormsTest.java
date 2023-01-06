@@ -12,6 +12,7 @@ public class FormsTest extends BaseTest {
         String expectedUrl = "https://demoqa.com/forms";
         String expectedTitle = "ToolsQA";
         String expectedHeader = "Forms";
+        final String expectedBasedURL = "https://demoqa.com/";
 
         FormsPage formsPage = openBaseURL().clickFormsMenu();
 
@@ -19,7 +20,7 @@ public class FormsTest extends BaseTest {
         String actualTitle = formsPage.getTitle();
         String actualHeader = formsPage.getH2LogoHeaderText();
 
-        Assert.assertNotEquals(actualUrl, BASE_URL);
+        Assert.assertNotEquals(actualUrl, expectedBasedURL);
         Assert.assertEquals(actualUrl, expectedUrl);
         Assert.assertEquals(actualTitle, expectedTitle);
         Assert.assertEquals(actualHeader, expectedHeader);

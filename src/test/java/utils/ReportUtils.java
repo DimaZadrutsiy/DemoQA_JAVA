@@ -1,5 +1,6 @@
 package utils;
 
+import base.BaseTest;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 
@@ -16,13 +17,6 @@ public class ReportUtils {
     private final static String H_LINE = " ==========================================================================================\n";
     public final static String END_LINE = "\n______________________________________________________________________________________________________________________________";
 
-    private static String getCurrentDateTime() {
-        Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd, hh:mma");
-
-        return dateFormat.format(date);
-    }
-
     private static String getTestStatus(ITestResult result) {
         int status = result.getStatus();
 
@@ -38,18 +32,19 @@ public class ReportUtils {
 
     private static String getTestRunTime(ITestResult result) {
         final long time = result.getEndMillis() - result.getStartMillis();
-        int minutes = (int) ((time/1000)/60);
-        int seconds = (int) (time/1000)%60;
 
-        return "" + minutes + " min " + seconds + " sec";
+        return DateTimeUtils.getTimeInMinSecFormat(time);
     }
 
-    public static String getReportHeader(ITestContext context){
+    public static String getReportHeader(ITestContext context) {
 
         String header = "\tTest Report\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
-        String currentDate = "\tDate: " + getCurrentDateTime() + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
+        String currentDate = "\tDate: "
+                + DateTimeUtils.getCurrentDateTime()
+                + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + "\n";
         String projectName = "\tProject: DemoQA_JAVA" + "\n";
-        String baseURL = "\tBASE_URL: " + TestUtils.getBaseUrl() + "\t\t\t\t\t\t\t\t\t\t\t" + "\n";
+        String baseURL = "\tBASE_URL: " + BaseTest.getBaseUrl()
+                + "\t\t\t\t\t\t\t\t\t\t\t" + "\n";
 
         return H_LINE + header + currentDate + projectName + baseURL + H_LINE;
     }
@@ -59,12 +54,6 @@ public class ReportUtils {
         String testName = method.getName();
 
         return className.substring(22, className.length() - 1) + "/" + testName;
-    }
-
-    public static String getClassName(ITestResult result) {
-        String className = result.getTestClass().toString();
-
-        return className.substring(22, className.length() - 1);
     }
 
     public static String getTestStatistics(Method method, ITestResult result) {

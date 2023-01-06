@@ -1,9 +1,6 @@
 package base;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -11,7 +8,6 @@ import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.reporters.jq.Main;
 import pages.*;
 import pages.AlertsFramesWindows.AlertsFramesWindowsPage;
 import pages.BookStoreApplication.BookStorePage;
@@ -25,19 +21,17 @@ import utils.ReportUtils;
 import utils.TestUtils;
 
 import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public abstract class BaseTest {
-    public final String BASE_URL = TestUtils.getBaseUrl();
+    private static final String BASE_URL = "https://demoqa.com/";
     private WebDriver driver;
     private WebDriverWait webDriverWait;
+
+    public static String getBaseUrl() {
+
+        return BASE_URL;
+    }
 
     @BeforeSuite
     protected void beforeSuite(ITestContext context) {
@@ -47,6 +41,7 @@ public abstract class BaseTest {
     @BeforeMethod
     protected void beforeMethod(Method method, ITestResult result) {
         driver = BaseUtils.createDriver();
+
         Reporter.log(ReportUtils.END_LINE, true);
         Reporter.log("TEST RUN", true);
         Reporter.log(ReportUtils.getClassNameTestName(method, result), true);
@@ -74,7 +69,13 @@ public abstract class BaseTest {
 
     // вместо void поставила возврат Homepage
     public HomePage openBaseURL() {
-        getDriver().get(BASE_URL);
+        TestUtils.loadBaseUrlPage(getDriver(), getWait());
+
+        if (TestUtils.isIMGHeaderExists(getDriver())) {
+            Reporter.log("BaseURL page was loaded successfully ", true);
+        } else {
+            TestUtils.reLoadBaseUrlPage(getDriver(), getWait());
+        }
 
         return new HomePage(getDriver());
     }
@@ -153,6 +154,19 @@ public abstract class BaseTest {
 
     public void sleep(int millis) throws InterruptedException {
         Thread.sleep(millis);
+    }
+
+    public String getExternalPageTitle() {
+        if (getDriver().getTitle().isEmpty()) {
+            TestUtils.waitForPageLoaded(getDriver());
+        }
+
+        return getDriver().getTitle();
+    }
+
+    public String getExternalPageURL() {
+
+        return getDriver().getCurrentUrl();
     }
 
 }
