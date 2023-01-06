@@ -18,14 +18,17 @@ public class RegisterPage extends LoginPage{
     @FindBy(xpath = "//input[@id='password']")
     private WebElement passwordField;
 
+    @FindBy(xpath = "//iframe[@title='reCAPTCHA']")
+    private WebElement iframeCaptchaCheckBox;
+
     @FindBy(xpath = "//label[@id='recaptcha-anchor-label']")
-    private WebElement captchaCheckBox;
+    private WebElement recaptchaBlock;
 
     @FindBy(xpath = "//button[@id='register']")
     private WebElement registerButton;
 
-    @FindBy(xpath = "//div[@id='output']//p[@id='name']")
-    private WebElement captchaBlockMessage;
+    @FindBy(xpath = "//div[@id ='output']//p[@id='name']")
+    private WebElement errorMessageBlock;
 
     public RegisterPage(WebDriver driver) {
         super(driver);
@@ -63,11 +66,10 @@ public class RegisterPage extends LoginPage{
     }
 
     public RegisterPage clickCaptcha() {
-        scrollByVisibleElement(captchaCheckBox);
-        wait20ElementToBeVisible(captchaCheckBox);
-        //getDriver().switchTo().frame(captchaCheckBox);
-        click(captchaCheckBox);
-        getWait20();
+        scrollByVisibleElement(registerButton);
+        swithToIframe(iframeCaptchaCheckBox);
+        click(recaptchaBlock);
+        swithToParentFrame();
 
         return new RegisterPage(getDriver());
     }
@@ -81,6 +83,6 @@ public class RegisterPage extends LoginPage{
 
     public String getTextFromCaptchaBlock() {
 
-        return getText(captchaBlockMessage);
+        return getText(errorMessageBlock);
     }
 }

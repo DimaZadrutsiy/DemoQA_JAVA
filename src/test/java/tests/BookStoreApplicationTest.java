@@ -2,8 +2,9 @@ package tests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import java.util.Arrays;
+import java.util.List;
 
 public class BookStoreApplicationTest extends BaseTest {
 
@@ -36,6 +37,7 @@ public class BookStoreApplicationTest extends BaseTest {
         String password = "adcde";
 
         final String expectedErrorMessage = "Invalid username or password!";
+        final String expectedURL = "https://demoqa.com/login";
 
          openBaseURL()
                 .clickBookStoreApplicationMenu()
@@ -45,10 +47,16 @@ public class BookStoreApplicationTest extends BaseTest {
                 .clickLoginButton();
 
         String actualErrorMessage = getLoginPage().getErrorMessage();
+        String actualURL = getCurrentURL();
 
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+        Assert.assertEquals(actualURL, expectedURL);
     }
 
+    /*
+    при логине юзера с валидными даными мы через раз попадаем на
+    разные страницы или books или profile
+     */
     @Test
     public void testLoginValidData() {
         String userName = "TesterUserName";
@@ -69,7 +77,24 @@ public class BookStoreApplicationTest extends BaseTest {
         Assert.assertEquals(actualUserNameValue, expectedUserNameValue);
     }
 
-    @Ignore //не понимаю, как побороть капчу
+    @Test
+    public void testBookStorePageSubMenuList() {
+        final List<String> expectedSubMenuHeaders = Arrays.asList(
+                "Login", "Book Store", "Profile", "Book Store API"
+        );
+        final int expectedSubMenusSize = 4  ;
+
+        List <String> actualSubMenuHeaders = openBaseURL()
+                .clickBookStoreApplicationMenu()
+                .clickBookStoreApplicationSubMenu()
+                .getBookStorePageSubMenuHeaders();
+
+        int actualSubMenusSize = actualSubMenuHeaders.size();
+
+        Assert.assertEquals(actualSubMenuHeaders, expectedSubMenuHeaders);
+        Assert.assertEquals(actualSubMenusSize, expectedSubMenusSize);
+    }
+
     @Test
     public void testLoginValidData_WithCaptcha() {
         String name = "TesterName";

@@ -40,16 +40,22 @@ public class LoginPage extends BookStorePage {
         return new LoginPage(getDriver());
     }
 
+    /*
+    при логине с невалидными данными мы остаемся на LoginPage
+    при логине с валидными данными мы переходим или на ProfilePage или на BookStorePage
+     */
     public  <T extends BookStorePage>T clickLoginButton() {
         click(loginButton);
 
         if (getCurrentURL().equals("https://demoqa.com/login")) {
 
             return (T) new LoginPage(getDriver());
-        } else {
+        } else if (getCurrentURL().equals("https://demoqa.com/profile")){
 
             return (T) new ProfilePage(getDriver());
-        }
+        }  else
+
+            return (T) new BookStorePage(getDriver());
     }
 
     public RegisterPage clickNewUserButton() {
