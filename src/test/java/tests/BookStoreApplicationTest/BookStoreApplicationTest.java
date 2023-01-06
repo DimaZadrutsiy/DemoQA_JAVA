@@ -30,6 +30,7 @@ public class BookStoreApplicationTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
         Assert.assertEquals(actualHeader, expectedHeader);
     }
+
     @Test
     public void testBookStorePageSubMenuList() {
         final List<String> expectedSubMenuHeaders = Arrays.asList(
@@ -46,5 +47,25 @@ public class BookStoreApplicationTest extends BaseTest {
 
         Assert.assertEquals(actualSubMenuHeaders, expectedSubMenuHeaders);
         Assert.assertEquals(actualSubMenusSize, expectedSubMenusSize);
+    }
+
+    @Test
+    public void testBooksListChecking() {
+        final List<String> expectedBooksList = Arrays.asList(
+                "Git Pocket Guide", "Learning JavaScript Design Patterns",
+                "Designing Evolvable Web APIs with ASP.NET", "Speaking JavaScript",
+                "You Don't Know JS", "Programming JavaScript Applications", "Eloquent JavaScript, Second Edition",
+                "Understanding ECMAScript 6"
+        );
+        final int expectedBooksListSize = 8  ;
+
+        List <String> actualBooksList = openBaseURL()
+                .clickBookStoreApplicationMenu()
+                .getBooksList();
+
+        int actualSubMenusSize = actualBooksList.size();
+
+        Assert.assertEquals(actualBooksList, expectedBooksList);
+        Assert.assertEquals(actualSubMenusSize, expectedBooksListSize);
     }
 }

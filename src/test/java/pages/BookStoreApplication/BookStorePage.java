@@ -22,7 +22,7 @@ public class BookStorePage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Type to search']")
     private WebElement placeholderSearchField;
 
-    @FindBy(xpath = "//a[contains(@href,'/books?book')]")
+    @FindBy(xpath = "//span[@class='mr-2']")
     private List<WebElement> booksList;
 
     @FindBy(xpath = "//ul[@class='menu-list']/li[@class='btn btn-light active']/../li")
@@ -81,5 +81,10 @@ public class BookStorePage extends BasePage {
         click(bookStoreApplicationSubMenu);
 
         return getListSize(subMenuList);
+    }
+
+    public List<String> getBooksList() {
+
+        return getTexts(booksList);
     }
 }
