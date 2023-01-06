@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class RegisterPage extends LoginPage{
+public class RegisterNewUserPage extends LoginPage{
 
     @FindBy(xpath = "//input[@id='firstname']")
     private WebElement firstNameField;
@@ -30,55 +30,56 @@ public class RegisterPage extends LoginPage{
     @FindBy(xpath = "//div[@id ='output']//p[@id='name']")
     private WebElement errorMessageBlock;
 
-    public RegisterPage(WebDriver driver) {
+    public RegisterNewUserPage(WebDriver driver) {
         super(driver);
     }
 
-    public RegisterPage inputFirstName(String firstName) {
+    public RegisterNewUserPage inputFirstName(String firstName) {
         click(firstNameField);
         input(firstName, firstNameField);
         waitTextToBeChanged(firstNameField, firstName);
 
-        return new RegisterPage(getDriver());
+        return new RegisterNewUserPage(getDriver());
     }
 
-    public RegisterPage inputLastName(String lastName) {
+    public RegisterNewUserPage inputLastName(String lastName) {
         click(firstNameField);
         input(lastName, lastNameField);
         waitTextToBeChanged(lastNameField, lastName);
 
-        return new RegisterPage(getDriver());
+        return new RegisterNewUserPage(getDriver());
     }
 
-    public RegisterPage inputUserName(String userName) {
+    public RegisterNewUserPage inputUserName(String userName) {
         click(userNameField);
         input(userName, userNameField);
         waitTextToBeChanged(userNameField, userName);
 
-        return new RegisterPage(getDriver());
+        return new RegisterNewUserPage(getDriver());
     }
 
-    public RegisterPage inputPassword(String password) {
+    public RegisterNewUserPage inputPassword(String password) {
         click(passwordField);
         input(password, passwordField);
 
-        return new RegisterPage(getDriver());
+        return new RegisterNewUserPage(getDriver());
     }
 
-    public RegisterPage clickCaptcha() {
+    public RegisterNewUserPage clickCaptcha() {
         scrollByVisibleElement(registerButton);
+        wait20ElementToBeClickable(registerButton);
         swithToIframe(iframeCaptchaCheckBox);
         click(recaptchaBlock);
         swithToParentFrame();
 
-        return new RegisterPage(getDriver());
+        return new RegisterNewUserPage(getDriver());
     }
 
-    public RegisterPage clickRegisterButton() {
+    public RegisterNewUserPage clickRegisterButton() {
         scrollByVisibleElement(registerButton);
         click(registerButton);
 
-        return new RegisterPage(getDriver());
+        return new RegisterNewUserPage(getDriver());
     }
 
     public String getTextFromCaptchaBlock() {

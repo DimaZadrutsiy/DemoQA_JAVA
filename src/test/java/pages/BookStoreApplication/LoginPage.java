@@ -1,11 +1,8 @@
 package pages.BookStoreApplication;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v85.profiler.model.Profile;
 import org.openqa.selenium.support.FindBy;
-import pages.BasePage;
 
 public class LoginPage extends BookStorePage {
 
@@ -43,6 +40,7 @@ public class LoginPage extends BookStorePage {
     /*
     при логине с невалидными данными мы остаемся на LoginPage
     при логине с валидными данными мы переходим или на ProfilePage или на BookStorePage
+    и мне не нравится этот метод, если что :)
      */
     public  <T extends BookStorePage>T clickLoginButton() {
         click(loginButton);
@@ -58,10 +56,11 @@ public class LoginPage extends BookStorePage {
             return (T) new BookStorePage(getDriver());
     }
 
-    public RegisterPage clickNewUserButton() {
+    public RegisterNewUserPage clickNewUserButton() {
+        wait20ElementToBeVisible(newUserButton);
         click(newUserButton);
 
-        return new RegisterPage(getDriver());
+        return new RegisterNewUserPage(getDriver());
     }
 
     public String getErrorMessage() {
