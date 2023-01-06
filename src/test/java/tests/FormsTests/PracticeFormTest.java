@@ -12,6 +12,7 @@ public class PracticeFormTest extends BaseTest {
     @Test(dataProviderClass = TestData.class, dataProvider = "PracticeFormsAttribute")
     public void testNavigationToPracticeFormPage(
             String expectedUrl, String expectedTitle, String expectedHeader) {
+        final String expectedBasedURL = "https://demoqa.com/";
 
         FormsPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
@@ -21,7 +22,7 @@ public class PracticeFormTest extends BaseTest {
         String actualTitle = practiceFormPage.getTitle();
         String actualHeader = practiceFormPage.getH2LogoHeaderText();
 
-        Assert.assertNotEquals(actualUrl, BASE_URL);
+        Assert.assertNotEquals(actualUrl, expectedBasedURL);
         Assert.assertEquals(actualUrl, expectedUrl);
         Assert.assertEquals(actualTitle, expectedTitle);
         Assert.assertEquals(actualHeader, expectedHeader);

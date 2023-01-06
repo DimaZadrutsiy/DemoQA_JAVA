@@ -15,6 +15,7 @@ public class BookStoreApplicationTest extends BaseTest {
         final String expectedURL = "https://demoqa.com/books";
         final String expectedTitle = "ToolsQA";
         final String expectedHeader = "Book Store";
+        final String expectedBasedURL = "https://demoqa.com/";
 
         BookStorePage bookStorePage = openBaseURL()
                 .clickBookStoreApplicationMenu();
@@ -24,7 +25,7 @@ public class BookStoreApplicationTest extends BaseTest {
         String actualTitle = bookStorePage.getTitle();
         String actualHeader = bookStorePage.getH2MainHeaderText();
 
-        Assert.assertNotEquals(actualURL, BASE_URL);
+        Assert.assertNotEquals(actualURL, expectedBasedURL);
         Assert.assertEquals(actualURL, expectedURL);
         Assert.assertEquals(actualTitle, expectedTitle);
         Assert.assertEquals(actualHeader, expectedHeader);

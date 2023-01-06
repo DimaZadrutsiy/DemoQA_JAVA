@@ -312,11 +312,11 @@ public abstract class BasePage {
         return getText(webElement).contains(text);
     }
 
-    protected boolean isElementEnabled(WebElement webElement){
+    protected boolean isElementEnabled(WebElement webElement) {
         return webElement.isEnabled();
     }
 
-    protected boolean isElementSelected(WebElement webElement){
+    protected boolean isElementSelected(WebElement webElement) {
         return webElement.isSelected();
     }
 
