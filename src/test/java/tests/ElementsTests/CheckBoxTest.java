@@ -21,6 +21,7 @@ public class CheckBoxTest extends BaseTest {
                 .clickExpandAll();
 
         Assert.assertTrue(checkBoxPage.openCheckBoxPage().isAllCheckBoxSelected());
+        Assert.assertTrue(checkBoxPage.openCheckBoxPage().isAllCheckBoxDisplayed());
     }
 
     @Test

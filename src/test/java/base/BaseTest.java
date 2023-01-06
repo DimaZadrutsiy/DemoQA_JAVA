@@ -37,8 +37,7 @@ import java.util.logging.Logger;
 public abstract class BaseTest {
     public final String BASE_URL = TestUtils.getBaseUrl();
     private WebDriver driver;
-    private WebDriverWait webDriverWait20;
-    private WebDriverWait webDriverWait10;
+    private WebDriverWait webDriverWait;
 
     @BeforeSuite
     protected void beforeSuite(ITestContext context) {
@@ -58,28 +57,19 @@ public abstract class BaseTest {
         Reporter.log(ReportUtils.getTestStatistics(method, result), true);
 
         driver.quit();
-        webDriverWait20 = null;
-        webDriverWait10 = null;
+        webDriverWait = null;
     }
 
     protected WebDriver getDriver() {
         return driver;
     }
 
-    protected WebDriverWait getWait20() {
-        if (webDriverWait20 == null) {
-            webDriverWait20 = new WebDriverWait(driver, Duration.ofSeconds(20));
+    protected WebDriverWait getWait() {
+        if (webDriverWait == null) {
+            webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(20));
         }
 
-        return webDriverWait20;
-    }
-
-    protected WebDriverWait getWait10() {
-        if (webDriverWait10 == null) {
-            webDriverWait10 = new WebDriverWait(driver, Duration.ofSeconds(10));
-        }
-
-        return webDriverWait10;
+        return webDriverWait;
     }
 
     // вместо void поставила возврат Homepage
@@ -159,6 +149,10 @@ public abstract class BaseTest {
         }
 
         return isExists;
+    }
+
+    public void sleep(int millis) throws InterruptedException {
+        Thread.sleep(millis);
     }
 
 }
