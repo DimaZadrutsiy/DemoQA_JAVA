@@ -19,12 +19,6 @@ public class CheckBoxTest extends BaseTest {
                 .clickOnHomeCheckBox()
                 .clickExpandAll();
 
-//        Assert.assertTrue(getCheckBoxPage().isHomeCheckBoxSelected());
-//        Assert.assertTrue(getCheckBoxPage().isDesktopCheckBoxSelected());
-//        Assert.assertTrue(getCheckBoxPage().isNotesCheckBoxSelected());
-//        Assert.assertTrue(getCheckBoxPage().isCommandsCheckBoxSelected());
-//        Assert.assertTrue(getCheckBoxPage().isDocumentsCheckBoxSelected());
-//        Assert.assertTrue(getCheckBoxPage().isWorkspaceCheckBoxSelected());
         Assert.assertTrue(getCheckBoxPage().isAllCheckBoxesSelected());
     }
 
