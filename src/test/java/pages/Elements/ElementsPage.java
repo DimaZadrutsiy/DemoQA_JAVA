@@ -14,6 +14,9 @@ public class ElementsPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-1']")
     private WebElement checkBoxSubMenu;
+
+    @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-2']")
+    private WebElement radioButtonSubMenu;
     
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//span")
     private List<WebElement> elementsList;
@@ -58,4 +61,12 @@ public class ElementsPage extends BasePage {
 
         return new CheckBoxPage(getDriver());
     }
+
+    public RadioButtonPage openRadioButtonPage() {
+        scrollByVisibleElement(radioButtonSubMenu);
+        click(radioButtonSubMenu);
+
+        return new RadioButtonPage(getDriver());
+    }
 }
+
