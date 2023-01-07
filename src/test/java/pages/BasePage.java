@@ -229,6 +229,11 @@ public abstract class BasePage {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
+    protected void scrollByVisibleElement(List<WebElement> list) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].scrollIntoView();", list);
+    }
+
     protected void goBack() {
         getDriver().navigate().back();
     }

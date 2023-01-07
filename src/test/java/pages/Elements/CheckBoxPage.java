@@ -54,9 +54,9 @@ public class CheckBoxPage extends ElementsPage{
         return new  CheckBoxPage(getDriver());
     }
 
-    public boolean isAllCheckBoxSelected() {
+    public boolean isAllCheckBoxSelected()  {
 
-        return isElementsInListSelected(allCheckBoxes);
+        return areAllElementsVisibleAndClickable(allCheckBoxesClick);
     }
 
     public CheckBoxPage clickOnExcelFileCheckBox() {
