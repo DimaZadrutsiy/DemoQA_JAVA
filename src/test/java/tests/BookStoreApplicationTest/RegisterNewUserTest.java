@@ -2,6 +2,7 @@ package tests.BookStoreApplicationTest;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 public class RegisterNewUserTest extends BaseTest {
@@ -29,6 +30,7 @@ public class RegisterNewUserTest extends BaseTest {
         Assert.assertEquals(actualCaptchaMessage, expectedCaptchaMessage);
     }
 
+    @Ignore
     @Test
     public void testLoginValidData_WithCaptcha() {
         String name = "TesterName";

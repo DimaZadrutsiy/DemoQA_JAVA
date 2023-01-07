@@ -8,8 +8,11 @@ import java.util.List;
 
 public class CheckBoxPage extends ElementsPage{
 
-    @FindBy(css = "input[type = 'checkbox']")
+    @FindBy(css = "#tree-node > ol input")
     private List<WebElement> allCheckBoxes;
+
+    @FindBy(css = ".rct-checkbox")
+    private List<WebElement> allCheckBoxesClick;
 
     @FindBy(xpath = "//label[@for = 'tree-node-home']")
     private WebElement homeCheckBoxClick;
@@ -57,6 +60,7 @@ public class CheckBoxPage extends ElementsPage{
     }
 
     public CheckBoxPage clickOnExcelFileCheckBox() {
+        scrollByVisibleElement(excelFileCheckBoxClick);
         if (excelFileCheckBoxClick.isDisplayed() && excelFileCheckBoxClick.isEnabled()) {
             click(excelFileCheckBoxClick);
         }
@@ -72,5 +76,10 @@ public class CheckBoxPage extends ElementsPage{
     public List<String> selectedResult() {
 
         return getTexts(selectedResult);
+    }
+
+    public boolean isAllCheckBoxDisplayed() {
+
+        return areElementsInListDisplayed(allCheckBoxesClick);
     }
 }

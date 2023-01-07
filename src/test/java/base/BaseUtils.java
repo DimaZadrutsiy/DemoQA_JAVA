@@ -34,13 +34,15 @@ public final class BaseUtils {
                         System.exit(1);
                     }
                     properties.load(inputStream);
-                } catch (IOException ignore) {}
+                } catch (IOException ignore) {
+                }
             }
         }
     }
 
 
     private static final ChromeOptions chromeOptions;
+
     static {
         initProperties();
 

@@ -1,6 +1,5 @@
 package pages.BookStoreApplication;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,7 +21,7 @@ public class BookStorePage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Type to search']")
     private WebElement placeholderSearchField;
 
-    @FindBy(xpath = "//a[contains(@href,'/books?book')]")
+    @FindBy(xpath = "//span[@class='mr-2']")
     private List<WebElement> booksList;
 
     @FindBy(xpath = "//ul[@class='menu-list']/li[@class='btn btn-light active']/../li")
@@ -46,10 +45,10 @@ public class BookStorePage extends BasePage {
         return getText(h2MainHeader);
     }
 
-    public LoginPage inputBookName(String bookName) {
+    public BookStorePage inputBookName(String bookName) {
         input(bookName, searchField);
 
-        return new LoginPage(getDriver());
+        return new BookStorePage(getDriver());
     }
 
     public String getPlaceholderText() {
@@ -59,7 +58,7 @@ public class BookStorePage extends BasePage {
 
     public int getBooksListSize() {
 
-        return getListSize(booksList);
+        return getBooksList().size();
     }
 
     public BookStorePage clickBookStoreApplicationSubMenu() {
@@ -81,5 +80,15 @@ public class BookStorePage extends BasePage {
         click(bookStoreApplicationSubMenu);
 
         return getListSize(subMenuList);
+    }
+
+    public List<String> getBooksList() {
+
+        return getTexts(booksList);
+    }
+
+    public String getFirstBookInList() {
+
+        return getBooksList().get(0);
     }
 }

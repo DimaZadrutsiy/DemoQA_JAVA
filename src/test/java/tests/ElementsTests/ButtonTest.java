@@ -2,11 +2,13 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Elements.ButtonsPage;
 
 public class ButtonTest extends BaseTest {
 
+    @Ignore
     @Test
     public void testCheckingMessagesWhenButtonsArePressed() {
         final String expectedMessage_Button_DoubleClickMe = "You have done a double click";

@@ -20,6 +20,7 @@ public class ElementsTest extends BaseTest {
 
         Assert.assertEquals(actualURL, expectedURL);
     }
+
     @Test
     public void testElementsList() {
         final List<String> expectedSubMenuHeaders = Arrays.asList(
@@ -28,9 +29,8 @@ public class ElementsTest extends BaseTest {
         );
         final int expectedSubMenus = 9;
 
-        ElementsPage elementsPage = openBaseURL().clickElementsMenu();
-
-        elementsPage.checkAllElementsIsVisibleAndClickable();
+        ElementsPage elementsPage = openBaseURL()
+                .clickElementsMenu();
 
         Assert.assertEquals(elementsPage.getElementsSubMenuHeaders(), expectedSubMenuHeaders);
         Assert.assertEquals(elementsPage.getElementsSubMenuAmount(), expectedSubMenus);

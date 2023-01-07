@@ -18,7 +18,7 @@ public class ElementsPage extends BasePage {
     @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-2']")
     private WebElement radioButtonSubMenu;
     
-    @FindBy(xpath = "//div[@class = 'element-list collapse show']//span")
+    @FindBy(xpath = "//div[@class = 'element-list collapse show']//li[@class = 'btn btn-light ']//span")
     private List<WebElement> elementsList;
 
     @FindBy(xpath = "//div[@class='element-list collapse show']/ul[@class='menu-list']/li[5]")

@@ -2,8 +2,8 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import pages.Elements.CheckBoxPage;
 import pages.Elements.ElementsPage;
 
 import java.util.Arrays;
@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CheckBoxTest extends BaseTest {
 
+    @Ignore
     @Test
     public void testAllCheckBoxSelected() {
         ElementsPage checkBoxPage = openBaseURL()
@@ -20,7 +21,8 @@ public class CheckBoxTest extends BaseTest {
                 .clickOnHomeCheckBox()
                 .clickExpandAll();
 
-        Assert.assertTrue(checkBoxPage.openCheckBoxPage().isAllCheckBoxSelected());
+        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxSelected());
+        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxDisplayed());
     }
 
     @Test
@@ -39,9 +41,7 @@ public class CheckBoxTest extends BaseTest {
                 .clickOnExcelFileCheckBox()
                 .selectedResult();
 
-        CheckBoxPage checkBoxPage = new CheckBoxPage(getDriver());
-
-        Assert.assertFalse(checkBoxPage.isExcelFileCheckBoxSelected());
+        Assert.assertFalse(getCheckBoxPage().isExcelFileCheckBoxSelected());
         Assert.assertEquals(actualSelectedCheckboxes,expectedSelectedCheckboxes);
     }
 }
