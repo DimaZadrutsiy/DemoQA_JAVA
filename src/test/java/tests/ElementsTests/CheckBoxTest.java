@@ -2,7 +2,6 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Elements.ElementsPage;
 
@@ -12,17 +11,15 @@ import java.util.List;
 
 public class CheckBoxTest extends BaseTest {
 
-    @Ignore
     @Test
-    public void testAllCheckBoxSelected() {
+    public void testAllCheckBoxSelected() throws InterruptedException {
         ElementsPage checkBoxPage = openBaseURL()
                 .clickElementsMenu()
                 .openCheckBoxPage()
                 .clickOnHomeCheckBox()
                 .clickExpandAll();
 
-        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxSelected());
-        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxDisplayed());
+        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxesSelected());
     }
 
     @Test
@@ -42,6 +39,6 @@ public class CheckBoxTest extends BaseTest {
                 .selectedResult();
 
         Assert.assertFalse(getCheckBoxPage().isExcelFileCheckBoxSelected());
-        Assert.assertEquals(actualSelectedCheckboxes,expectedSelectedCheckboxes);
+        Assert.assertEquals(actualSelectedCheckboxes, expectedSelectedCheckboxes);
     }
 }
