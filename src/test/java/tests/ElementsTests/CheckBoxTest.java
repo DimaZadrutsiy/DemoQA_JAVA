@@ -25,7 +25,6 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertTrue(checkBoxPage.openCheckBoxPage().isAllCheckBoxDisplayed());
     }
 
-    @Ignore
     @Test
     public void testOneElementIsUnchecked() {
         final List<String> expectedSelectedCheckboxes = Arrays.asList(

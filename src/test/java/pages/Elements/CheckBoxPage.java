@@ -60,6 +60,7 @@ public class CheckBoxPage extends ElementsPage{
     }
 
     public CheckBoxPage clickOnExcelFileCheckBox() {
+        scrollByVisibleElement(excelFileCheckBoxClick);
         if (excelFileCheckBoxClick.isDisplayed() && excelFileCheckBoxClick.isEnabled()) {
             click(excelFileCheckBoxClick);
         }
