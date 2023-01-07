@@ -13,6 +13,7 @@ import pages.AlertsFramesWindows.AlertsFramesWindowsPage;
 import pages.BookStoreApplication.BookStorePage;
 import pages.BookStoreApplication.LoginPage;
 import pages.BookStoreApplication.ProfilePage;
+import pages.Elements.CheckBoxPage;
 import pages.Elements.ElementsPage;
 import pages.Forms.FormsPage;
 import pages.Interactions.InteractionsPage;
@@ -111,6 +112,11 @@ public abstract class BaseTest {
     public ElementsPage getElementsPage() {
 
         return new ElementsPage(getDriver());
+    }
+
+    public CheckBoxPage getCheckBoxPage() {
+
+        return new CheckBoxPage(getDriver());
     }
 
     public FormsPage getFormsPage() {
