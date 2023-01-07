@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BookStoreApplication.BookStorePage;
+import testData.TestData;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,5 +68,20 @@ public class BookStoreApplicationTest extends BaseTest {
 
         Assert.assertEquals(actualBooksList, expectedBooksList);
         Assert.assertEquals(actualSubMenusSize, expectedBooksListSize);
+    }
+
+    @Test(dataProviderClass = TestData.class, dataProvider = "DifferentBooksSearching")
+    public void testSearchingBooksResult(int index, String searchingBook,
+                                         String expectedFirstBookFound, int expectedNumberOfBooksFound) {
+
+        BookStorePage newBookStorePage = openBaseURL()
+                .clickBookStoreApplicationMenu()
+                .inputBookName(searchingBook);
+
+        String actualFirstBookFound = newBookStorePage.getFirstBookInList();
+        int actualNumberOfBooksFound = newBookStorePage.getBooksListSize();
+
+        Assert.assertEquals(actualFirstBookFound, expectedFirstBookFound);
+        Assert.assertEquals(actualNumberOfBooksFound, expectedNumberOfBooksFound);
     }
 }

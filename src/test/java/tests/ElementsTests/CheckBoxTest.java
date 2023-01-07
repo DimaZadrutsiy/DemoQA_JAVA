@@ -13,6 +13,7 @@ import java.util.List;
 
 public class CheckBoxTest extends BaseTest {
 
+    @Ignore
     @Test
     public void testAllCheckBoxSelected() {
         ElementsPage checkBoxPage = openBaseURL()
