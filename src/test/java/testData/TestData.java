@@ -29,4 +29,16 @@ public class TestData {
                 {3, "JS", "You Don't Know JS", 1}
         };
     }
+
+    @DataProvider(name = "InteractionsSubmenu")
+    public static Object[][] interactionsSubmenuDataProvider() {
+
+        return new Object[][]{
+                {0, "https://demoqa.com/sortable", "ToolsQA", "Sortable"},
+                {1, "https://demoqa.com/selectable", "ToolsQA", "Selectable"},
+                {2, "https://demoqa.com/resizable", "ToolsQA", "Resizable"},
+                {3, "https://demoqa.com/droppable", "ToolsQA", "Droppable"},
+                {4, "https://demoqa.com/dragabble", "ToolsQA", "Dragabble"}
+        };
+    }
 }
