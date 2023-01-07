@@ -8,16 +8,17 @@ import pages.Elements.ElementsPage;
 public class RadioButtonTest extends BaseTest {
 
     @Test
-    public void testYesRadioButtonsSelected() {
+    public void testImpressiveRadioButtonsSelected()  {
+
+        String expectedResultText = "You have selected Impressive";
+
         ElementsPage radioButtonPage = openBaseURL()
                 .clickElementsMenu()
                 .openRadioButtonPage()
-                .clickOnYesRadioButton();
+                .clickOnImpressibeRadioButton();
 
+       Assert.assertTrue(radioButtonPage.openRadioButtonPage().isRadioButtonImpressiveSelected());
+       Assert.assertTrue(radioButtonPage.openRadioButtonPage().impressiveButtonText(expectedResultText));
 
-
-
-
-       Assert.assertTrue(radioButtonPage.openRadioButtonPage().isRadioButtonSelected());
     }
 }
