@@ -229,11 +229,6 @@ public abstract class BasePage {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    protected void scrollByVisibleElement(List<WebElement> list) {
-        JavascriptExecutor js = (JavascriptExecutor) getDriver();
-        js.executeScript("arguments[0].scrollIntoView();", list);
-    }
-
     protected void goBack() {
         getDriver().navigate().back();
     }
@@ -282,7 +277,7 @@ public abstract class BasePage {
         return element.isDisplayed();
     }
 
-    protected boolean areElementsInListDisplayed(List<WebElement> list) {
+    protected boolean isElementsInListDisplayed(List<WebElement> list) {
         boolean result = false;
 
         for (WebElement element : list) {
@@ -297,7 +292,7 @@ public abstract class BasePage {
         return result;
     }
 
-    protected boolean areAllElementsVisibleAndClickable(List<WebElement> elements) {
+    protected boolean isAllElementsVisibleAndClickable(List<WebElement> elements) {
         List<WebElement> allElements = new ArrayList<>(elements);
         int elementsSize = elements.size();
         int count = 0;
@@ -340,7 +335,7 @@ public abstract class BasePage {
         return result;
     }
 
-    public void swithToIframe(WebElement iframe) {
+    public void switchToIframe(WebElement iframe) {
         getDriver().switchTo().frame(iframe);
     }
 

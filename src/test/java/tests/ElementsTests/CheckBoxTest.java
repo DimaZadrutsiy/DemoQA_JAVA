@@ -12,14 +12,20 @@ import java.util.List;
 public class CheckBoxTest extends BaseTest {
 
     @Test
-    public void testAllCheckBoxSelected() {
+    public void testAllCheckBoxSelected() throws InterruptedException {
         ElementsPage checkBoxPage = openBaseURL()
                 .clickElementsMenu()
                 .openCheckBoxPage()
                 .clickOnHomeCheckBox()
                 .clickExpandAll();
 
-        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxSelected());
+//        Assert.assertTrue(getCheckBoxPage().isHomeCheckBoxSelected());
+//        Assert.assertTrue(getCheckBoxPage().isDesktopCheckBoxSelected());
+//        Assert.assertTrue(getCheckBoxPage().isNotesCheckBoxSelected());
+//        Assert.assertTrue(getCheckBoxPage().isCommandsCheckBoxSelected());
+//        Assert.assertTrue(getCheckBoxPage().isDocumentsCheckBoxSelected());
+//        Assert.assertTrue(getCheckBoxPage().isWorkspaceCheckBoxSelected());
+        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxesSelected());
     }
 
     @Test
@@ -39,6 +45,6 @@ public class CheckBoxTest extends BaseTest {
                 .selectedResult();
 
         Assert.assertFalse(getCheckBoxPage().isExcelFileCheckBoxSelected());
-        Assert.assertEquals(actualSelectedCheckboxes,expectedSelectedCheckboxes);
+        Assert.assertEquals(actualSelectedCheckboxes, expectedSelectedCheckboxes);
     }
 }
