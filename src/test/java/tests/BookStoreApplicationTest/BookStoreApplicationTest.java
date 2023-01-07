@@ -74,13 +74,12 @@ public class BookStoreApplicationTest extends BaseTest {
     public void testSearchingBooksResult(int index, String searchingBook,
                                          String expectedFirstBookFound, int expectedNumberOfBooksFound) {
 
-        List<String> searchingBookResult = openBaseURL()
+        BookStorePage newBookStorePage = openBaseURL()
                 .clickBookStoreApplicationMenu()
-                .inputBookName(searchingBook)
-                .getBooksList();
+                .inputBookName(searchingBook);
 
-        String actualFirstBookFound = searchingBookResult.get(0);
-        int actualNumberOfBooksFound = searchingBookResult.size();
+        String actualFirstBookFound = newBookStorePage.getFirstBookInList();
+        int actualNumberOfBooksFound = newBookStorePage.getBooksListSize();
 
         Assert.assertEquals(actualFirstBookFound, expectedFirstBookFound);
         Assert.assertEquals(actualNumberOfBooksFound, expectedNumberOfBooksFound);
