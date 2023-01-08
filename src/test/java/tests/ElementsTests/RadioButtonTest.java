@@ -10,7 +10,7 @@ public class RadioButtonTest extends BaseTest {
     @Test
     public void testImpressiveRadioButtonsSelected()  {
 
-        String expectedResultText = "You have selected Impressive";
+        String expectedResultText = "Impressive";
 
         ElementsPage radioButtonPage = openBaseURL()
                 .clickElementsMenu()
@@ -19,6 +19,21 @@ public class RadioButtonTest extends BaseTest {
 
        Assert.assertTrue(radioButtonPage.openRadioButtonPage().isRadioButtonImpressiveSelected());
        Assert.assertTrue(radioButtonPage.openRadioButtonPage().impressiveButtonText(expectedResultText));
+
+    }
+
+    @Test
+    public void testYesRadioButtonsSelected()  {
+
+        String expectedResultText = "Yes";
+
+        ElementsPage radioButtonPage = openBaseURL()
+                .clickElementsMenu()
+                .openRadioButtonPage()
+                .clickOnYesRadioButton();
+
+        Assert.assertTrue(radioButtonPage.openRadioButtonPage().isRadioButtonYesSelected());
+        Assert.assertTrue(radioButtonPage.openRadioButtonPage().yesButtonText(expectedResultText));
 
     }
 }
