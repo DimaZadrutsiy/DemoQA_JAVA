@@ -36,4 +36,15 @@ public class RadioButtonTest extends BaseTest {
         Assert.assertTrue(radioButtonPage.openRadioButtonPage().yesButtonText(expectedResultText));
 
     }
+
+    @Test
+    public void testNoRadioButtonsSelected()  {
+
+        ElementsPage radioButtonPage = openBaseURL()
+                .clickElementsMenu()
+                .openRadioButtonPage()
+                .clickOnNoRadioButton();
+
+        Assert.assertFalse(radioButtonPage.openRadioButtonPage().isRadioButtonNoSelected());
+    }
 }
