@@ -24,7 +24,7 @@ public class FormsPage extends BasePage {
         return new PracticeFormPage(getDriver());
     }
 
-    public String getH2LogoHeaderText() {
+    public String getH2Header() {
 
         return getText(h2LogoHeader);
     }

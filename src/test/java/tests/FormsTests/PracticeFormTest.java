@@ -20,7 +20,7 @@ public class PracticeFormTest extends BaseTest {
 
         String actualUrl = practiceFormPage.getCurrentURL();
         String actualTitle = practiceFormPage.getTitle();
-        String actualHeader = practiceFormPage.getH2LogoHeaderText();
+        String actualHeader = practiceFormPage.getH2Header();
 
         Assert.assertNotEquals(actualUrl, expectedBasedURL);
         Assert.assertEquals(actualUrl, expectedUrl);
