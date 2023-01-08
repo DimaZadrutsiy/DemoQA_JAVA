@@ -12,11 +12,14 @@ public class RadioButtonPage extends ElementsPage {
     @FindAll(@FindBy(xpath = "//label[@class='custom-control-label']"))
     private List<WebElement> radioButtons;
 
-    @FindBy(xpath = "//input[@id='yesRadio']")
+    @FindBy(xpath = "//label[@for='yesRadio']")
     private WebElement yesButton;
 
-    @FindBy(css = "//label[@for='yesRadio']")
+    @FindBy(id = ("yesRadio"))
     private WebElement yesButtonClick;
+
+    @FindBy(xpath = "//span[text() = 'Yes']")
+    private WebElement YesRadioButtonText;
 
     @FindBy(xpath = "//label[@for='impressiveRadio']")
     private WebElement impressiveRadioButton;
@@ -48,27 +51,29 @@ public class RadioButtonPage extends ElementsPage {
         return isElementSelected(impressiveRadioButtonSelected);
     }
 
-        public boolean impressiveButtonText(String tekst) {
-            scrollByVisibleElement(text);
+    public boolean impressiveButtonText(String tekst) {
+        scrollByVisibleElement(text);
 
-            return isTextContains(impressiveRadioButtonText, tekst);
-        }
+        return isTextContains(impressiveRadioButtonText, tekst);
     }
 
+    public RadioButtonPage clickOnYesRadioButton() {
+        scrollByVisibleElement(text);
+        if (yesButton.isDisplayed() && yesButton.isEnabled()) {
+            click(yesButton);
+        }
 
+        return new RadioButtonPage(getDriver());
+    }
 
+    public boolean isRadioButtonYesSelected() {
 
+        return isElementSelected(yesButtonClick);
+    }
 
+    public boolean yesButtonText(String tekst) {
+        scrollByVisibleElement(text);
 
-
-
-
-
-
-
-
-
-
-
-
-
+        return isTextContains(YesRadioButtonText, tekst);
+    }
+}
