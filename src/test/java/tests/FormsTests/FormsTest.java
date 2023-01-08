@@ -9,16 +9,16 @@ public class FormsTest extends BaseTest {
 
     @Test
     public void testNavigationToFormPage() {
-        String expectedUrl = "https://demoqa.com/forms";
-        String expectedTitle = "ToolsQA";
-        String expectedHeader = "Forms";
+        final String expectedUrl = "https://demoqa.com/forms";
+        final String expectedTitle = "ToolsQA";
+        final String expectedHeader = "Forms";
         final String expectedBasedURL = "https://demoqa.com/";
 
         FormsPage formsPage = openBaseURL().clickFormsMenu();
 
         String actualUrl = formsPage.getCurrentURL();
         String actualTitle = formsPage.getTitle();
-        String actualHeader = formsPage.getH2LogoHeaderText();
+        String actualHeader = formsPage.getH2Header();
 
         Assert.assertNotEquals(actualUrl, expectedBasedURL);
         Assert.assertEquals(actualUrl, expectedUrl);

@@ -174,5 +174,4 @@ public abstract class BaseTest {
 
         return getDriver().getCurrentUrl();
     }
-
 }
