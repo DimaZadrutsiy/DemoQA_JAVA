@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RadioButtonPage extends ElementsPage {
 
-    @FindAll(@FindBy(xpath = "//label[@class='custom-control-label']"))
+    @FindAll(@FindBy(xpath = "//input[@type='radio']"))
     private List<WebElement> radioButtons;
 
     @FindBy(xpath = "//label[@for='yesRadio']")
@@ -29,6 +29,12 @@ public class RadioButtonPage extends ElementsPage {
 
     @FindBy(xpath = " //p[@class='mt-3']")
     private WebElement impressiveRadioButtonText;
+
+    @FindBy(xpath = "//label[@for='noRadio']")
+    private WebElement noButton;
+
+    @FindBy(id = ("noRadio"))
+    private WebElement noButtonDisabled;
 
     @FindBy(xpath = " //div[text()='Do you like the site?']")
     private WebElement text;
@@ -75,5 +81,19 @@ public class RadioButtonPage extends ElementsPage {
         scrollByVisibleElement(text);
 
         return isTextContains(YesRadioButtonText, tekst);
+    }
+
+    public RadioButtonPage clickOnNoRadioButton() {
+        scrollByVisibleElement(text);
+        if (noButton.isDisplayed() && noButton.isEnabled()) {
+            click(noButton);
+        }
+
+        return new RadioButtonPage(getDriver());
+    }
+
+    public boolean isRadioButtonNoSelected() {
+
+        return isElementSelected(noButtonDisabled);
     }
 }
