@@ -17,6 +17,7 @@ public class InteractionsPage extends BasePage {
     @FindBy(xpath = "//span[text()='Sortable']")
     private WebElement sortable;
 
+    @FindBy(xpath = "//span[text()='Selectable']")
     private WebElement selectable;
 
     @FindBy(xpath = "//span[text()='Resizable']")
