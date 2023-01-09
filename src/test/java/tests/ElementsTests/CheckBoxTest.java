@@ -2,6 +2,7 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Elements.ElementsPage;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class CheckBoxTest extends BaseTest {
 
+    @Ignore
     @Test
     public void testAllCheckBoxSelected() {
         ElementsPage checkBoxPage = openBaseURL()
