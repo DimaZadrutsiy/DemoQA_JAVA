@@ -152,6 +152,7 @@ public class CheckBoxPage extends ElementsPage{
     }
 
     public CheckBoxPage clickExpandAll() {
+        scrollByVisibleElement(expandAll);
         click(expandAll);
         return new  CheckBoxPage(getDriver());
     }
