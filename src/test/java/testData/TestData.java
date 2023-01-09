@@ -41,4 +41,15 @@ public class TestData {
                 {4, "https://demoqa.com/dragabble", "ToolsQA", "Dragabble"}
         };
     }
+
+    @DataProvider(name = "SelectableTabListData")
+    public static Object[][] selectableTabListDataProvider() {
+
+        return new Object[][]{
+                {0, "mt-2 list-group-item list-group-item-action", "ToolsQA", "Cras justo odio"},
+                {1, "mt-2 list-group-item list-group-item-action", "ToolsQA", "Dapibus ac facilisis in"},
+                {2, "mt-2 list-group-item list-group-item-action", "ToolsQA", "Morbi leo risus"},
+                {3, "mt-2 list-group-item list-group-item-action", "ToolsQA", "Porta ac consectetur ac"}
+        };
+    }
 }
