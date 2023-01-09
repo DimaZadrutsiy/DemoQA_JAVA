@@ -18,13 +18,13 @@ public class ButtonsPage extends ElementsPage{
     @FindBy (xpath = "/html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[3]/button")
     private WebElement button_ClickMe;
 
-    @FindBy (id = "doubleClickMessage")
+    @FindBy (css = "#doubleClickMessage")
     private WebElement messageForButton_DoubleClickMe;
 
-    @FindBy (id = "rightClickMessage")
+    @FindBy (css = "#rightClickMessage")
     private WebElement messageForButton_RightClickMe;
 
-    @FindBy (id = "dynamicClickMessage")
+    @FindBy (css = "#dynamicClickMessage")
     private WebElement messageForButton_ClickMe;
 
     @FindBy (css = "#app > div > div > div.row > div.col-12.mt-4.col-md-6 > div:nth-child(2) > div")
@@ -39,6 +39,7 @@ public class ButtonsPage extends ElementsPage{
     }
 
     public ButtonsPage clickButton_DoubleClickMe() {
+        scrollByVisibleElement(button_DoubleClickMe);
         Actions actions = new Actions(getDriver());
         actions.doubleClick(button_DoubleClickMe).perform();
 
@@ -46,6 +47,7 @@ public class ButtonsPage extends ElementsPage{
     }
 
     public ButtonsPage clickButton_RightClickMe() {
+        scrollByVisibleElement(button_RightClickMe);
         Actions actions = new Actions(getDriver());
         actions.contextClick(button_RightClickMe).perform();
 
@@ -53,6 +55,7 @@ public class ButtonsPage extends ElementsPage{
     }
 
     public ButtonsPage clickButton_ClickMe() {
+        scrollByVisibleElement(button_ClickMe);
         click(button_ClickMe);
 
         return this;
