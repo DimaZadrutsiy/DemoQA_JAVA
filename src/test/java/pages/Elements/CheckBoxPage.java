@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CheckBoxPage extends ElementsPage{
 
-    @FindBy(css = "#tree-node > ol input[type = 'checkbox']")
+    @FindBy(xpath = "//div[@id = 'tree-node']//span[@class = 'rct-checkbox']")
     private List<WebElement> allCheckBoxes;
 
     @FindBy(xpath = "//div[@id = 'tree-node']//label")
@@ -38,6 +38,18 @@ public class CheckBoxPage extends ElementsPage{
     @FindBy(css = "input[id ='tree-node-react']")
     private WebElement reactCheckBox;
 
+    @FindBy(css = "input[id ='tree-node-angular']")
+    private WebElement angularCheckBox;
+
+    @FindBy(css = "input[id ='tree-node-veu']")
+    private WebElement veuCheckBox;
+
+    @FindBy(css = "input[id ='tree-node-office']")
+    private WebElement officeCheckBox;
+
+    @FindBy(xpath = "//label[@for = 'tree-node-office']")
+    private WebElement officeCheckBoxClick;
+
     @FindBy(xpath = "//button[@class = 'rct-option rct-option-expand-all']")
     private WebElement expandAll;
 
@@ -50,6 +62,9 @@ public class CheckBoxPage extends ElementsPage{
     @FindBy(xpath = "//div[@id = 'result']//span[@class = 'text-success']")
     private List<WebElement> selectedResult;
 
+    @FindBy(xpath = "//div[@id = 'tree-node']//span[@class = 'rct-title']")
+    private List<WebElement> checkBoxTitle;
+
     public CheckBoxPage(WebDriver driver) {
         super(driver);
     }
@@ -61,6 +76,12 @@ public class CheckBoxPage extends ElementsPage{
         }
 
         return new  CheckBoxPage(getDriver());
+    }
+
+    public boolean isAllCheckBoxDisplayed() {
+
+
+        return homeCheckBoxClick.isDisplayed() && officeCheckBoxClick.isDisplayed();
     }
 
     public boolean isHomeCheckBoxSelected() {
@@ -98,9 +119,36 @@ public class CheckBoxPage extends ElementsPage{
         return isElementSelected(reactCheckBox);
     }
 
+    public boolean isAngularCheckBoxSelected() {
+
+        return isElementSelected(angularCheckBox);
+    }
+
+    public boolean isVeuCheckBoxSelected() {
+
+        return isElementSelected(veuCheckBox);
+    }
+
+    public boolean isOfficeCheckBoxSelected() {
+
+        return isElementSelected(officeCheckBox);
+    }
+
     public boolean isAllCheckBoxesSelected() {
 
         return isElementsInListSelected(allCheckBoxes);
+    }
+
+    public boolean isOfficeCheckBoxDisplayed() {
+        scrollByVisibleElement(officeCheckBoxClick);
+
+        return isElementDisplayed(officeCheckBoxClick);
+    }
+
+    public boolean isExcelCheckBoxDisplayed() {
+        scrollByVisibleElement(excelFileCheckBoxClick);
+
+        return isElementDisplayed(excelFileCheckBoxClick);
     }
 
     public CheckBoxPage clickExpandAll() {
@@ -125,6 +173,21 @@ public class CheckBoxPage extends ElementsPage{
     public List<String> selectedResult() {
 
         return getTexts(selectedResult);
+    }
+
+    public boolean isAllCheckBoxTitleDisplayed() {
+
+        return isAllElementsVisibleAndClickable(checkBoxTitle);
+    }
+
+    public List<String> getCheckBoxTitle() {
+
+        return getTexts(checkBoxTitle);
+    }
+
+    public int getCheckBoxTitleAmount() {
+
+        return getListSize(checkBoxTitle);
     }
 
 }

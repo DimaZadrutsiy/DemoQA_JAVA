@@ -12,7 +12,7 @@ import java.util.List;
 public class CheckBoxTest extends BaseTest {
 
     @Test
-    public void testAllCheckBoxSelected() throws InterruptedException {
+    public void testAllCheckBoxSelected() {
         ElementsPage checkBoxPage = openBaseURL()
                 .clickElementsMenu()
                 .openCheckBoxPage()
@@ -40,5 +40,24 @@ public class CheckBoxTest extends BaseTest {
 
         Assert.assertFalse(getCheckBoxPage().isExcelFileCheckBoxSelected());
         Assert.assertEquals(actualSelectedCheckboxes, expectedSelectedCheckboxes);
+    }
+
+    @Test
+    public void test_ExpandListWithAllCheckBoxes() {
+        final List<String> expectedTitleOfCheckboxes = Arrays.asList(
+                "Home", "Desktop", "Notes", "Commands", "Documents", "WorkSpace", "React",
+                "Angular", "Veu", "Office", "Public", "Private", "Classified", "General",
+                "Downloads", "Word File.doc", "Excel File.doc"
+        );
+        final int expectedAmountCheckBoxTitle = 17;
+
+        ElementsPage checkBoxPage = openBaseURL()
+                .clickElementsMenu()
+                .openCheckBoxPage()
+                .clickExpandAll();
+
+        Assert.assertEquals(getCheckBoxPage().getCheckBoxTitle(),expectedTitleOfCheckboxes);
+        Assert.assertEquals(getCheckBoxPage().getCheckBoxTitleAmount(),expectedAmountCheckBoxTitle);
+        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxTitleDisplayed());
     }
 }
