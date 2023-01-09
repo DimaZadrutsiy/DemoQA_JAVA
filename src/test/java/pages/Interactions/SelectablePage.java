@@ -54,7 +54,6 @@ public class SelectablePage extends InteractionsPage {
         return new SelectablePage(getDriver());
     }
 
-
     public List<WebElement> getVerticalList() {
 
         return verticalList;
