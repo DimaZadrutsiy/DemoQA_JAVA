@@ -1,11 +1,9 @@
 package pages.Interactions;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
-import pages.Forms.PracticeFormPage;
 
 import java.util.List;
 
@@ -47,6 +45,7 @@ public class InteractionsPage extends BasePage {
     }
 
     public SelectablePage clickSelectablePage() {
+        wait10ElementToBeClickable(selectable);
         scrollByVisibleElement(selectable);
         click(selectable);
 

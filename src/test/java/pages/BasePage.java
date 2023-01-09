@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BasePage {
-    private WebDriver driver;
+    private final WebDriver driver;
     private WebDriverWait webDriverWait20;
     private WebDriverWait webDriverWait10;
     private Actions actions;
@@ -67,7 +67,7 @@ public abstract class BasePage {
         return getDriver().getCurrentUrl().substring(0, 37);
     }
 
-    protected String getText(WebElement element) {
+    public String getText(WebElement element) {
         if (!element.getText().isEmpty()) {
             wait10ElementToBeVisible(element);
         }
