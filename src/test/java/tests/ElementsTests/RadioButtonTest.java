@@ -3,7 +3,9 @@ package tests.ElementsTests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BookStoreApplication.BookStorePage;
 import pages.Elements.ElementsPage;
+import pages.Elements.RadioButtonPage;
 
 public class RadioButtonTest extends BaseTest {
 
@@ -46,5 +48,19 @@ public class RadioButtonTest extends BaseTest {
                 .clickOnNoRadioButton();
 
         Assert.assertFalse(radioButtonPage.openRadioButtonPage().isRadioButtonNoSelected());
+    }
+
+    @Test
+    public void testRadioButtonsURL()  {
+
+        String expectedResult = "https://demoqa.com/radio-button";
+
+        RadioButtonPage radioButtonPage = openBaseURL()
+                .clickElementsMenu()
+                .openRadioButtonPage();
+
+        String actualResult = radioButtonPage.getCurrentURL();
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
