@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.AlertsFramesWindows.AlertsFramesWindowsPage;
+import pages.BookStoreApplication.BookStoreAPIPage;
 import pages.BookStoreApplication.BookStorePage;
 import pages.Elements.ElementsPage;
 import pages.Forms.FormsPage;
@@ -75,4 +76,11 @@ public class HomePage extends BasePage {
 
         return new BookStorePage(getDriver());
    }
+
+    public BookStoreAPIPage clickBookAPI() {
+        scrollByVisibleElement(bookStoreMenu);
+        click(bookStoreMenu);
+
+        return new BookStoreAPIPage(getDriver());
+    }
 }
