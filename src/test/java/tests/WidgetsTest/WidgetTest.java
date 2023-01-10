@@ -1,4 +1,4 @@
-package tests;
+package tests.WidgetsTest;
 
 import base.BaseTest;
 
