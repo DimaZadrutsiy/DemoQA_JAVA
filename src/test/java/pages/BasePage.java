@@ -11,6 +11,8 @@ import org.testng.Reporter;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class BasePage {
@@ -341,5 +343,19 @@ public abstract class BasePage {
 
     public void swithToParentFrame() {
         getDriver().switchTo().parentFrame();
+    }
+
+    public List<String> reversedList(List<WebElement> list) {
+        for (int i = 1; i < list.size(); i++) {
+            scrollByVisibleElement(list.get(i));
+            wait10ElementToBeVisible(list.get(i));
+            new Actions(driver)
+                    .dragAndDrop(list.get(i), list.get(0))
+                    .release()
+                    .build()
+                    .perform();
+        }
+
+        return getTexts(list);
     }
 }
