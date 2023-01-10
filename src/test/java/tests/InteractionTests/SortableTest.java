@@ -26,4 +26,26 @@ public class SortableTest extends BaseTest {
 
         Assert.assertEquals(actualReversedList, expectedReversedList);
     }
+
+    @Test
+    public void testRandomElementGrid_ElementsCanBeSwapped() {
+        final List<String> expectedList = new ArrayList<>();
+        expectedList.add("One");
+        expectedList.add("Two");
+        expectedList.add("Three");
+        expectedList.add("Four");
+        expectedList.add("Five");
+        expectedList.add("Six");
+        expectedList.add("Seven");
+        expectedList.add("Eight");
+        expectedList.add("Nine");
+
+        List<String> actualRandomList = openBaseURL()
+                .clickInteractionsMenu()
+                .clickSortablePage()
+                .clickBookmarkGrid()
+                .getRandomList();
+
+        Assert.assertNotEquals(actualRandomList, expectedList);
+    }
 }
