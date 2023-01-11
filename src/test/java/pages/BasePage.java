@@ -133,7 +133,7 @@ public abstract class BasePage {
         return element.getCssValue("background-color");
     }
 
-    protected String getBackgroundColorInHEX(WebElement element) {
+    public String getBackgroundColorInHEX(WebElement element) {
 
         return Color.fromString(getBackgroundColor(element)).asHex();
     }
