@@ -75,29 +75,28 @@ public class SelectableTest extends BaseTest {
         gridAll.addAll(selectablePage.getGrid2());
         gridAll.addAll(selectablePage.getGrid3());
 
-        String colourBeforeSelect = selectablePage
+        String actualColourBeforeSelect = selectablePage
                 .clickDemoTabGrid()
                 .getBackgroundColorInHEX(gridAll.get(index));
 
-        String classNameBeforeSelect = selectablePage
+        String actualClassNameBeforeSelect = selectablePage
                 .getAttribute(gridAll.get(index), "class");
 
-        String elementText = selectablePage
+        String actualElementText = selectablePage
                 .getText(gridAll.get(index));
 
-        String colourAfterSelect = selectablePage
+        String actualColourAfterSelect = selectablePage
                 .clickDemoTabGrid()
                 .clickMenu(index, gridAll)
                 .getBackgroundColorInHEX(gridAll.get(index));
 
-        String classNameAfterSelect = selectablePage
+        String actualClassNameAfterSelect = selectablePage
                 .getAttribute(gridAll.get(index), "class");
 
-        Assert.assertEquals(classNameBeforeSelect, className);
-        Assert.assertEquals(colourBeforeSelect, colour);
-        Assert.assertEquals(classNameAfterSelect, classNameSelect);
-        Assert.assertEquals(colourAfterSelect, colourSelect);
-        Assert.assertEquals(elementText, text);
+        Assert.assertEquals(actualClassNameBeforeSelect, className);
+        Assert.assertEquals(actualColourBeforeSelect, colour);
+        Assert.assertEquals(actualClassNameAfterSelect, classNameSelect);
+        Assert.assertEquals(actualColourAfterSelect, colourSelect);
+        Assert.assertEquals(actualElementText, text);
     }
 }
-
