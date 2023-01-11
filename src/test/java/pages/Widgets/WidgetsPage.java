@@ -14,7 +14,7 @@ public class WidgetsPage extends BasePage {
         super(driver);
     }
 
-    public WidgetsPage openAccordianPages() {
+    public WidgetsPage clickAccordianPages() {
         scrollByVisibleElement(accordianSubMenu);
         click(accordianSubMenu);
 

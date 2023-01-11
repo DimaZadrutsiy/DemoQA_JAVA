@@ -13,7 +13,7 @@ public class AccordianTest extends BaseTest {
 
         String actualURL = openBaseURL()
                 .clickWidgetsMenu()
-                .openAccordianPages()
+                .clickAccordianPages()
                 .getCurrentURL();
 
         Assert.assertEquals(expectedURL, actualURL);
