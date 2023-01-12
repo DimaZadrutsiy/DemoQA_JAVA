@@ -33,5 +33,13 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.3.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220924</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 </project>

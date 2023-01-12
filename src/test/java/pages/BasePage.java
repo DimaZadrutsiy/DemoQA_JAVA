@@ -10,8 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class BasePage {
     private final WebDriver driver;
@@ -341,5 +340,34 @@ public abstract class BasePage {
 
     public void swithToParentFrame() {
         getDriver().switchTo().parentFrame();
+    }
+
+    public List<String> reversedList(List<WebElement> list) {
+        for (int i = 1; i < list.size(); i++) {
+            scrollByVisibleElement(list.get(i));
+            wait10ElementToBeVisible(list.get(i));
+            new Actions(driver)
+                    .dragAndDrop(list.get(i), list.get(0))
+                    .release()
+                    .build()
+                    .perform();
+        }
+
+        return getTexts(list);
+    }
+
+    public List<String> randomList(List<WebElement> list) {
+        for (int i = 0; i < list.size(); i++) {
+            scrollByVisibleElement(list.get(i));
+            wait10ElementToBeVisible(list.get(i));
+            int random = (int) Math.floor(Math.random() * list.size());
+            new Actions(driver)
+                    .dragAndDrop(list.get(i), list.get(random))
+                    .release()
+                    .build()
+                    .perform();
+        }
+
+        return getTexts(list);
     }
 }
