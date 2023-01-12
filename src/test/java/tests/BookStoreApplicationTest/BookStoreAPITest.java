@@ -1,7 +1,12 @@
 package tests.BookStoreApplicationTest;
 
+
+import api.ApiHelpers;
 import base.BaseTest;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,6 +16,8 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
+
 
 public class BookStoreAPITest extends BaseTest {
 
@@ -51,5 +58,45 @@ public class BookStoreAPITest extends BaseTest {
                 .getIsbnNumber();
 
         Assert.assertTrue(actualIsbn.contains(expectedIsbn));
+    }
+
+    @Test
+    public void test_API_HttpRequestResponse_TitleOfAllBooks() {
+
+        try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(new URI("https://demoqa.com/BookStore/v1/Books"))
+                    .GET()
+                    .build();
+
+            response = HttpClient.newHttpClient()
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+
+        } catch (URISyntaxException | InterruptedException | IOException e) {
+            e.printStackTrace();
+        }
+
+        Assert.assertNotNull(response);
+        Assert.assertNotNull(response.body());
+        Assert.assertEquals(response.statusCode(), 200);
+
+        JSONObject obj = new JSONObject(response.body());
+        JSONArray books = (JSONArray) obj.get("books");
+        StringBuilder titleOfAllBooks = new StringBuilder();
+
+        for (Object o : books) {
+            titleOfAllBooks.append(((JSONObject) o).getString("title")
+                    .concat(", "));
+        }
+        String expectedTitleOfAllBooks = titleOfAllBooks.toString().trim();
+        expectedTitleOfAllBooks = expectedTitleOfAllBooks.substring(0,expectedTitleOfAllBooks.length()-1);
+
+        List<String> listTitleOfAllBooks = openBaseURL()
+                .clickBookStoreApplicationMenu()
+                .getBooksList();
+
+        String actualTitleOfAllBooks = ApiHelpers.getFormattedResult(listTitleOfAllBooks);
+
+        Assert.assertEquals(actualTitleOfAllBooks, expectedTitleOfAllBooks);
     }
 }
