@@ -10,6 +10,14 @@ public class LinksTest extends BaseTest {
     @Test
     public void testLinksURL() {
 
+        String expectedLinksURL = "https://demoqa.com/links";
+
+        String actualLinksURL = openBaseURL()
+                .clickElementsMenu()
+                .openLinksPage()
+                .getCurrentURL();
+
+        Assert.assertEquals(actualLinksURL, expectedLinksURL);
         String expectedResult = "https://demoqa.com/links";
 
         LinksPage linksPage = openBaseURL()

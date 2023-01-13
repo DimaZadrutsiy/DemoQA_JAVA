@@ -75,6 +75,13 @@ public class ElementsPage extends BasePage {
         return new RadioButtonPage(getDriver());
     }
 
+    public LinksPage openLinksPage() {
+        scrollByVisibleElement(linksSubMenu);
+        click(linksSubMenu);
+
+        return new LinksPage(getDriver());
+}
+
     public WebTablesPage openWebTablesPage() {
         scrollByVisibleElement(webTablesSubMenu);
         click(webTablesSubMenu);
