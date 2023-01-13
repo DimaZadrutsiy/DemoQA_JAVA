@@ -13,7 +13,7 @@ public class LinksTest extends BaseTest {
 
         String actualLinksURL = openBaseURL()
                 .clickElementsMenu()
-                .clickLinksPage()
+                .openLinksPage()
                 .getCurrentURL();
 
         Assert.assertEquals(actualLinksURL, expectedLinksURL);

@@ -75,7 +75,7 @@ public class ElementsPage extends BasePage {
         return new RadioButtonPage(getDriver());
     }
 
-    public LinksPage clickLinksPage() {
+    public LinksPage openLinksPage() {
         scrollByVisibleElement(linksSubMenu);
         click(linksSubMenu);
 
