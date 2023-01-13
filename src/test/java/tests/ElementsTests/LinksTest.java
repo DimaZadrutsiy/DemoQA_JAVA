@@ -3,21 +3,19 @@ package tests.ElementsTests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.Elements.LinksPage;
 
 public class LinksTest extends BaseTest {
 
     @Test
     public void testLinksURL() {
 
-        String expectedResult = "https://demoqa.com/links";
+        String expectedLinksURL = "https://demoqa.com/links";
 
-        LinksPage linksPage = openBaseURL()
+        String actualLinksURL = openBaseURL()
                 .clickElementsMenu()
-                .clickLinksPage();
+                .clickLinksPage()
+                .getCurrentURL();
 
-        String actualResult = linksPage.getCurrentURL();
-
-        Assert.assertEquals(actualResult, expectedResult);
+        Assert.assertEquals(actualLinksURL, expectedLinksURL);
     }
 }
