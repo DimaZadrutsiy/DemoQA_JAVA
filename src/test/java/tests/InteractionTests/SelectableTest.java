@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SelectableTest extends BaseTest {
 
-    @Test(priority = -3)
+    @Test
     public void testNavigationSelectablePage() {
         final String expectedUrl = "https://demoqa.com/selectable";
         final String expectedTitle = "ToolsQA";
@@ -33,70 +33,68 @@ public class SelectableTest extends BaseTest {
         Assert.assertEquals(actualHeader, expectedHeader);
     }
 
-    @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabListData", priority = -2)
+    @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabListData")
     public void testSelectAllTabsInList(
-            int index, String className, String title, String text) {
+            int index, String expectedClassName, String expectedTitle, String expectedText) {
 
         SelectablePage selectablePage = openBaseURL()
                 .clickInteractionsMenu()
                 .clickSelectablePage();
 
-        List<WebElement> tabList = selectablePage
+        List<WebElement> list = selectablePage
                 .clickDemoTabList()
                 .getVerticalList();
 
         String actualClassName = selectablePage
-                .getAttribute(tabList.get(index), "class");
+                .getAttribute(list.get(index), "class");
 
         String actualContainerText = selectablePage
-                .getText(tabList.get(index));
+                .getText(list.get(index));
 
         String activatedClassName = selectablePage
-                .clickMenu(index, tabList)
-                .getAttribute(tabList.get(index), "class");
+                .clickMenu(index, list)
+                .getAttribute(list.get(index), "class");
 
-        Assert.assertEquals(actualClassName, className);
-        Assert.assertEquals(actualContainerText, text);
+        Assert.assertEquals(actualClassName, expectedClassName);
+        Assert.assertTrue(actualContainerText.contentEquals(expectedText));
         Assert.assertTrue(activatedClassName.contains("active"));
-        Assert.assertEquals(selectablePage.getTitle(), title);
+        Assert.assertEquals(selectablePage.getTitle(), expectedTitle);
     }
 
-    @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabGridData",priority = -1)
-    public void testSelectAllTabsInGrid(
-            int index, String text, String colour, String colourSelect, String className, String classNameSelect) {
-        List<WebElement> gridAll = new ArrayList<>();
+    @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabGridData")
+    public void testSelectAllTabsInGrid( int index, String expectedText, String expectedColour,
+            String expectedSelectedColour, String expectedClassName, String expectedSelectedClassName) {
+
+        List<WebElement> grid = new ArrayList<>();
 
         SelectablePage selectablePage = openBaseURL()
                 .clickInteractionsMenu()
                 .clickSelectablePage()
                 .clickDemoTabGrid();
 
-        gridAll.addAll(selectablePage.getGrid1());
-        gridAll.addAll(selectablePage.getGrid2());
-        gridAll.addAll(selectablePage.getGrid3());
+        grid.addAll(selectablePage.getGrid1());
+        grid.addAll(selectablePage.getGrid2());
+        grid.addAll(selectablePage.getGrid3());
 
         String actualColourBeforeSelect = selectablePage
                 .clickDemoTabGrid()
-                .getBackgroundColorInHEX(gridAll.get(index));
+                .getBackgroundColourInHEX(grid.get(index));
 
         String actualClassNameBeforeSelect = selectablePage
-                .getAttribute(gridAll.get(index), "class");
-
-        String actualElementText = selectablePage
-                .getText(gridAll.get(index));
+                .getAttribute(grid.get(index), "class");
 
         String actualColourAfterSelect = selectablePage
                 .clickDemoTabGrid()
-                .clickMenu(index, gridAll)
-                .getBackgroundColorInHEX(gridAll.get(index));
+                .clickMenu(index, grid)
+                .getBackgroundColourInHEX(grid.get(index));
 
         String actualClassNameAfterSelect = selectablePage
-                .getAttribute(gridAll.get(index), "class");
+                .getAttribute(grid.get(index), "class");
 
-        Assert.assertEquals(actualClassNameBeforeSelect, className);
-        Assert.assertEquals(actualColourBeforeSelect, colour);
-        Assert.assertEquals(actualClassNameAfterSelect, classNameSelect);
-        Assert.assertEquals(actualColourAfterSelect, colourSelect);
-        Assert.assertEquals(actualElementText, text);
+        Assert.assertEquals(actualClassNameBeforeSelect, expectedClassName);
+        Assert.assertEquals(actualColourBeforeSelect, expectedColour);
+        Assert.assertEquals(actualClassNameAfterSelect,expectedSelectedClassName);
+        Assert.assertEquals(actualColourAfterSelect, expectedSelectedColour);
+        Assert.assertTrue(selectablePage.getText(grid.get(index)).contentEquals(expectedText));
     }
 }
