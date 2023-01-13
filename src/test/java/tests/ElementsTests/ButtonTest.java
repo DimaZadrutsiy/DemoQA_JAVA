@@ -85,6 +85,6 @@ public class ButtonTest extends BaseTest {
                 .clickButtons()
                 .getCurrentURL();
 
-        Assert.assertEquals(expectedURL, actualURL);
+        Assert.assertEquals(actualURL, expectedURL);
     }
 }
