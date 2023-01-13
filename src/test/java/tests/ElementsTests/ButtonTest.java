@@ -75,4 +75,16 @@ public class ButtonTest extends BaseTest {
 
         Assert.assertEquals(actualHeader, expectedHeader);
     }
+
+    @Test
+    public void testURL_ButtonsPage() {
+        final String expectedURL = "https://demoqa.com/buttons";
+
+        String actualURL = openBaseURL()
+                .clickElementsMenu()
+                .clickButtons()
+                .getCurrentURL();
+
+        Assert.assertEquals(expectedURL, actualURL);
+    }
 }
