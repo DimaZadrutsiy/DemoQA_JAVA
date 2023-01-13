@@ -76,4 +76,20 @@ public class TestData {
                 {16, "Excel File"}
         };
     }
+
+    @DataProvider(name = "SelectableTabGridData")
+    public static Object[][] selectableTabGridDataProvider() {
+
+        return new Object[][]{
+                {0, "One", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"},
+                {1, "Two", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"},
+                {2, "Three", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"},
+                {3, "Four", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"},
+                {4, "Five", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"},
+                {5, "Six", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"},
+                {6, "Seven", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"},
+                {7, "Eight", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"},
+                {8, "Nine", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"}
+        };
+    }
 }
