@@ -17,7 +17,10 @@ public class ElementsPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-2']")
     private WebElement radioButtonSubMenu;
-    
+
+    @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-3']")
+    private WebElement webTablesSubMenu;
+
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//li[@class = 'btn btn-light ']//span")
     private List<WebElement> elementsList;
 
@@ -70,6 +73,13 @@ public class ElementsPage extends BasePage {
         click(radioButtonSubMenu);
 
         return new RadioButtonPage(getDriver());
+    }
+
+    public WebTablesPage openWebTablesPage() {
+        scrollByVisibleElement(webTablesSubMenu);
+        click(webTablesSubMenu);
+
+        return new WebTablesPage(getDriver());
     }
 
     public LinksPage clickLinksPage() {

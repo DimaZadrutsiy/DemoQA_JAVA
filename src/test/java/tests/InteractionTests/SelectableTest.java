@@ -1,4 +1,4 @@
-package tests;
+package tests.InteractionTests;
 
 import base.BaseTest;
 import org.openqa.selenium.WebElement;
@@ -7,11 +7,12 @@ import org.testng.annotations.Test;
 import pages.Interactions.SelectablePage;
 import testData.TestData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectableTest extends BaseTest {
 
-    @Test
+    @Test(priority = -3)
     public void testNavigationSelectablePage() {
         final String expectedUrl = "https://demoqa.com/selectable";
         final String expectedTitle = "ToolsQA";
@@ -32,8 +33,8 @@ public class SelectableTest extends BaseTest {
         Assert.assertEquals(actualHeader, expectedHeader);
     }
 
-    @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabListData")
-    public void testAllTabListElementsSelectable(
+    @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabListData", priority = -2)
+    public void testSelectAllTabsInList(
             int index, String className, String title, String text) {
 
         SelectablePage selectablePage = openBaseURL()
@@ -58,5 +59,44 @@ public class SelectableTest extends BaseTest {
         Assert.assertEquals(actualContainerText, text);
         Assert.assertTrue(activatedClassName.contains("active"));
         Assert.assertEquals(selectablePage.getTitle(), title);
+    }
+
+    @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabGridData",priority = -1)
+    public void testSelectAllTabsInGrid(
+            int index, String text, String colour, String colourSelect, String className, String classNameSelect) {
+        List<WebElement> gridAll = new ArrayList<>();
+
+        SelectablePage selectablePage = openBaseURL()
+                .clickInteractionsMenu()
+                .clickSelectablePage()
+                .clickDemoTabGrid();
+
+        gridAll.addAll(selectablePage.getGrid1());
+        gridAll.addAll(selectablePage.getGrid2());
+        gridAll.addAll(selectablePage.getGrid3());
+
+        String actualColourBeforeSelect = selectablePage
+                .clickDemoTabGrid()
+                .getBackgroundColorInHEX(gridAll.get(index));
+
+        String actualClassNameBeforeSelect = selectablePage
+                .getAttribute(gridAll.get(index), "class");
+
+        String actualElementText = selectablePage
+                .getText(gridAll.get(index));
+
+        String actualColourAfterSelect = selectablePage
+                .clickDemoTabGrid()
+                .clickMenu(index, gridAll)
+                .getBackgroundColorInHEX(gridAll.get(index));
+
+        String actualClassNameAfterSelect = selectablePage
+                .getAttribute(gridAll.get(index), "class");
+
+        Assert.assertEquals(actualClassNameBeforeSelect, className);
+        Assert.assertEquals(actualColourBeforeSelect, colour);
+        Assert.assertEquals(actualClassNameAfterSelect, classNameSelect);
+        Assert.assertEquals(actualColourAfterSelect, colourSelect);
+        Assert.assertEquals(actualElementText, text);
     }
 }
