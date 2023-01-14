@@ -28,7 +28,6 @@ public class LinksTest extends BaseTest {
         expectedNamesHeader.add("Following links will open new tab");
         expectedNamesHeader.add("Following links will send an api call");
 
-
         List<String> actualNamesHeader = openBaseURL()
                 .clickElementsMenu()
                 .openLinksPage()
