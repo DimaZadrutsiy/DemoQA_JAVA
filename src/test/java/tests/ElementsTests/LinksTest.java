@@ -3,7 +3,9 @@ package tests.ElementsTests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.Elements.LinksPage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LinksTest extends BaseTest {
 
@@ -18,14 +20,20 @@ public class LinksTest extends BaseTest {
                 .getCurrentURL();
 
         Assert.assertEquals(actualLinksURL, expectedLinksURL);
-        String expectedResult = "https://demoqa.com/links";
+    }
 
-        LinksPage linksPage = openBaseURL()
+    @Test
+    public void testHeaderNames() {
+        final List<String> expectedNamesHeader = new ArrayList<>();
+        expectedNamesHeader.add("Following links will open new tab");
+        expectedNamesHeader.add("Following links will send an api call");
+
+        List<String> actualNamesHeader = openBaseURL()
                 .clickElementsMenu()
-                .clickLinksPage();
+                .openLinksPage()
+                .getHeadersName();
 
-        String actualResult = linksPage.getCurrentURL();
-
-        Assert.assertEquals(actualResult, expectedResult);
+        Assert.assertEquals(actualNamesHeader, expectedNamesHeader);
     }
 }
+
