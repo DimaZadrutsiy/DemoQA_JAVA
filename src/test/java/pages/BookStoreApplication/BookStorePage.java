@@ -21,7 +21,7 @@ public class BookStorePage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Type to search']")
     private WebElement placeholderSearchField;
 
-    @FindBy(xpath = "//span[@class='mr-2']")
+    @FindBy(xpath = "//span[@class='mr-2']/a")
     private List<WebElement> booksList;
 
     @FindBy(xpath = "//ul[@class='menu-list']/li[@class='btn btn-light active']/../li")
@@ -29,6 +29,15 @@ public class BookStorePage extends BasePage {
 
     @FindBy(xpath = "//div[text()='Book Store Application']")
     private WebElement bookStoreApplicationSubMenu;
+
+    @FindBy(xpath = "//button[@id='addNewRecordButton' and contains(text(),'Add To Your Collection')]")
+    private WebElement addToYourCollectionButton;
+
+    @FindBy(xpath = "//span[contains(text(),'Profile')]")
+    private WebElement profileSubMenu;
+
+    @FindBy(xpath = "//a[contains(@href,'/books?book=9781449325862')]")
+    private WebElement gitPocketGuideBook;
 
     public BookStorePage(WebDriver driver) {
         super(driver);
@@ -90,5 +99,28 @@ public class BookStorePage extends BasePage {
     public String getFirstBookInList() {
 
         return getBooksList().get(0);
+    }
+
+    public BookStorePage selectGitPocketGuideBook() {
+        wait20ElementToBeClickable(gitPocketGuideBook);
+        click(gitPocketGuideBook);
+
+        return new BookStorePage(getDriver());
+    }
+
+    public BookStorePage clickAddToYourCollectionButton() {
+        scrollByVisibleElement(addToYourCollectionButton);
+        wait20ElementToBeVisible(addToYourCollectionButton);
+        click(addToYourCollectionButton);
+        acceptAlert();
+
+        return new BookStorePage(getDriver());
+    }
+
+    public ProfilePage clickProfileSubMenu() {
+        scrollByVisibleElement(profileSubMenu);
+        click(profileSubMenu);
+
+        return new ProfilePage(getDriver());
     }
 }

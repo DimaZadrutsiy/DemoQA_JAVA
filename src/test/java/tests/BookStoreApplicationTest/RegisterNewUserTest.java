@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class RegisterNewUserTest extends BaseTest {
 
     @Test
-    public void testLoginValidData_WithoutCaptcha() {
+    public void testRegisterNewUserValidData_WithoutCaptcha() {
         String name = "TesterName";
         String lastName = "TesterLastName";
         String userName = "TesterUserName";
@@ -32,7 +32,7 @@ public class RegisterNewUserTest extends BaseTest {
 
     @Ignore
     @Test
-    public void testLoginValidData_WithCaptcha() {
+    public void testRegisterNewUserValidData_WithCaptcha() {
         String name = "TesterName";
         String lastName = "TesterLastName";
         String userName = "TesterUserName";

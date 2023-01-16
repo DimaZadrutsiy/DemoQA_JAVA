@@ -370,4 +370,10 @@ public abstract class BasePage {
 
         return getTexts(list);
     }
+
+    protected void acceptAlert() {
+        getWait20().until(ExpectedConditions.alertIsPresent());
+        Alert alert = getDriver().switchTo().alert();
+        alert.accept();
+    }
 }
