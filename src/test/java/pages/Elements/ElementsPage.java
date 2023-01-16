@@ -20,7 +20,7 @@ public class ElementsPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='element-list collapse show']//li[@id = 'item-3']")
     private WebElement webTablesSubMenu;
-    
+
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//li[@class = 'btn btn-light ']//span")
     private List<WebElement> elementsList;
 
@@ -87,6 +87,13 @@ public class ElementsPage extends BasePage {
         click(webTablesSubMenu);
 
         return new WebTablesPage(getDriver());
+    }
+
+    public LinksPage clickLinksPage() {
+        scrollByVisibleElement(linksSubMenu);
+        click(linksSubMenu);
+
+        return new LinksPage(getDriver());
     }
 }
 
