@@ -1,8 +1,8 @@
-package api;
+package api.model;
 
 import java.util.Date;
 
-public class Root{
+public class Book{
     public String isbn;
     public String title;
     public String subTitle;
@@ -12,6 +12,19 @@ public class Root{
     public Integer pages;
     public String description;
     public String website;
+
+    public Book(String isbn, String title, String subTitle, String author, Date publish_date, String publisher,
+                Integer pages, String description, String website) {
+        this.isbn = isbn;
+        this.title = title;
+        this.subTitle = subTitle;
+        this.author = author;
+        this.publish_date = publish_date;
+        this.publisher = publisher;
+        this.pages = pages;
+        this.description = description;
+        this.website = website;
+    }
 
     public String getIsbn() {
         return isbn;
@@ -85,4 +98,3 @@ public class Root{
         this.website = website;
     }
 }
-

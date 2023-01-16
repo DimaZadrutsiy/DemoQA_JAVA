@@ -26,7 +26,7 @@ public class SelectablePage extends InteractionsPage {
     @FindBy(xpath = "//div[@id='row2']/li")
     private List<WebElement> gridList2;
 
-    @FindBy(xpath = "//div[@id='row2']/li")
+    @FindBy(xpath = "//div[@id='row3']/li")
     private List<WebElement> gridList3;
 
     public SelectablePage(WebDriver driver) {
@@ -59,17 +59,17 @@ public class SelectablePage extends InteractionsPage {
         return verticalList;
     }
 
-    public List<WebElement> getGridList1() {
+    public List<WebElement> getGrid1() {
 
         return gridList1;
     }
 
-    public List<WebElement> getGridList2() {
+    public List<WebElement> getGrid2() {
 
         return gridList2;
     }
 
-    public List<WebElement> getGridList3() {
+    public List<WebElement> getGrid3() {
 
         return gridList3;
     }
