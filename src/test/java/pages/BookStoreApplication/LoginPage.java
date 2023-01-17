@@ -68,4 +68,15 @@ public class LoginPage extends BookStorePage {
 
         return getText(outputMessage);
     }
+
+    // sign in returns different pages - BookStorePage or ProfilePage
+    public ProfilePage signInAsRegularUser(String userName, String password) {
+        isElementDisplayed(userNameField);
+        inputUserName(userName);
+        isElementDisplayed(passwordField);
+        inputPassword(password);
+        clickLoginButton();
+
+        return new ProfilePage(getDriver());
+    }
 }

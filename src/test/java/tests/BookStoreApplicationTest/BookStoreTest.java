@@ -9,7 +9,7 @@ import testData.TestData;
 import java.util.Arrays;
 import java.util.List;
 
-public class BookStoreApplicationTest extends BaseTest {
+public class BookStoreTest extends BaseTest {
 
     @Test
     public void testNavigationToBookStorePage() {
