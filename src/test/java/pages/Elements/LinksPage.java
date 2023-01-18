@@ -12,6 +12,9 @@ public class LinksPage extends ElementsPage {
     @FindAll(@FindBy(xpath = "//h5"))
     private List<WebElement> headerText;
 
+    @FindBy(id = ("simpleLink"))
+    private WebElement homeLink;
+
     public LinksPage(WebDriver driver) {
         super(driver);
     }
@@ -19,5 +22,17 @@ public class LinksPage extends ElementsPage {
     public List<String> getHeadersName() {
 
         return getTexts(headerText);
+    }
+
+    public LinksPage clickOnHomeLink() {
+        if (homeLink.isDisplayed() && homeLink.isEnabled()) {
+            click(homeLink);
+        }
+
+        return new LinksPage(getDriver());
+    }
+
+    public void switchToWindow() {
+        switchToAnotherWindow();
     }
 }
