@@ -9,7 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import pages.*;
-import pages.AlertsFramesWindows.AlertsFramesWindowsPage;
+import pages.AlertsFramesWindows.*;
 import pages.BookStoreApplication.BookStorePage;
 import pages.BookStoreApplication.LoginPage;
 import pages.BookStoreApplication.ProfilePage;
@@ -102,6 +102,36 @@ public abstract class BaseTest {
     public AlertsFramesWindowsPage getAlertsFramesWindowsPage() {
 
         return new AlertsFramesWindowsPage(getDriver());
+    }
+
+    public BrowserWindowsPage getBrowserWindowsPage() {
+
+        return new BrowserWindowsPage(getDriver());
+    }
+
+    public AlertsPage getAlertsPage() {
+
+        return new AlertsPage(getDriver());
+    }
+
+    public FramesPage getFramesPage() {
+
+        return new FramesPage(getDriver());
+    }
+
+    public NestedFramesPage getNestedFramesPage() {
+
+        return new NestedFramesPage(getDriver());
+    }
+
+    public ModalDialogsPage getModalDialogsPage() {
+
+        return new ModalDialogsPage(getDriver());
+    }
+
+    public SamplePage getSamplePage() {
+
+        return new SamplePage(getDriver());
     }
 
     public BookStorePage getBookStorePage() {
