@@ -3,6 +3,7 @@ package tests.ElementsTests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.Elements.LinksPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,21 @@ public class LinksTest extends BaseTest {
                 .getHeadersName();
 
         Assert.assertEquals(actualNamesHeader, expectedNamesHeader);
+    }
+
+    @Test
+    public void testHomeLinkRedirection() {
+
+        String expectedHomeLinkRedirection = "https://demoqa.com/";
+
+        LinksPage actualHomeLinkRedirection = openBaseURL()
+                .clickElementsMenu()
+                .openLinksPage()
+                .clickOnHomeLink();
+
+        actualHomeLinkRedirection.switchToWindow();
+
+        Assert.assertEquals(actualHomeLinkRedirection.getCurrentURL(), expectedHomeLinkRedirection);
     }
 }
 
