@@ -62,16 +62,19 @@ public class ButtonsPage extends ElementsPage{
     }
 
     public String messageForButton_DoubleClickMe() {
+        scrollByVisibleElement(messageForButton_DoubleClickMe);
 
         return getText(messageForButton_DoubleClickMe);
     }
 
     public String messageForButton_RightClickMe() {
+        scrollByVisibleElement(messageForButton_RightClickMe);
 
         return getText(messageForButton_RightClickMe);
     }
 
     public String messageForButton_ClickMe() {
+        scrollByVisibleElement(messageForButton_ClickMe);
 
         return getText(messageForButton_ClickMe);
     }
