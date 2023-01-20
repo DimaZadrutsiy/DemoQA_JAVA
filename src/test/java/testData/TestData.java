@@ -92,4 +92,18 @@ public class TestData {
                 {8, "Nine", "#ffffff", "#007bff", "list-group-item list-group-item-action", "list-group-item active list-group-item-action"}
         };
     }
+
+    @DataProvider(name = "CorrectCodeAndNameLinks")
+    public static Object[][] linksAndMassage() {
+
+        return new Object[][]{
+                {0, "Created", "201"},
+                {1, "No Content", "204"},
+                {2, "Moved Permanently", "301"},
+                {3, "Bad Request", "400"},
+                {4, "Unauthorized", "401"},
+                {5, "Forbidden", "403"},
+                {6, "Not Found", "404"}
+        };
+    }
 }

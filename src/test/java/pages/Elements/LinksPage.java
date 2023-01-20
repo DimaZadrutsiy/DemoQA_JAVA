@@ -15,6 +15,15 @@ public class LinksPage extends ElementsPage {
     @FindBy(id = ("simpleLink"))
     private WebElement homeLink;
 
+    @FindBy (xpath = "//*[@href=\"javascript:void(0)\"]")
+    private List<WebElement> linksApiCall;
+
+    @FindBy (css = "#linkResponse > b:nth-child(1)")
+    private WebElement responseCode;
+
+    @FindBy (css = "#linkResponse > b:nth-child(2)")
+    private WebElement responseName;
+
     public LinksPage(WebDriver driver) {
         super(driver);
     }
@@ -34,5 +43,20 @@ public class LinksPage extends ElementsPage {
 
     public void switchToWindow() {
         switchToAnotherWindow();
+    }
+
+    public void clickLinks(int index) {
+        scrollByVisibleElement(linksApiCall.get(index));
+        linksApiCall.get(index).click();
+    }
+
+    public String getResponseCode() {
+
+        return getText(responseCode);
+    }
+
+    public String getResponseName() {
+
+        return getText(responseName);
     }
 }
