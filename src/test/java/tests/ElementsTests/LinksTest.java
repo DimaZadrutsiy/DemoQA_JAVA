@@ -1,9 +1,12 @@
 package tests.ElementsTests;
 
 import base.BaseTest;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Elements.LinksPage;
+import pages.Interactions.InteractionsPage;
+import testData.TestData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +53,23 @@ public class LinksTest extends BaseTest {
         actualHomeLinkRedirection.switchToWindow();
 
         Assert.assertEquals(actualHomeLinkRedirection.getCurrentURL(), expectedHomeLinkRedirection);
+    }
+
+    @Test(dataProviderClass = TestData.class, dataProvider = "CorrectCodeAndNameLinks")
+    public void testCheckingResponseCodeAndNameAfterLinkIsClicked(
+            int index, String expectedName, String expectedCod) {
+
+        LinksPage linksPage = openBaseURL()
+                .clickElementsMenu()
+                .openLinksPage();
+
+        linksPage.clickLinks(index);
+
+        String actualCod = linksPage.getResponseCode();
+        String actualName = linksPage.getResponseName();
+
+        Assert.assertEquals(actualCod, expectedCod);
+        Assert.assertEquals(actualName, expectedName);
     }
 }
 
