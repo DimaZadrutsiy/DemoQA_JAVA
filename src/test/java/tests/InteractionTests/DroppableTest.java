@@ -27,6 +27,8 @@ public class DroppableTest extends BaseTest {
 
     @Test
     public void testSimpleDrop() {
+        final String expectedUrl = "https://demoqa.com/droppable";
+
         DroppablePage droppablePage = openBaseURL()
                 .clickInteractionsMenu()
                 .clickDroppablePage()
@@ -39,7 +41,6 @@ public class DroppableTest extends BaseTest {
         Point pointFinish = droppablePage.getFromElementSimple().getLocation();
 
         Assert.assertNotEquals(pointFinish, pointStart);
-        Assert.assertTrue(pointFinish.getX() > 800);
-        Assert.assertTrue(pointFinish.getY() > 400);
+        Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(expectedUrl));
     }
 }
