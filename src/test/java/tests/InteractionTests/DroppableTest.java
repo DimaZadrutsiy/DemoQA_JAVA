@@ -27,7 +27,6 @@ public class DroppableTest extends BaseTest {
 
     @Test
     public void testSimpleDrop() {
-
         DroppablePage droppablePage = openBaseURL()
                 .clickInteractionsMenu()
                 .clickDroppablePage()
