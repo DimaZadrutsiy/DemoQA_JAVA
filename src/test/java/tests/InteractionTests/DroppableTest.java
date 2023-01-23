@@ -44,6 +44,6 @@ public class DroppableTest extends BaseTest {
 
         Assert.assertNotEquals(pointFinish, pointStart);
         Assert.assertEquals(pointFinish.getX(), 844);
-        Assert.assertTrue(pointFinish.getX() > 400);
+        Assert.assertTrue(pointFinish.getY() > 400);
     }
 }
