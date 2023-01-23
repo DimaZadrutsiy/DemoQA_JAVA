@@ -61,6 +61,7 @@ public class InteractionsPage extends BasePage {
 
     public DroppablePage clickDroppablePage() {
         scrollByVisibleElement(droppable);
+        wait10ElementToBeClickable(droppable);
         click(droppable);
 
         return new DroppablePage(getDriver());
