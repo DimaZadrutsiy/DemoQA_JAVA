@@ -32,7 +32,7 @@ public class DroppablePage extends InteractionsPage {
         wait10ElementToBeClickable(simpleTab);
         click(simpleTab);
 
-        return new DroppablePage(getDriver());
+        return this;
     }
 
     public WebElement getFromElementSimple() {
