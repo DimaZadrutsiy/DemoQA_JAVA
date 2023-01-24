@@ -378,13 +378,13 @@ public abstract class BasePage {
         alert.accept();
     }
 
-    public void dragAndDrop(WebElement fromElement, WebElement toElement) {
-        Actions builder = new Actions(getDriver());
-        Action dragAndDrop = builder.clickAndHold(fromElement)
-                .moveToElement(toElement)
-                .release(toElement)
-                .build();
-
-        dragAndDrop.perform();
+    public void dragAndDrop(WebElement fromElement) {
+        wait10ElementToBeVisible(fromElement);
+        scrollByVisibleElement(fromElement);
+                new Actions(driver)
+                .dragAndDropBy(fromElement, 291, 45)
+                .build()
+                .perform();
     }
 }
+

@@ -35,47 +35,48 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-   public ElementsPage clickElementsMenu() {
+    public ElementsPage clickElementsMenu() {
         scrollByVisibleElement(elementsMenu);
         click(elementsMenu);
 
         return new ElementsPage(getDriver());
-   }
+    }
 
-   public FormsPage clickFormsMenu() {
+    public FormsPage clickFormsMenu() {
         scrollByVisibleElement(formsMenu);
         click(formsMenu);
 
         return new FormsPage(getDriver());
-   }
+    }
 
-   public AlertsFramesWindowsPage clickAlertsFramesWindowsMenu() {
+    public AlertsFramesWindowsPage clickAlertsFramesWindowsMenu() {
         scrollByVisibleElement(alertsMenu);
         click(alertsMenu);
 
         return new AlertsFramesWindowsPage(getDriver());
-   }
+    }
 
-   public WidgetsPage clickWidgetsMenu() {
+    public WidgetsPage clickWidgetsMenu() {
         scrollByVisibleElement(widgetsMenu);
         click(widgetsMenu);
 
         return new WidgetsPage(getDriver());
-   }
+    }
 
-   public InteractionsPage clickInteractionsMenu() {
+    public InteractionsPage clickInteractionsMenu() {
+        wait10ElementToBeClickable(interactionsMenu);
         scrollByVisibleElement(interactionsMenu);
         click(interactionsMenu);
 
         return new InteractionsPage(getDriver());
-   }
+    }
 
-   public BookStorePage clickBookStoreApplicationMenu() {
+    public BookStorePage clickBookStoreApplicationMenu() {
         scrollByVisibleElement(bookStoreMenu);
         click(bookStoreMenu);
 
         return new BookStorePage(getDriver());
-   }
+    }
 
     public BookStoreAPIPage clickBookAPI() {
         scrollByVisibleElement(bookStoreMenu);

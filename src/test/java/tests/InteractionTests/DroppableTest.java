@@ -31,16 +31,17 @@ public class DroppableTest extends BaseTest {
 
         DroppablePage droppablePage = openBaseURL()
                 .clickInteractionsMenu()
-                .clickDroppablePage()
-                .clickSimpleTab();
+                .clickDroppablePage();
 
-        Point pointStart = droppablePage.getFromElementSimple().getLocation();
+        Point pointStart = droppablePage.getSimpleFromElement().getLocation();
 
-        droppablePage.dragAndDrop(droppablePage.getFromElementSimple(), droppablePage.getToElementSimple());
+        droppablePage.dragAndDrop(droppablePage.clickSimpleTab().getSimpleFromElement());
 
-        Point pointFinish = droppablePage.getFromElementSimple().getLocation();
+        Point pointFinish = droppablePage.getSimpleFromElement().getLocation();
 
         Assert.assertNotEquals(pointFinish, pointStart);
+        Assert.assertEquals(pointFinish.getX(), 844);
+        Assert.assertTrue(pointFinish.getY() > 400);
         Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(expectedUrl));
     }
 }

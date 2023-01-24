@@ -60,8 +60,8 @@ public class InteractionsPage extends BasePage {
     }
 
     public DroppablePage clickDroppablePage() {
-        scrollByVisibleElement(droppable);
         wait10ElementToBeClickable(droppable);
+        scrollByVisibleElement(dragabble);
         click(droppable);
 
         return new DroppablePage(getDriver());

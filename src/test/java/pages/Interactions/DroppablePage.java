@@ -35,13 +35,13 @@ public class DroppablePage extends InteractionsPage {
         return this;
     }
 
-    public WebElement getFromElementSimple() {
+    public WebElement getSimpleFromElement() {
 
-        return fromElementSimple;
+        return this.fromElementSimple;
     }
 
-    public WebElement getToElementSimple() {
+    public WebElement getSimpleToElement() {
 
-        return toElementSimple;
+        return this.toElementSimple;
     }
 }

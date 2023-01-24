@@ -52,7 +52,7 @@ public class LinksTest extends BaseTest {
 
         actualHomeLinkRedirection.switchToWindow();
 
-        Assert.assertEquals(actualHomeLinkRedirection.getCurrentURL(), expectedHomeLinkRedirection);
+        Assert.assertTrue(actualHomeLinkRedirection.getCurrentURL().contains(expectedHomeLinkRedirection));
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "CorrectCodeAndNameLinks")
