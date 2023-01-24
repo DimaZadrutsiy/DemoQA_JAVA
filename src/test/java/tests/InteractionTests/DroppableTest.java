@@ -33,6 +33,8 @@ public class DroppableTest extends BaseTest {
                 .clickInteractionsMenu()
                 .clickDroppablePage();
 
+        Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(expectedUrl));
+
         Point pointStart = droppablePage.getSimpleFromElement().getLocation();
 
         droppablePage.dragAndDrop(droppablePage.clickSimpleTab().getSimpleFromElement());
@@ -42,6 +44,5 @@ public class DroppableTest extends BaseTest {
         Assert.assertNotEquals(pointFinish, pointStart);
         Assert.assertTrue(pointFinish.getX() > 800);
         Assert.assertTrue(pointFinish.getY() > 400);
-        Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(expectedUrl));
     }
 }
