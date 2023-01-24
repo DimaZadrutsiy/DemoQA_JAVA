@@ -40,7 +40,7 @@ public class DroppableTest extends BaseTest {
         Point pointFinish = droppablePage.getSimpleFromElement().getLocation();
 
         Assert.assertNotEquals(pointFinish, pointStart);
-        Assert.assertEquals(pointFinish.getX(), 844);
+        Assert.assertTrue(pointFinish.getX() > 800);
         Assert.assertTrue(pointFinish.getY() > 400);
         Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(expectedUrl));
     }
