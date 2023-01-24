@@ -15,9 +15,6 @@ public class DroppablePage extends InteractionsPage {
     @FindBy(id = "draggable")
     private WebElement fromElementSimple;
 
-    @FindBy(id = "droppable")
-    private WebElement toElementSimple;
-
     public DroppablePage(WebDriver driver) {
         super(driver);
     }
@@ -38,10 +35,5 @@ public class DroppablePage extends InteractionsPage {
     public WebElement getSimpleFromElement() {
 
         return this.fromElementSimple;
-    }
-
-    public WebElement getSimpleToElement() {
-
-        return this.toElementSimple;
     }
 }
