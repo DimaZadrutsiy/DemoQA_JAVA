@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
@@ -376,4 +377,14 @@ public abstract class BasePage {
         Alert alert = getDriver().switchTo().alert();
         alert.accept();
     }
+
+    public void dragAndDrop(WebElement fromElement) {
+        wait10ElementToBeVisible(fromElement);
+        scrollByVisibleElement(fromElement);
+                new Actions(driver)
+                .dragAndDropBy(fromElement, 291, 45)
+                .build()
+                .perform();
+    }
 }
+
