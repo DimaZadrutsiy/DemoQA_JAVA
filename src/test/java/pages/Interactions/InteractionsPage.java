@@ -38,6 +38,7 @@ public class InteractionsPage extends BasePage {
     }
 
     public SortablePage clickSortablePage() {
+        wait10ElementToBeClickable(sortable);
         scrollByVisibleElement(sortable);
         click(sortable);
 
