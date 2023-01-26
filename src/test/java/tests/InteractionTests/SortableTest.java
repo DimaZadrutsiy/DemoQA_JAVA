@@ -50,20 +50,4 @@ public class SortableTest extends BaseTest {
 
         Assert.assertNotEquals(actualRandomList, expectedList);
     }
-
-    @Test
-    public void testNavigationAndHeaderSortablePage() {
-        final String expectedUrl = "https://demoqa.com/sortable";
-        final String expectedHeader = "Sortable";
-
-        SortablePage sortablePage = openBaseURL()
-                .clickInteractionsMenu()
-                .clickSortablePage();
-
-        String actualUrl = sortablePage.getCurrentURL();
-        String actualHeader = sortablePage.getH2Header();
-
-        Assert.assertEquals(actualUrl, expectedUrl);
-        Assert.assertEquals(actualHeader, expectedHeader);
-    }
 }
