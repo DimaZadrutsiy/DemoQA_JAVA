@@ -345,7 +345,6 @@ public abstract class BasePage {
 
     public List<String> reversedList(List<WebElement> list) {
         for (int i = 1; i < list.size(); i++) {
-            scrollByVisibleElement(list.get(i));
             wait10ElementToBeVisible(list.get(i));
             new Actions(driver)
                     .dragAndDrop(list.get(i), list.get(0))

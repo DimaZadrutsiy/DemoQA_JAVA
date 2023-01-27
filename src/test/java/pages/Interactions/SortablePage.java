@@ -20,6 +20,9 @@ public class SortablePage extends InteractionsPage{
     @FindBy(xpath = "//div[@class='main-header']")
     private WebElement h2LogoHeader;
 
+    @FindBy(css = "#sortableContainer > nav")
+    private WebElement technicalScroll;
+
     public SortablePage(WebDriver driver) {
         super(driver);
     }
@@ -30,6 +33,7 @@ public class SortablePage extends InteractionsPage{
     }
 
     public List<String> getReversedList() {
+        scrollByVisibleElement(technicalScroll);
 
         return reversedList(elementList);
     }
