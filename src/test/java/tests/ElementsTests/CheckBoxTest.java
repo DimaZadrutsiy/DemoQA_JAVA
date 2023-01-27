@@ -2,8 +2,8 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import pages.Elements.CheckBoxPage;
 import pages.Elements.ElementsPage;
 
 import java.util.Arrays;
@@ -12,16 +12,15 @@ import java.util.List;
 
 public class CheckBoxTest extends BaseTest {
 
-    @Ignore
     @Test
     public void testAllCheckBoxSelected() {
-        ElementsPage checkBoxPage = openBaseURL()
+        CheckBoxPage checkBoxPage = openBaseURL()
                 .clickElementsMenu()
                 .openCheckBoxPage()
                 .clickOnHomeCheckBox()
                 .clickExpandAll();
 
-        Assert.assertTrue(getCheckBoxPage().isAllCheckBoxesSelected());
+        Assert.assertTrue(checkBoxPage.isAllCheckBoxesSelected());
     }
 
     @Test

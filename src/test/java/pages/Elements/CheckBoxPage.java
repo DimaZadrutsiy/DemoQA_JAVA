@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CheckBoxPage extends ElementsPage{
 
-    @FindBy(xpath = "//div[@id = 'tree-node']//span[@class = 'rct-checkbox']")
+    @FindBy(css = ".rct-checkbox > svg")
     private List<WebElement> allCheckBoxes;
 
     @FindBy(xpath = "//div[@id = 'tree-node']//label")

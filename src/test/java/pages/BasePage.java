@@ -324,11 +324,9 @@ public abstract class BasePage {
         boolean result = false;
 
         for (WebElement element : list) {
-            if (element.isSelected()) {
+            wait10ElementToBeVisible(element);
+            if (element.getAttribute("class").contains("rct-icon rct-icon-check")) {
                 result = true;
-            } else {
-
-                return false;
             }
         }
 
