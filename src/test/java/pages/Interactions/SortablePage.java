@@ -17,6 +17,12 @@ public class SortablePage extends InteractionsPage{
     @FindBy (css = "#demo-tabpane-grid > div > div > div")
     List<WebElement> elementGrid;
 
+    @FindBy(xpath = "//div[@class='main-header']")
+    private WebElement h2LogoHeader;
+
+    @FindBy(css = "#sortableContainer > nav")
+    private WebElement technicalScroll;
+
     public SortablePage(WebDriver driver) {
         super(driver);
     }
@@ -27,6 +33,7 @@ public class SortablePage extends InteractionsPage{
     }
 
     public List<String> getReversedList() {
+        scrollByVisibleElement(technicalScroll);
 
         return reversedList(elementList);
     }
@@ -41,5 +48,10 @@ public class SortablePage extends InteractionsPage{
     public List<String> getRandomList() {
 
         return randomList(elementGrid);
+    }
+
+    public String getH2Header() {
+
+        return getText(h2LogoHeader);
     }
 }

@@ -3,6 +3,8 @@ package tests.InteractionTests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.Interactions.SelectablePage;
+import pages.Interactions.SortablePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +49,21 @@ public class SortableTest extends BaseTest {
                 .getRandomList();
 
         Assert.assertNotEquals(actualRandomList, expectedList);
+    }
+
+    @Test
+    public void testNavigationAndHeaderSortablePage() {
+        final String expectedUrl = "https://demoqa.com/sortable";
+        final String expectedHeader = "Sortable";
+
+        SortablePage sortablePage = openBaseURL()
+                .clickInteractionsMenu()
+                .clickSortablePage();
+
+        String actualUrl = sortablePage.getCurrentURL();
+        String actualHeader = sortablePage.getH2Header();
+
+        Assert.assertEquals(actualUrl, expectedUrl);
+        Assert.assertEquals(actualHeader, expectedHeader);
     }
 }

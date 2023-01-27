@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
@@ -344,7 +345,6 @@ public abstract class BasePage {
 
     public List<String> reversedList(List<WebElement> list) {
         for (int i = 1; i < list.size(); i++) {
-            scrollByVisibleElement(list.get(i));
             wait10ElementToBeVisible(list.get(i));
             new Actions(driver)
                     .dragAndDrop(list.get(i), list.get(0))
@@ -377,9 +377,19 @@ public abstract class BasePage {
         alert.accept();
     }
 
+    public void dragAndDrop(WebElement fromElement) {
+        wait10ElementToBeVisible(fromElement);
+        scrollByVisibleElement(fromElement);
+                new Actions(driver)
+                .dragAndDropBy(fromElement, 291, 45)
+                .build()
+                .perform();
+    }
+    
     public String getTextFromAlert() {
         getWait20().until(ExpectedConditions.alertIsPresent());
 
         return getDriver().switchTo().alert().getText();
     }
 }
+
