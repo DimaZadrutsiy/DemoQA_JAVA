@@ -12,6 +12,7 @@ public class SamplePage extends BrowserWindowsPage{
     public SamplePage(WebDriver driver) {
         super(driver);
     }
+
     public String getH1TextFromNewWindow() {
         switchToAnotherWindow();
 

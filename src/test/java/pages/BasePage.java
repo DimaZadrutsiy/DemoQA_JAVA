@@ -385,5 +385,11 @@ public abstract class BasePage {
                 .build()
                 .perform();
     }
+    
+    public String getTextFromAlert() {
+        getWait20().until(ExpectedConditions.alertIsPresent());
+
+        return getDriver().switchTo().alert().getText();
+    }
 }
 
