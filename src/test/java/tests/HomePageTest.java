@@ -19,7 +19,7 @@ public class HomePageTest extends BaseTest {
 
     @Test
     public void testH1Title_HomePage() {
-        final String expectedTitle = "ToolsQA";
+        final String expectedTitle = "DEMOQA";
 
         openBaseURL();
 

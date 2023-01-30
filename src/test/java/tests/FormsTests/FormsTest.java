@@ -10,7 +10,7 @@ public class FormsTest extends BaseTest {
     @Test
     public void testNavigationToFormPage() {
         final String expectedUrl = "https://demoqa.com/forms";
-        final String expectedTitle = "ToolsQA";
+        final String expectedTitle = "DEMOQA";
         final String expectedHeader = "Forms";
         final String expectedBasedURL = "https://demoqa.com/";
 

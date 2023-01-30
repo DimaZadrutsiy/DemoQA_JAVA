@@ -14,7 +14,7 @@ public class BookStoreTest extends BaseTest {
     @Test
     public void testNavigationToBookStorePage() {
         final String expectedURL = "https://demoqa.com/books";
-        final String expectedTitle = "ToolsQA";
+        final String expectedTitle = "DEMOQA";
         final String expectedHeader = "Book Store";
         final String expectedBasedURL = "https://demoqa.com/";
 
