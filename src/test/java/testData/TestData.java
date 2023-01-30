@@ -16,7 +16,7 @@ public class TestData {
     public static Object[][] attributeDataProvider() {
 
         return new Object[][]{
-                {"https://demoqa.com/automation-practice-form", "ToolsQA", "Practice Form"}
+                {"https://demoqa.com/automation-practice-form", "DEMOQA", "Practice Form"}
         };
     }
 
@@ -34,11 +34,11 @@ public class TestData {
     public static Object[][] interactionsSubmenuDataProvider() {
 
         return new Object[][]{
-                {0, "https://demoqa.com/sortable", "ToolsQA", "Sortable"},
-                {1, "https://demoqa.com/selectable", "ToolsQA", "Selectable"},
-                {2, "https://demoqa.com/resizable", "ToolsQA", "Resizable"},
-                {3, "https://demoqa.com/droppable", "ToolsQA", "Droppable"},
-                {4, "https://demoqa.com/dragabble", "ToolsQA", "Dragabble"}
+                {0, "https://demoqa.com/sortable", "DEMOQA", "Sortable"},
+                {1, "https://demoqa.com/selectable", "DEMOQA", "Selectable"},
+                {2, "https://demoqa.com/resizable", "DEMOQA", "Resizable"},
+                {3, "https://demoqa.com/droppable", "DEMOQA", "Droppable"},
+                {4, "https://demoqa.com/dragabble", "DEMOQA", "Dragabble"}
         };
     }
 
@@ -46,10 +46,10 @@ public class TestData {
     public static Object[][] selectableTabListDataProvider() {
 
         return new Object[][]{
-                {0, "mt-2 list-group-item list-group-item-action", "ToolsQA", "Cras justo odio"},
-                {1, "mt-2 list-group-item list-group-item-action", "ToolsQA", "Dapibus ac facilisis in"},
-                {2, "mt-2 list-group-item list-group-item-action", "ToolsQA", "Morbi leo risus"},
-                {3, "mt-2 list-group-item list-group-item-action", "ToolsQA", "Porta ac consectetur ac"}
+                {0, "mt-2 list-group-item list-group-item-action", "DEMOQA", "Cras justo odio"},
+                {1, "mt-2 list-group-item list-group-item-action", "DEMOQA", "Dapibus ac facilisis in"},
+                {2, "mt-2 list-group-item list-group-item-action", "DEMOQA", "Morbi leo risus"},
+                {3, "mt-2 list-group-item list-group-item-action", "DEMOQA", "Porta ac consectetur ac"}
         };
     }
 

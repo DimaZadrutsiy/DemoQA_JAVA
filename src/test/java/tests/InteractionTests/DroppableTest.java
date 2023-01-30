@@ -11,7 +11,7 @@ public class DroppableTest extends BaseTest {
     @Test
     public void testNavigationDroppablePage() {
         final String expectedUrl = "https://demoqa.com/droppable";
-        final String expectedTitle = "ToolsQA";
+        final String expectedTitle = "DEMOQA";
         final String expectedHeader = "Droppable";
         final String expectedBasedURL = "https://demoqa.com/";
 

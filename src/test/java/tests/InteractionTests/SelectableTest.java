@@ -15,7 +15,7 @@ public class SelectableTest extends BaseTest {
     @Test
     public void testNavigationSelectablePage() {
         final String expectedUrl = "https://demoqa.com/selectable";
-        final String expectedTitle = "ToolsQA";
+        final String expectedTitle = "DEMOQA";
         final String expectedHeader = "Selectable";
         final String expectedBasedURL = "https://demoqa.com/";
 
