@@ -6,29 +6,24 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Interactions.DroppablePage;
 
+import static utils.ProjectConstants.*;
+
 public class DroppableTest extends BaseTest {
 
     @Test
     public void testNavigationDroppablePage() {
-        final String expectedUrl = "https://demoqa.com/droppable";
-        final String expectedTitle = "DEMOQA";
-        final String expectedHeader = "Droppable";
-        final String expectedBasedURL = "https://demoqa.com/";
-
         DroppablePage droppablePage = openBaseURL()
                 .clickInteractionsMenu()
                 .clickDroppablePage();
 
-        Assert.assertFalse(droppablePage.getCurrentURL().contentEquals(expectedBasedURL));
-        Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(expectedUrl));
-        Assert.assertTrue(droppablePage.getTitle().contentEquals(expectedTitle));
-        Assert.assertTrue(droppablePage.getH2Header().contentEquals(expectedHeader));
+        Assert.assertFalse(droppablePage.getCurrentURL().contentEquals(BASE_URL));
+        Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(DROPPABLE_URL));
+        Assert.assertTrue(droppablePage.getTitle().contentEquals(TITLE));
+        Assert.assertTrue(droppablePage.getH2Header().contentEquals(DROPPABLE_HEADER));
     }
 
     @Test
     public void testSimpleDrop() {
-        final String expectedUrl = "https://demoqa.com/droppable";
-
         DroppablePage droppablePage = openBaseURL()
                 .clickInteractionsMenu()
                 .clickDroppablePage();
@@ -40,6 +35,6 @@ public class DroppableTest extends BaseTest {
         Point pointFinish = droppablePage.getSimpleFromElement().getLocation();
 
         Assert.assertNotEquals(pointFinish, pointStart);
-        Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(expectedUrl));
+        Assert.assertTrue(droppablePage.getCurrentURL().contentEquals(DROPPABLE_URL));
     }
 }

@@ -10,15 +10,12 @@ import testData.TestData;
 import java.util.ArrayList;
 import java.util.List;
 
+import static utils.ProjectConstants.*;
+
 public class SelectableTest extends BaseTest {
 
     @Test
     public void testNavigationSelectablePage() {
-        final String expectedUrl = "https://demoqa.com/selectable";
-        final String expectedTitle = "DEMOQA";
-        final String expectedHeader = "Selectable";
-        final String expectedBasedURL = "https://demoqa.com/";
-
         SelectablePage selectablePage = openBaseURL()
                 .clickInteractionsMenu()
                 .clickSelectablePage();
@@ -27,10 +24,10 @@ public class SelectableTest extends BaseTest {
         String actualTitle = selectablePage.getTitle();
         String actualHeader = selectablePage.getH2Header();
 
-        Assert.assertNotEquals(actualUrl, expectedBasedURL);
-        Assert.assertEquals(actualUrl, expectedUrl);
-        Assert.assertEquals(actualTitle, expectedTitle);
-        Assert.assertEquals(actualHeader, expectedHeader);
+        Assert.assertNotEquals(actualUrl, BASE_URL);
+        Assert.assertEquals(actualUrl, SELECTABLE_URL);
+        Assert.assertEquals(actualTitle, TITLE);
+        Assert.assertEquals(actualHeader, SELECTABLE_HEADER);
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabListData")
@@ -62,8 +59,8 @@ public class SelectableTest extends BaseTest {
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "SelectableTabGridData")
-    public void testSelectAllTabsInGrid( int index, String expectedText, String expectedColour,
-            String expectedSelectedColour, String expectedClassName, String expectedSelectedClassName) {
+    public void testSelectAllTabsInGrid(int index, String expectedText, String expectedColour,
+                                        String expectedSelectedColour, String expectedClassName, String expectedSelectedClassName) {
 
         List<WebElement> grid = new ArrayList<>();
 
@@ -93,7 +90,7 @@ public class SelectableTest extends BaseTest {
 
         Assert.assertEquals(actualClassNameBeforeSelect, expectedClassName);
         Assert.assertEquals(actualColourBeforeSelect, expectedColour);
-        Assert.assertEquals(actualClassNameAfterSelect,expectedSelectedClassName);
+        Assert.assertEquals(actualClassNameAfterSelect, expectedSelectedClassName);
         Assert.assertEquals(actualColourAfterSelect, expectedSelectedColour);
         Assert.assertTrue(selectablePage.getText(grid.get(index)).contentEquals(expectedText));
     }

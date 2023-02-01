@@ -7,13 +7,12 @@ import pages.Forms.FormsPage;
 import pages.Forms.PracticeFormPage;
 import testData.TestData;
 
+import static utils.ProjectConstants.*;
+
 public class PracticeFormTest extends BaseTest {
 
-    @Test(dataProviderClass = TestData.class, dataProvider = "PracticeFormsAttribute")
-    public void testNavigationToPracticeFormPage(
-            String expectedUrl, String expectedTitle, String expectedHeader) {
-        final String expectedBasedURL = "https://demoqa.com/";
-
+    @Test
+    public void testNavigationToPracticeFormPage() {
         FormsPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
                 .clickPracticeForm();
@@ -22,16 +21,15 @@ public class PracticeFormTest extends BaseTest {
         String actualTitle = practiceFormPage.getTitle();
         String actualHeader = practiceFormPage.getH2Header();
 
-        Assert.assertNotEquals(actualUrl, expectedBasedURL);
-        Assert.assertEquals(actualUrl, expectedUrl);
-        Assert.assertEquals(actualTitle, expectedTitle);
-        Assert.assertEquals(actualHeader, expectedHeader);
+        Assert.assertNotEquals(actualUrl, BASE_URL);
+        Assert.assertEquals(actualUrl, PRACTICE_FORMS_URL);
+        Assert.assertEquals(actualTitle, TITLE);
+        Assert.assertEquals(actualHeader, PRACTICE_FORMS_HEADER);
     }
 
     @Test(dataProviderClass = TestData.class, dataProvider = "FormsRegistrationData")
     public void testStudentRegistrationPracticeFormPage(
             String name, String sureName, String email, String gender, String number) {
-
         PracticeFormPage practiceFormPage = openBaseURL()
                 .clickFormsMenu()
                 .clickPracticeForm();
