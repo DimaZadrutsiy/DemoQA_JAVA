@@ -398,5 +398,14 @@ public abstract class BasePage {
 
         return text;
     }
+
+    protected String getTextAndDismissAlert() {
+        getWait20().until(ExpectedConditions.alertIsPresent());
+        Alert alert = getDriver().switchTo().alert();
+        String text = alert.getText();
+        alert.dismiss();
+
+        return text;
+    }
 }
 
