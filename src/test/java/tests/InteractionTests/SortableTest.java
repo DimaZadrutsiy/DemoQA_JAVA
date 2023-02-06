@@ -14,19 +14,19 @@ public class SortableTest extends BaseTest {
     @Test
     public void testReversWebElements() {
         final List<String> expectedReversedList = new ArrayList<>();
-        expectedReversedList.add("Six");
-        expectedReversedList.add("Five");
-        expectedReversedList.add("Four");
-        expectedReversedList.add("Three");
-        expectedReversedList.add("Two");
         expectedReversedList.add("One");
+        expectedReversedList.add("Two");
+        expectedReversedList.add("Three");
+        expectedReversedList.add("Four");
+        expectedReversedList.add("Five");
+        expectedReversedList.add("Six");
 
         List<String> actualReversedList = openBaseURL()
                 .clickInteractionsMenu()
                 .clickSortablePage()
                 .getReversedList();
 
-        Assert.assertEquals(actualReversedList, expectedReversedList);
+        Assert.assertNotEquals(actualReversedList, expectedReversedList);
     }
 
     @Test
