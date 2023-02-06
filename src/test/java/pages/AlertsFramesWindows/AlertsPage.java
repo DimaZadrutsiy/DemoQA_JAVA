@@ -59,4 +59,9 @@ public class AlertsPage extends AlertsFramesWindowsPage{
 
         return  getTextAndConfirmAlert();
     }
+
+    public String getTextAndDismissAlertInAlertPage() {
+
+        return getTextAndDismissAlert();
+    }
 }

@@ -49,4 +49,21 @@ public class AlertsTest extends BaseTest {
         Assert.assertEquals(actualAlertMessage, expectedAlertMessage);
         Assert.assertEquals(actualConfirmMessage, expectedConfirmMessage);
     }
+
+    @Test
+    public void testCheckTextAndDismissThirdAlert() {
+        final String expectedAlertMessage = "Do you confirm action?";
+        final String expectedConfirmMessage = "You selected Cancel";
+
+        String actualAlertMessage = openBaseURL()
+                .clickAlertsFramesWindowsMenu()
+                .selectAlertsSubMenu()
+                .clickThirdAlertButton()
+                .getTextAndDismissAlertInAlertPage();
+
+        String actualConfirmMessage = getAlertsPage().getConfirmMessage();
+
+        Assert.assertEquals(actualAlertMessage, expectedAlertMessage);
+        Assert.assertEquals(actualConfirmMessage, expectedConfirmMessage);
+    }
 }
