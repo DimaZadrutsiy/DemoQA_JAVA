@@ -384,10 +384,19 @@ public abstract class BasePage {
                 .perform();
     }
     
-    public String getTextFromAlert() {
+    protected String getTextFromAlert() {
         getWait20().until(ExpectedConditions.alertIsPresent());
 
         return getDriver().switchTo().alert().getText();
+    }
+
+    protected String getTextAndConfirmAlert() {
+        getWait20().until(ExpectedConditions.alertIsPresent());
+        Alert alert = getDriver().switchTo().alert();
+        String text = alert.getText();
+        alert.accept();
+
+        return text;
     }
 }
 
