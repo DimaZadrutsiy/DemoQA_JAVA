@@ -88,7 +88,6 @@ public class LinksTest extends BaseTest {
     @Test
     public void testLinksListWithAPICalls() {
 
-
         final List<String> expectedResultAPICallsList = new ArrayList<>();
         expectedResultAPICallsList.add("Created");
         expectedResultAPICallsList.add("No Content");
@@ -98,7 +97,6 @@ public class LinksTest extends BaseTest {
         expectedResultAPICallsList.add("Forbidden");
         expectedResultAPICallsList.add("Not Found");
 
-
         List<String> actualResultAPICallsList = openBaseURL()
                 .clickElementsMenu()
                 .openLinksPage()
@@ -107,5 +105,3 @@ public class LinksTest extends BaseTest {
         Assert.assertEquals(actualResultAPICallsList, expectedResultAPICallsList);
     }
 }
-
-
