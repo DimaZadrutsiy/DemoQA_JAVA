@@ -15,6 +15,9 @@ public class LinksPage extends ElementsPage {
     @FindBy(id = ("simpleLink"))
     private WebElement homeLink;
 
+    @FindBy(id = ("dynamicLink"))
+    private WebElement dynamicLink;
+
     @FindBy (xpath = "//*[@href=\"javascript:void(0)\"]")
     private List<WebElement> linksApiCall;
 
@@ -58,5 +61,13 @@ public class LinksPage extends ElementsPage {
     public String getResponseName() {
 
         return getText(responseName);
+    }
+
+    public LinksPage clickOnHomeDynamicLink() {
+        if (homeLink.isDisplayed() && homeLink.isEnabled()) {
+            click(dynamicLink);
+        }
+
+        return new LinksPage(getDriver());
     }
 }

@@ -55,6 +55,21 @@ public class LinksTest extends BaseTest {
         Assert.assertTrue(actualHomeLinkRedirection.getCurrentURL().contains(expectedHomeLinkRedirection));
     }
 
+    @Test
+    public void testDynamicLinkRedirection() {
+
+        String expectedHomeLinkRedirection = "https://demoqa.com/";
+
+        LinksPage actualHomeLinkRedirection = openBaseURL()
+                .clickElementsMenu()
+                .openLinksPage()
+                .clickOnHomeDynamicLink();
+
+        actualHomeLinkRedirection.switchToWindow();
+
+        Assert.assertTrue(actualHomeLinkRedirection.getCurrentURL().contains(expectedHomeLinkRedirection));
+    }
+
     @Test(dataProviderClass = TestData.class, dataProvider = "CorrectCodeAndNameLinks")
     public void testCheckingResponseCodeAndNameAfterLinkIsClicked(
             int index, String expectedName, String expectedCod) {
