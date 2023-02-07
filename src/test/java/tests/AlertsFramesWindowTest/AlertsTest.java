@@ -66,4 +66,33 @@ public class AlertsTest extends BaseTest {
         Assert.assertEquals(actualAlertMessage, expectedAlertMessage);
         Assert.assertEquals(actualConfirmMessage, expectedConfirmMessage);
     }
+
+    @Test
+    public void testEnterTextAndConfirmForthAlert() {
+        final String text = "some text";
+        final String expectedPromptResultMessage = "You entered " + text;
+
+        openBaseURL()
+                .clickAlertsFramesWindowsMenu()
+                .selectAlertsSubMenu()
+                .clickForthAlertButton()
+                .sendTextAndConfirmAlertInAlertPage(text);
+
+        String actualPromptResultMessage = getAlertsPage().getPromptResultMessage();
+
+        Assert.assertEquals(actualPromptResultMessage, expectedPromptResultMessage);
+    }
+
+    @Test
+    public void testCheckTextAndConfirmForthAlert() {
+        final String expectedAlertText = "Please enter your name";
+
+        String actualAlertText = openBaseURL()
+                .clickAlertsFramesWindowsMenu()
+                .selectAlertsSubMenu()
+                .clickForthAlertButton()
+                .getTextAndConfirmAlertInAlertPage();
+
+        Assert.assertEquals(actualAlertText, expectedAlertText);
+    }
 }
