@@ -32,11 +32,14 @@ public class ResizableTest extends BaseTest {
         Point pointStart = resizablePage.getResizableBox().getLocation();
 
         Actions resize = new Actions(getDriver());
-        resize.dragAndDropBy(resizablePage.getResizableBox(), 250, 100).perform();
 
+        resize.dragAndDropBy(resizablePage.getResizableBox(), 300, 100).perform();
+        Point pointMiddle = resizablePage.getResizableBox().getLocation();
+        resize.dragAndDropBy(resizablePage.getResizableBox(), -300, -100).perform();
         Point pointFinish = resizablePage.getResizableBox().getLocation();
 
-        Assert.assertNotEquals(pointFinish, pointStart);
+        Assert.assertNotEquals(pointFinish, pointMiddle);
+        Assert.assertEquals(pointFinish, pointStart);
         Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
     }
 }
