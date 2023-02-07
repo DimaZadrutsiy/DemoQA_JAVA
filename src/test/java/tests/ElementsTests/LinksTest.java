@@ -1,11 +1,9 @@
 package tests.ElementsTests;
 
 import base.BaseTest;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Elements.LinksPage;
-import pages.Interactions.InteractionsPage;
 import testData.TestData;
 
 import java.util.ArrayList;
@@ -86,5 +84,24 @@ public class LinksTest extends BaseTest {
         Assert.assertEquals(actualCod, expectedCod);
         Assert.assertEquals(actualName, expectedName);
     }
-}
 
+    @Test
+    public void testLinksListWithAPICalls() {
+
+        final List<String> expectedResultAPICallsList = new ArrayList<>();
+        expectedResultAPICallsList.add("Created");
+        expectedResultAPICallsList.add("No Content");
+        expectedResultAPICallsList.add("Moved");
+        expectedResultAPICallsList.add("Bad Request");
+        expectedResultAPICallsList.add("Unauthorized");
+        expectedResultAPICallsList.add("Forbidden");
+        expectedResultAPICallsList.add("Not Found");
+
+        List<String> actualResultAPICallsList = openBaseURL()
+                .clickElementsMenu()
+                .openLinksPage()
+                .getListAPICallsNames();
+
+        Assert.assertEquals(actualResultAPICallsList, expectedResultAPICallsList);
+    }
+}

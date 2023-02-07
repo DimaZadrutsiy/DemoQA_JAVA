@@ -27,6 +27,9 @@ public class LinksPage extends ElementsPage {
     @FindBy (css = "#linkResponse > b:nth-child(2)")
     private WebElement responseName;
 
+    @FindBy (xpath = "//a[@href='javascript:void(0)']")
+    private List<WebElement> listAPILinks;
+
     public LinksPage(WebDriver driver) {
         super(driver);
     }
@@ -69,5 +72,9 @@ public class LinksPage extends ElementsPage {
         }
 
         return new LinksPage(getDriver());
+    }
+
+    public List<String> getListAPICallsNames() {
+        return getTexts(listAPILinks);
     }
 }
