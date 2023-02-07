@@ -407,5 +407,12 @@ public abstract class BasePage {
 
         return text;
     }
+
+    protected void enterTextAndConfirmAlert (String text) {
+        getWait20().until(ExpectedConditions.alertIsPresent());
+        Alert alert = getDriver().switchTo().alert();
+        alert.sendKeys(text);
+        alert.accept();
+    }
 }
 

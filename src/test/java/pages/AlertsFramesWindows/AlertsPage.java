@@ -20,6 +20,12 @@ public class AlertsPage extends AlertsFramesWindowsPage{
     @FindBy(xpath = "//span[@id='confirmResult']")
     WebElement confirmMessage;
 
+    @FindBy(xpath = "//button[@id='promtButton']")
+    WebElement forthAlertButton;
+
+    @FindBy(xpath = "//span[@id='promptResult']")
+    WebElement promptResult;
+
     public AlertsPage(WebDriver driver) {
         super(driver);
     }
@@ -63,5 +69,25 @@ public class AlertsPage extends AlertsFramesWindowsPage{
     public String getTextAndDismissAlertInAlertPage() {
 
         return getTextAndDismissAlert();
+    }
+
+    public AlertsPage clickForthAlertButton() {
+        if (forthAlertButton.isDisplayed() && forthAlertButton.isEnabled()) {
+            forthAlertButton.click();
+            getWait20().until(ExpectedConditions.alertIsPresent());
+        }
+
+        return new AlertsPage(getDriver());
+    }
+
+    public String getPromptResultMessage() {
+
+        return promptResult.getText();
+    }
+
+    public AlertsPage sendTextAndConfirmAlertInAlertPage(String text) {
+        enterTextAndConfirmAlert(text);
+
+        return new AlertsPage(getDriver());
     }
 }
