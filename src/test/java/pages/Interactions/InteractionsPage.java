@@ -54,7 +54,8 @@ public class InteractionsPage extends BasePage {
     }
 
     public ResizablePage clickResizablePage() {
-        scrollByVisibleElement(resizable);
+        wait10ElementToBeClickable(resizable);
+        scrollByVisibleElement(dragabble);
         click(resizable);
 
         return new ResizablePage(getDriver());
