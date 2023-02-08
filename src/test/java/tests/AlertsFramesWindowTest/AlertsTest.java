@@ -76,7 +76,7 @@ public class AlertsTest extends BaseTest {
                 .clickAlertsFramesWindowsMenu()
                 .selectAlertsSubMenu()
                 .clickForthAlertButton()
-                .sendTextAndConfirmAlertInAlertPage(text);
+                .enterTextAndConfirmAlertInAlertPage(text);
 
         String actualPromptResultMessage = getAlertsPage().getPromptResultMessage();
 
@@ -94,5 +94,17 @@ public class AlertsTest extends BaseTest {
                 .getTextAndConfirmAlertInAlertPage();
 
         Assert.assertEquals(actualAlertText, expectedAlertText);
+    }
+
+    @Test
+    public void testDismissForthAlert() {
+
+       openBaseURL()
+                .clickAlertsFramesWindowsMenu()
+                .selectAlertsSubMenu()
+                .clickForthAlertButton()
+                .dismissAlertInAlertPage();
+
+        Assert.assertFalse(getAlertsPage().isAlertDisplayedInAlertPage());
     }
 }
