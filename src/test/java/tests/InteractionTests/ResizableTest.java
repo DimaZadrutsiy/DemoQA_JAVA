@@ -42,4 +42,25 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(pointFinish, pointStart);
         Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
     }
+
+    @Test
+    public void testResizablePlain() {
+        ResizablePage resizablePage = openBaseURL()
+                .clickInteractionsMenu()
+                .clickResizablePage();
+
+        Point pointStart = resizablePage.getResizablePlain().getLocation();
+
+        Actions resize = new Actions(getDriver());
+
+        resize.dragAndDropBy(resizablePage.getResizablePlain(), 500, 0)
+                .dragAndDropBy(resizablePage.getResizablePlain(), 0, 200)
+                .dragAndDropBy(resizablePage.getResizablePlain(), -500, 0)
+                .dragAndDropBy(resizablePage.getResizablePlain(), 0, -200).perform();
+
+        Point pointFinish = resizablePage.getResizablePlain().getLocation();
+
+        Assert.assertEquals(pointFinish, pointStart);
+        Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
+    }
 }

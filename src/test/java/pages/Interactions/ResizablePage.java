@@ -12,6 +12,9 @@ public class ResizablePage extends InteractionsPage {
     @FindBy(css = "div[id='resizableBoxWithRestriction'] span[class='react-resizable-handle react-resizable-handle-se']")
     private WebElement resizableBox;
 
+    @FindBy(css = "div[id='resizable'] span[class='react-resizable-handle react-resizable-handle-se']")
+    private WebElement resizablePlain;
+
     public ResizablePage(WebDriver driver) {
         super(driver);
     }
@@ -25,5 +28,11 @@ public class ResizablePage extends InteractionsPage {
         wait10ElementToBeVisible(resizableBox);
         scrollByVisibleElement(resizableBox);
         return resizableBox;
+    }
+
+    public WebElement getResizablePlain() {
+        wait10ElementToBeVisible(resizablePlain);
+        scrollByVisibleElement(resizablePlain);
+        return resizablePlain;
     }
 }
