@@ -414,5 +414,19 @@ public abstract class BasePage {
         alert.sendKeys(text);
         alert.accept();
     }
+
+    protected void dismissAlert() {
+        getWait20().until(ExpectedConditions.alertIsPresent());
+        getDriver().switchTo().alert().dismiss();
+    }
+
+    protected boolean isAlertDisplayed() {
+        try {
+            getDriver().switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
 }
 

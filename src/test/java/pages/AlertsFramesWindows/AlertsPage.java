@@ -1,10 +1,11 @@
 package pages.AlertsFramesWindows;
 
-import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.alertIsPresent;
 
 public class AlertsPage extends AlertsFramesWindowsPage{
 
@@ -41,7 +42,7 @@ public class AlertsPage extends AlertsFramesWindowsPage{
     public AlertsPage clickSecondAlertButton() {
         if (firstAlertButton.isDisplayed() && firstAlertButton.isEnabled()) {
             secondAlertButton.click();
-            getWait20().until(ExpectedConditions.alertIsPresent());
+            getWait20().until(alertIsPresent());
         }
 
         return new AlertsPage(getDriver());
@@ -50,7 +51,7 @@ public class AlertsPage extends AlertsFramesWindowsPage{
     public AlertsPage clickThirdAlertButton() {
         if (thirdAlertButton.isDisplayed() && thirdAlertButton.isEnabled()) {
             thirdAlertButton.click();
-            getWait20().until(ExpectedConditions.alertIsPresent());
+            getWait20().until(alertIsPresent());
         }
 
         return new AlertsPage(getDriver());
@@ -74,7 +75,7 @@ public class AlertsPage extends AlertsFramesWindowsPage{
     public AlertsPage clickForthAlertButton() {
         if (forthAlertButton.isDisplayed() && forthAlertButton.isEnabled()) {
             forthAlertButton.click();
-            getWait20().until(ExpectedConditions.alertIsPresent());
+            getWait20().until(alertIsPresent());
         }
 
         return new AlertsPage(getDriver());
@@ -85,9 +86,18 @@ public class AlertsPage extends AlertsFramesWindowsPage{
         return promptResult.getText();
     }
 
-    public AlertsPage sendTextAndConfirmAlertInAlertPage(String text) {
+    public AlertsPage enterTextAndConfirmAlertInAlertPage(String text) {
         enterTextAndConfirmAlert(text);
 
         return new AlertsPage(getDriver());
+    }
+
+    public void dismissAlertInAlertPage() {
+        dismissAlert();
+    }
+
+    public boolean isAlertDisplayedInAlertPage() {
+
+       return isAlertDisplayed();
     }
 }
