@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class DroppablePage extends InteractionsPage {
 
     @FindBy(xpath = "//div[@class='main-header']")
@@ -14,6 +16,9 @@ public class DroppablePage extends InteractionsPage {
 
     @FindBy(id = "draggable")
     private WebElement fromElementSimple;
+
+    @FindBy(css = "#droppableContainer > nav > a")
+    private List<WebElement> elementTabs;
 
     public DroppablePage(WebDriver driver) {
         super(driver);
@@ -35,5 +40,10 @@ public class DroppablePage extends InteractionsPage {
     public WebElement getSimpleFromElement() {
 
         return this.fromElementSimple;
+    }
+
+    public List<String> getNameTabs() {
+
+       return getTexts(elementTabs);
     }
 }
