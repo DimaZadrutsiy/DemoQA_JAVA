@@ -36,7 +36,7 @@ public class ElementsPage extends BasePage {
 
     public List<String> getElementsSubMenuHeaders() {
 
-        return getTexts(elementsList);
+        return getTextToList(elementsList);
     }
 
     public int getElementsSubMenuAmount() {

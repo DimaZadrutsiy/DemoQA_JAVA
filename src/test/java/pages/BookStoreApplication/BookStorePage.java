@@ -81,7 +81,7 @@ public class BookStorePage extends BasePage {
         scrollByVisibleElement(bookStoreApplicationSubMenu);
         click(bookStoreApplicationSubMenu);
 
-        return getTexts(subMenuList);
+        return getTextToList(subMenuList);
     }
 
     public int getBookStorePageSubMenuAmount() {
@@ -93,7 +93,7 @@ public class BookStorePage extends BasePage {
 
     public List<String> getBooksList() {
 
-        return getTexts(booksList);
+        return getTextToList(booksList);
     }
 
     public String getFirstBookInList() {

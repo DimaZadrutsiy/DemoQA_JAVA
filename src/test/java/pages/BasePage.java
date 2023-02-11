@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
@@ -75,13 +74,13 @@ public abstract class BasePage {
         return element.getText();
     }
 
-    protected List<String> getTexts(List<WebElement> list) {
+    protected List<String> getTextToList(List<WebElement> list) {
         if (list.size() > 0) {
             getWait20().until(ExpectedConditions.visibilityOfAllElements(list));
             List<String> textList = new ArrayList<>();
             for (WebElement element : list) {
                 if (element.isEnabled() && element.isDisplayed()) {
-                    textList.add(element.getText());
+                    textList.add(element.getText().trim());
                 }
             }
 
@@ -120,6 +119,17 @@ public abstract class BasePage {
         return visibleElements;
     }
 
+    protected boolean isElementsInListContainsText(List<WebElement> list, String str) {
+
+        for (WebElement element : list) {
+            if (element.getText().trim().contains(str)) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
     public String getAttribute(WebElement element, String attribute) {
         if (!element.getText().isEmpty()) {
             wait10ElementToBeVisible(element);
@@ -351,7 +361,7 @@ public abstract class BasePage {
                     .perform();
         }
 
-        return getTexts(list);
+        return getTextToList(list);
     }
 
     public List<String> randomList(List<WebElement> list) {
@@ -366,7 +376,7 @@ public abstract class BasePage {
                     .perform();
         }
 
-        return getTexts(list);
+        return getTextToList(list);
     }
 
     protected void acceptAlert() {
@@ -427,6 +437,84 @@ public abstract class BasePage {
         } catch (NoAlertPresentException e) {
             return false;
         }
+    }
+
+    protected String getSaltString10() {
+        String SALTCHARS = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 10) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
+
+    protected String getSaltStringNumbers10() {
+        String SALTCHARS = "1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 10) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
+
+    protected String getSaltStringNumbers5() {
+        String SALTCHARS = "1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 5) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
+
+    protected String getSaltStringAge() {
+        String SALTCHARS = "1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 2) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
+
+    public String getSaltStringLettersNumbers10() {
+        String SALTCHARS = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 10) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
+    }
+
+    protected String getSaltStringNumbersSymbols10() {
+        String SALTCHARS = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890±!@#$%^&*()_+=-§";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 10) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
     }
 }
 
