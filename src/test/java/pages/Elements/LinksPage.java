@@ -36,7 +36,7 @@ public class LinksPage extends ElementsPage {
 
     public List<String> getHeadersName() {
 
-        return getTextToList(headerText);
+        return getTexts(headerText);
     }
 
     public LinksPage clickOnHomeLink() {
@@ -75,6 +75,6 @@ public class LinksPage extends ElementsPage {
     }
 
     public List<String> getListAPICallsNames() {
-        return getTextToList(listAPILinks);
+        return getTexts(listAPILinks);
     }
 }

@@ -29,7 +29,7 @@ public class SortablePage extends InteractionsPage{
 
     public List<String> getNamesAllElements() {
 
-        return getTextToList(elementList);
+        return getTexts(elementList);
     }
 
     public List<String> getReversedList() {

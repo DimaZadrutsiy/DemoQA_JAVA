@@ -173,7 +173,7 @@ public class CheckBoxPage extends ElementsPage{
 
     public List<String> selectedResult() {
 
-        return getTextToList(selectedResult);
+        return getTexts(selectedResult);
     }
 
     public boolean isAllCheckBoxTitleDisplayed() {
@@ -183,7 +183,7 @@ public class CheckBoxPage extends ElementsPage{
 
     public List<String> getCheckBoxTitle() {
 
-        return getTextToList(checkBoxTitle);
+        return getTexts(checkBoxTitle);
     }
 
     public int getCheckBoxTitleAmount() {

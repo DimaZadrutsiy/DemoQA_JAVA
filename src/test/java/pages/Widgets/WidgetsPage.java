@@ -28,7 +28,7 @@ public class WidgetsPage extends BasePage {
 
     public List<String> getWidgetsSubMenuHeaders() {
 
-        return getTextToList(elementsList);
+        return getTexts(elementsList);
     }
 
     public int getWidgetsSubMenuAmount() {

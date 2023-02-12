@@ -81,12 +81,12 @@ public class ButtonsPage extends ElementsPage{
 
     public List<String> getNamesAllButtons() {
 
-        return getTextToList(allButtons);
+        return getTexts(allButtons);
     }
 
     public int getNumberOfButtons() {
 
-        return getTextToList(allButtons).size();
+        return getTexts(allButtons).size();
     }
 
     public String getMainHeader() {
