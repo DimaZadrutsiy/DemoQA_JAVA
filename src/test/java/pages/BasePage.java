@@ -73,8 +73,8 @@ public abstract class BasePage {
 
         return element.getText();
     }
-
-    protected List<String> getTextToList(List<WebElement> list) {
+//getTexts - getTextToList
+    protected List<String> getTexts(List<WebElement> list) {
         if (list.size() > 0) {
             getWait20().until(ExpectedConditions.visibilityOfAllElements(list));
             List<String> textList = new ArrayList<>();
@@ -361,7 +361,7 @@ public abstract class BasePage {
                     .perform();
         }
 
-        return getTextToList(list);
+        return getTexts(list);
     }
 
     public List<String> randomList(List<WebElement> list) {
@@ -376,7 +376,7 @@ public abstract class BasePage {
                     .perform();
         }
 
-        return getTextToList(list);
+        return getTexts(list);
     }
 
     protected void acceptAlert() {
