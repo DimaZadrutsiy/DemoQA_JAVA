@@ -347,7 +347,7 @@ public abstract class BasePage {
         getDriver().switchTo().frame(iframe);
     }
 
-    public void swithToParentFrame() {
+    public void switchToParentFrame() {
         getDriver().switchTo().parentFrame();
     }
 
@@ -446,8 +446,7 @@ public abstract class BasePage {
             int index = (int) (rnd.nextFloat() * str.length());
             salt.append(str.charAt(index));
         }
-        String saltStr = salt.toString();
-        return saltStr;
+        return salt.toString();
     }
 }
 

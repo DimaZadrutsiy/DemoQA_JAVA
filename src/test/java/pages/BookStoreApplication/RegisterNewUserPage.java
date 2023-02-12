@@ -70,7 +70,7 @@ public class RegisterNewUserPage extends LoginPage{
         wait20ElementToBeClickable(registerButton);
         switchToIframe(iframeCaptchaCheckBox);
         click(recaptchaBlock);
-        swithToParentFrame();
+        switchToParentFrame();
 
         return new RegisterNewUserPage(getDriver());
     }
