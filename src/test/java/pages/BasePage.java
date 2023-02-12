@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
@@ -74,14 +73,14 @@ public abstract class BasePage {
 
         return element.getText();
     }
-
+//getTexts - getTextToList
     protected List<String> getTexts(List<WebElement> list) {
         if (list.size() > 0) {
             getWait20().until(ExpectedConditions.visibilityOfAllElements(list));
             List<String> textList = new ArrayList<>();
             for (WebElement element : list) {
                 if (element.isEnabled() && element.isDisplayed()) {
-                    textList.add(element.getText());
+                    textList.add(element.getText().trim());
                 }
             }
 
@@ -120,6 +119,17 @@ public abstract class BasePage {
         return visibleElements;
     }
 
+    protected boolean isElementsInListContainsText(List<WebElement> list, String str) {
+
+        for (WebElement element : list) {
+            if (element.getText().trim().contains(str)) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }
     public String getAttribute(WebElement element, String attribute) {
         if (!element.getText().isEmpty()) {
             wait10ElementToBeVisible(element);
@@ -337,7 +347,7 @@ public abstract class BasePage {
         getDriver().switchTo().frame(iframe);
     }
 
-    public void swithToParentFrame() {
+    public void switchToParentFrame() {
         getDriver().switchTo().parentFrame();
     }
 
@@ -427,6 +437,16 @@ public abstract class BasePage {
         } catch (NoAlertPresentException e) {
             return false;
         }
+    }
+    protected String getSaltString(String str, int length) {
+
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < length) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * str.length());
+            salt.append(str.charAt(index));
+        }
+        return salt.toString();
     }
 }
 

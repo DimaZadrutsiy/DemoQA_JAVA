@@ -23,6 +23,7 @@ import utils.TestUtils;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.Random;
 
 public abstract class BaseTest {
     private static final String BASE_URL = "https://demoqa.com/";
