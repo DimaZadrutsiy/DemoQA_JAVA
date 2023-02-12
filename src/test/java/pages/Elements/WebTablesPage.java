@@ -3,6 +3,7 @@ package pages.Elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utils.ProjectConstants;
 
 import java.util.List;
 
@@ -68,14 +69,14 @@ public class WebTablesPage extends ElementsPage{
 
     public WebTablesPage inputFirstNameIntoRegistrationForm() {
         scrollByVisibleElement(firstNameInputField);
-        inputAfterClear(firstNameInputField,getSaltString10());
+        inputAfterClear(firstNameInputField,getSaltString(ProjectConstants.SALT_UPPER_AND_LOWER_LETTERS,10));
 
         return this;
     }
 
     public WebTablesPage inputLastNameIntoRegistrationForm() {
         scrollByVisibleElement(lastNameInputField);
-        inputAfterClear(lastNameInputField,getSaltString10());
+        inputAfterClear(lastNameInputField,getSaltString(ProjectConstants.SALT_UPPER_AND_LOWER_LETTERS,10));
 
         return this;
     }
@@ -89,21 +90,21 @@ public class WebTablesPage extends ElementsPage{
 
     public WebTablesPage inputAgeIntoRegistrationForm() {
         scrollByVisibleElement(ageInputField);
-        inputAfterClear(ageInputField, getSaltStringAge());
+        inputAfterClear(ageInputField, getSaltString(ProjectConstants.SALT_NUMBERS,2));
 
         return this;
     }
 
     public WebTablesPage inputSalaryIntoRegistrationForm() {
         scrollByVisibleElement(salaryInputField);
-        inputAfterClear(salaryInputField, getSaltStringNumbers5());
+        inputAfterClear(salaryInputField, getSaltString(ProjectConstants.SALT_NUMBERS,5));
 
         return this;
     }
 
     public WebTablesPage inputDepartmentIntoRegistrationForm() {
         scrollByVisibleElement(departmentInputField);
-        inputAfterClear(departmentInputField, getSaltString10());
+        inputAfterClear(departmentInputField, getSaltString(ProjectConstants.SALT_UPPER_AND_LOWER_LETTERS,10));
 
         return this;
     }

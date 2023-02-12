@@ -13,4 +13,6 @@ public class ProjectConstants {
     public static final String FORMS_URL = BASE_URL + "forms";
     public static final String PRACTICE_FORMS_HEADER = "Practice Form";
     public static final String PRACTICE_FORMS_URL = BASE_URL + "automation-practice-form";
+    public static final String SALT_UPPER_AND_LOWER_LETTERS = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+    public static final String SALT_NUMBERS = "1234567890";
 }
