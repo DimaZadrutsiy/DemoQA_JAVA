@@ -19,10 +19,10 @@ public class DroppablePage extends InteractionsPage {
         super(driver);
     }
 
-//    public String getH2Header() {
-//
-//        return getText(h2LogoHeader);
-//    }
+    public String getH2Header() {
+
+        return getText(h2LogoHeader);
+    }
 
     public DroppablePage clickSimpleTab() {
         scrollByVisibleElement(simpleTab);
