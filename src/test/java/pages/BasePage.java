@@ -73,7 +73,6 @@ public abstract class BasePage {
 
         return element.getText();
     }
-//getTexts - getTextToList
     protected List<String> getTexts(List<WebElement> list) {
         if (list.size() > 0) {
             getWait20().until(ExpectedConditions.visibilityOfAllElements(list));
