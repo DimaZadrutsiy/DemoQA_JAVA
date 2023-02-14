@@ -2,12 +2,8 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pages.Elements.WebTablesPage;
-
-import java.util.Arrays;
-import java.util.List;
 
 
 public class WebTablesTest extends BaseTest {
@@ -44,5 +40,23 @@ public class WebTablesTest extends BaseTest {
                 .clickOnSubmit();
 
         Assert.assertTrue(webTablesPage.isEmailPresentInColumn(expectedEmail));
+    }
+
+    @Test()
+    public void test_CheckEditEmail() {
+        final String email = "webolejuko@mailinator.com";
+        final String newEmail = "tahasoh@mailinator.com";
+
+        WebTablesPage webTablesPage = openBaseURL()
+                .clickElementsMenu()
+                .openWebTablesPage()
+                .AddNewItem(email)
+                .inputEmailIntoSearchField(email)
+                .clickOnEditButton()
+                .inputEmailIntoRegistrationForm(newEmail)
+                .clickOnSubmit()
+                .inputEmailIntoSearchField(newEmail);
+
+        Assert.assertTrue(webTablesPage.isEmailPresentInColumn(newEmail));
     }
 }
