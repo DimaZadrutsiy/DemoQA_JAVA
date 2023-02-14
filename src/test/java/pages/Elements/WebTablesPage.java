@@ -43,6 +43,9 @@ public class WebTablesPage extends ElementsPage{
     @FindBy(id = ("searchBox"))
     private WebElement searchField;
 
+    @FindBy(xpath = "//span[@title = 'Edit']")
+    private WebElement editButtonOfFirstRow;
+
     public WebTablesPage(WebDriver driver) {
         super(driver);
     }
@@ -120,4 +123,31 @@ public class WebTablesPage extends ElementsPage{
 
        return isElementsInListContainsText(emailColumn,email);
     }
-}
+
+    public WebTablesPage AddNewItem(String email) {
+        clickOnAdd();
+        inputFirstNameIntoRegistrationForm();
+        inputLastNameIntoRegistrationForm();
+        inputEmailIntoRegistrationForm(email);
+        inputAgeIntoRegistrationForm();
+        inputSalaryIntoRegistrationForm();
+        inputDepartmentIntoRegistrationForm();
+        clickOnSubmit();
+
+        return this;
+    }
+
+    public WebTablesPage inputEmailIntoSearchField(String email) {
+        scrollByVisibleElement(searchField);
+        inputAfterClear(searchField, email);
+
+        return this;
+    }
+
+    public WebTablesPage clickOnEditButton() {
+        scrollByVisibleElement(editButtonOfFirstRow);
+        click(editButtonOfFirstRow);
+
+        return this;
+    }
+ }
