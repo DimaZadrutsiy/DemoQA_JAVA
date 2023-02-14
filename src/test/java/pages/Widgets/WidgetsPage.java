@@ -18,6 +18,9 @@ public class WidgetsPage extends BasePage {
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//ul[@class = 'menu-list']//span")
     private List<WebElement> elementsList;
 
+    @FindBy(xpath = "//span[text()='Progress Bar']")
+    private WebElement progressBarPage;
+
     public WidgetsPage(WebDriver driver) {
         super(driver);
     }
@@ -44,5 +47,12 @@ public class WidgetsPage extends BasePage {
         click(autoCompletePage);
 
         return new AutoCompletePage(getDriver());
+    }
+
+    public ProgressBarPage clickProgressBarPages() {
+        scrollByVisibleElement(progressBarPage);
+        click(progressBarPage);
+
+        return new ProgressBarPage(getDriver());
     }
 }
