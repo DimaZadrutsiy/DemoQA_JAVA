@@ -1,0 +1,69 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Smoke" verbose="1" >
+    <test name="Smoke">
+        <classes>
+            <class name="tests.HomePageTest">
+                <methods>
+                    <include name="testUrl_HomePage"></include>
+                    <include name="testH1Title_HomePage"></include>
+                </methods>
+            </class>
+            <class name="tests.ElementsTests.ElementsTest">
+                <methods>
+                    <include name="testURL_ElementsPage"></include>
+                </methods>
+            </class>
+            <class name="tests.ElementsTests.LinksTest">
+                <methods>
+                    <include name="testLinksURL"></include>
+                </methods>
+            </class>
+            <class name="tests.FormsTests.FormsTest">
+                <methods>
+                    <include name="testNavigationToFormPage"></include>
+                </methods>
+            </class>
+            <class name="tests.FormsTests.PracticeFormTest">
+                <methods>
+                    <include name="testNavigationToPracticeFormPage"></include>
+                </methods>
+            </class>
+            <class name="tests.InteractionTests.DroppableTest">
+                <methods>
+                    <include name="testNavigationDroppablePage"></include>
+                </methods>
+            </class>
+            <class name="tests.InteractionTests.InteractionsTest">
+                <methods>
+                    <include name="testInteractionsSubMenuLinksNavigateToCorrectPages"></include>
+                </methods>
+            </class>
+            <class name="tests.InteractionTests.ResizableTest">
+                <methods>
+                    <include name="testNavigationResizablePage"></include>
+                </methods>
+            </class>
+            <class name="tests.InteractionTests.SelectableTest">
+                <methods>
+                    <include name="testNavigationSelectablePage"></include>
+                </methods>
+            </class>
+            <class name="tests.InteractionTests.SortableTest">
+                <methods>
+                    <include name="testNavigationAndHeaderSortablePage"></include>
+                </methods>
+            </class>
+            <class name="tests.WidgetsTest.AccordianTest">
+                <methods>
+                    <include name="testURL_AccordianPage"></include>
+                </methods>
+            </class>
+            <class name="tests.WidgetsTest.WidgetTest">
+                <methods>
+                    <include name="testURL_WidgetsPage"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

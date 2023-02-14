@@ -69,7 +69,6 @@ public abstract class BaseTest {
         return webDriverWait;
     }
 
-    // вместо void поставила возврат Homepage
     public HomePage openBaseURL() {
         TestUtils.loadBaseUrlPage(getDriver(), getWait());
 
