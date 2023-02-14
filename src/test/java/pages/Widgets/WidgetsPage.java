@@ -12,6 +12,9 @@ public class WidgetsPage extends BasePage {
     @FindBy(xpath = "//div//span[text()=\'Accordian\']")
     private WebElement accordianSubMenu;
 
+    @FindBy(xpath = "//span[text()='Auto Complete']")
+    private WebElement autoCompletePage;
+
     @FindBy(xpath = "//div[@class = 'element-list collapse show']//ul[@class = 'menu-list']//span")
     private List<WebElement> elementsList;
 
@@ -34,5 +37,12 @@ public class WidgetsPage extends BasePage {
     public int getWidgetsSubMenuAmount() {
 
         return getListSize(elementsList);
+    }
+
+    public AutoCompletePage clickAutoCompletePages() {
+        scrollByVisibleElement(autoCompletePage);
+        click(autoCompletePage);
+
+        return new AutoCompletePage(getDriver());
     }
 }
