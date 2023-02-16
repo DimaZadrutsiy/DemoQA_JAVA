@@ -5,12 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
 public class ProgressBarPage extends WidgetsPage{
 
-    @FindBy (css = "#startStopButton")
-    private WebElement startStopButton;
+    @FindBy (css = "#progressBarContainer > button")
+    private WebElement allButtons;
 
     @FindBy (css = "#progressBar > div")
     private WebElement progressBar;
@@ -23,8 +21,8 @@ public class ProgressBarPage extends WidgetsPage{
     }
 
     public ProgressBarPage clickStartStopButton() {
-        scrollByVisibleElement(startStopButton);
-        click(startStopButton);
+        scrollByVisibleElement(allButtons);
+        click(allButtons);
 
         return this;
     }
@@ -34,5 +32,15 @@ public class ProgressBarPage extends WidgetsPage{
         wait10ElementToBeVisible(resetButton);
 
         return Color.fromString(getBackgroundColor(progressBar)).asHex();
+    }
+
+    public String getNameButton() {
+        scrollByVisibleElement(allButtons);
+
+        return getText(allButtons);
+    }
+
+    public void waitElements() {
+        wait10ElementToBeVisible(resetButton);
     }
 }
