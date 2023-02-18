@@ -84,7 +84,7 @@ public class WebTablesPage extends ElementsPage{
         return this;
     }
 
-    public WebTablesPage inputEmailIntoRegistrationForm(String email) {
+    public WebTablesPage updateUserEmail(String email) {
         scrollByVisibleElement(userEmailInputField);
         inputAfterClear(userEmailInputField, email);
 
@@ -112,7 +112,7 @@ public class WebTablesPage extends ElementsPage{
         return this;
     }
 
-    public WebTablesPage clickOnSubmit() {
+    public WebTablesPage clickSubmitButton() {
         scrollByVisibleElement(submitButton);
         click(submitButton);
 
@@ -124,27 +124,27 @@ public class WebTablesPage extends ElementsPage{
        return isElementsInListContainsText(emailColumn,email);
     }
 
-    public WebTablesPage AddNewItem(String email) {
+    public WebTablesPage addNewUserWithEmail(String email) {
         clickOnAdd();
         inputFirstNameIntoRegistrationForm();
         inputLastNameIntoRegistrationForm();
-        inputEmailIntoRegistrationForm(email);
+        updateUserEmail(email);
         inputAgeIntoRegistrationForm();
         inputSalaryIntoRegistrationForm();
         inputDepartmentIntoRegistrationForm();
-        clickOnSubmit();
+        clickSubmitButton();
 
         return this;
     }
 
-    public WebTablesPage inputEmailIntoSearchField(String email) {
+    public WebTablesPage searchUserByEmail(String email) {
         scrollByVisibleElement(searchField);
         inputAfterClear(searchField, email);
 
         return this;
     }
 
-    public WebTablesPage clickOnEditButton() {
+    public WebTablesPage clickEditButton() {
         scrollByVisibleElement(editButtonOfFirstRow);
         click(editButtonOfFirstRow);
 
