@@ -33,11 +33,11 @@ public class WebTablesTest extends BaseTest {
                 .clickOnAdd()
                 .inputFirstNameIntoRegistrationForm()
                 .inputLastNameIntoRegistrationForm()
-                .inputEmailIntoRegistrationForm(email)
+                .updateUserEmail(email)
                 .inputAgeIntoRegistrationForm()
                 .inputSalaryIntoRegistrationForm()
                 .inputDepartmentIntoRegistrationForm()
-                .clickOnSubmit();
+                .clickSubmitButton();
 
         Assert.assertTrue(webTablesPage.isEmailPresentInColumn(expectedEmail));
     }
@@ -50,12 +50,12 @@ public class WebTablesTest extends BaseTest {
         WebTablesPage webTablesPage = openBaseURL()
                 .clickElementsMenu()
                 .openWebTablesPage()
-                .AddNewItem(email)
-                .inputEmailIntoSearchField(email)
-                .clickOnEditButton()
-                .inputEmailIntoRegistrationForm(newEmail)
-                .clickOnSubmit()
-                .inputEmailIntoSearchField(newEmail);
+                .addNewUserWithEmail(email)
+                .searchUserByEmail(email)
+                .clickEditButton()
+                .updateUserEmail(newEmail)
+                .clickSubmitButton()
+                .searchUserByEmail(newEmail);
 
         Assert.assertTrue(webTablesPage.isEmailPresentInColumn(newEmail));
     }
