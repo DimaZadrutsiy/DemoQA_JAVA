@@ -59,4 +59,23 @@ public class WebTablesTest extends BaseTest {
 
         Assert.assertTrue(webTablesPage.isEmailPresentInColumn(newEmail));
     }
+
+    @Test()
+    public void test_DeleteUser() {
+        final String email = "webolejuko@mailinator.com";
+        final String newEmail = "tahasoh@mailinator.com";
+
+        WebTablesPage webTablesPage = openBaseURL()
+                .clickElementsMenu()
+                .openWebTablesPage()
+                .addNewUserWithEmail(email)
+                .searchUserByEmail(email)
+                .clickEditButton()
+                .updateUserEmail(newEmail)
+                .clickSubmitButton()
+                .searchUserByEmail(newEmail)
+                .clickDeleteButton();
+
+        Assert.assertFalse(webTablesPage.isTableContainsText(newEmail));
+    }
 }

@@ -46,6 +46,12 @@ public class WebTablesPage extends ElementsPage{
     @FindBy(xpath = "//span[@title = 'Edit']")
     private WebElement editButtonOfFirstRow;
 
+    @FindBy(css = ".rt-td")
+    private List<WebElement> tableCells;
+
+    @FindBy(xpath = "//span[@title = 'Delete']")
+    private WebElement deleteButtonOfFirstRow;
+
     public WebTablesPage(WebDriver driver) {
         super(driver);
     }
@@ -149,5 +155,17 @@ public class WebTablesPage extends ElementsPage{
         click(editButtonOfFirstRow);
 
         return this;
+    }
+
+    public WebTablesPage clickDeleteButton() {
+        scrollByVisibleElement(deleteButtonOfFirstRow);
+        click(deleteButtonOfFirstRow);
+
+        return this;
+    }
+
+    public boolean isTableContainsText(String str) {
+
+       return isElementsInListContainsText(tableCells, str);
     }
  }
