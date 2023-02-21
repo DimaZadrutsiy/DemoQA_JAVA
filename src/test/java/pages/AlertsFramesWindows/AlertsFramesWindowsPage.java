@@ -51,6 +51,7 @@ public class AlertsFramesWindowsPage extends BasePage {
     }
 
     public ModalDialogsPage selectModalDialogSubMenu() {
+        scrollByVisibleElement(modalDialogsSubMenu);
         click(modalDialogsSubMenu);
 
         return new ModalDialogsPage(getDriver());

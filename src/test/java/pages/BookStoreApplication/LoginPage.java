@@ -37,23 +37,28 @@ public class LoginPage extends BookStorePage {
         return new LoginPage(getDriver());
     }
 
-    /*
-    при логине с невалидными данными мы остаемся на LoginPage
-    при логине с валидными данными мы переходим или на ProfilePage или на BookStorePage
-    и мне не нравится этот метод, если что :)
-     */
-    public  <T extends BookStorePage>T clickLoginButton() {
-        click(loginButton);
+    public <T extends BookStorePage> T clickLoginButton() {
 
-        if (getCurrentURL().equals("https://demoqa.com/login")) {
+        try {
+            click(loginButton);
 
-            return (T) new LoginPage(getDriver());
-        } else if (getCurrentURL().equals("https://demoqa.com/profile")){
+            String currentUrl = getCurrentURL();
 
-            return (T) new ProfilePage(getDriver());
-        }  else
+            if (currentUrl.equals("https://demoqa.com/login")) {
 
-            return (T) new BookStorePage(getDriver());
+                return (T) new LoginPage(getDriver());
+            } else if (currentUrl.equals("https://demoqa.com/profile")) {
+
+                return (T) new ProfilePage(getDriver());
+            } else {
+
+                return (T) new BookStorePage(getDriver());
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+
+            return null;
+        }
     }
 
     public RegisterNewUserPage clickNewUserButton() {
