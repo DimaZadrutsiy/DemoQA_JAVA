@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class ModalDialogsTest extends BaseTest {
 
     @Test
-    public void checkSmallModalDialogBoxText() {
+    public void testCheckSmallModalDialogBoxText() {
         final String expectedText = "This is a small modal. It has very less content";
 
         String actualText = openBaseURL()
