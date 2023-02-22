@@ -4,11 +4,17 @@ package tests.BookStoreApplicationTest;
 import api.ApiHelpers;
 import base.BaseTest;
 
+import static io.restassured.RestAssured.*;
+import io.restassured.response.Response;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matcher.*;
+import jdk.jfr.ContentType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.ProjectConstants;
 
 import java.io.IOException;
 import java.net.URI;
@@ -17,6 +23,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 
 public class BookStoreAPITest extends BaseTest {
@@ -98,5 +107,26 @@ public class BookStoreAPITest extends BaseTest {
         String actualTitleOfAllBooks = ApiHelpers.getFormattedResult(listTitleOfAllBooks);
 
         Assert.assertEquals(actualTitleOfAllBooks, expectedTitleOfAllBooks);
+    }
+
+    @Test
+    public void testCheckGetBooksAPIRequest() {
+
+        final String basePathAPIBooks = "/BookStore/v1/Books";
+        final String expectedISBN = "9781449325862";
+        final String expectedTitle = "Git Pocket Guide";
+        final String expectedAuthor = "Richard E. Silverman";
+
+        given()
+                .baseUri(ProjectConstants.BASE_URL)
+                .basePath(basePathAPIBooks)
+        .when()
+                .get()
+        .then()
+                .statusCode(200)
+                .and()
+                .body("books.isbn[0]", equalTo(expectedISBN))
+                .body("books.title[0]", equalTo(expectedTitle))
+                .body("books.author[0]", equalTo(expectedAuthor));
     }
 }
