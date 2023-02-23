@@ -1,10 +1,12 @@
 package pages.BookStoreApplication;
 
+import api.model.Book;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
+import java.util.Date;
 import java.util.List;
 
 public class BookStorePage extends BasePage {
@@ -21,7 +23,7 @@ public class BookStorePage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Type to search']")
     private WebElement placeholderSearchField;
 
-    @FindBy(xpath = "//span[@class='mr-2']/a")
+    @FindBy(xpath = "//div[@class='action-buttons']")
     private List<WebElement> booksList;
 
     @FindBy(xpath = "//ul[@class='menu-list']/li[@class='btn btn-light active']/../li")
@@ -38,6 +40,15 @@ public class BookStorePage extends BasePage {
 
     @FindBy(xpath = "//a[contains(@href,'/books?book=9781449325862')]")
     private WebElement gitPocketGuideBook;
+
+    @FindBy(xpath = "//div[@id='ISBN-wrapper']//label[@id ='userName-value']")
+    private WebElement isbnValue;
+
+    @FindBy(xpath = "//div[@id='title-wrapper']//label[@id ='userName-value']")
+    private WebElement titleValue;
+
+    @FindBy(xpath = "//div[@id='author-wrapper']//label[@id ='userName-value']")
+    private WebElement authorValue;
 
     public BookStorePage(WebDriver driver) {
         super(driver);
@@ -122,5 +133,21 @@ public class BookStorePage extends BasePage {
         click(profileSubMenu);
 
         return new ProfilePage(getDriver());
+    }
+
+    public BookStorePage selectBook(int bookIndexInList) {
+        WebElement element = booksList.get(bookIndexInList);
+        wait20ElementToBeClickable(element);
+        click(element);
+
+        return new BookStorePage(getDriver());
+    }
+
+    public Book getPartialBookInfo() {
+        String isbn = isbnValue.getText();
+        String title = titleValue.getText();
+        String author = authorValue.getText();
+
+        return new Book(isbn, title, author);
     }
 }
