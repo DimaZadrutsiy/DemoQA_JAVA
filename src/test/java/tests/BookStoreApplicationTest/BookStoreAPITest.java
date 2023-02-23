@@ -2,13 +2,9 @@ package tests.BookStoreApplicationTest;
 
 
 import api.ApiHelpers;
+import api.model.Book;
 import base.BaseTest;
 
-import static io.restassured.RestAssured.*;
-import io.restassured.response.Response;
-import static io.restassured.matcher.RestAssuredMatchers.*;
-import static org.hamcrest.Matcher.*;
-import jdk.jfr.ContentType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -128,5 +124,30 @@ public class BookStoreAPITest extends BaseTest {
                 .body("books.isbn[0]", equalTo(expectedISBN))
                 .body("books.title[0]", equalTo(expectedTitle))
                 .body("books.author[0]", equalTo(expectedAuthor));
+    }
+
+    @Test
+    public void testCheckGetBooksAPIRequestV2() {
+        //index of a book in a list on the Book Store Page and also index in json.file with all books
+        final int index = 3;
+        final String basePathAPIBooks = "/BookStore/v1/Books";
+
+        Book book = openBaseURL()
+                .clickBookStoreApplicationMenu()
+                .clickBookStoreApplicationSubMenu()
+                .selectBook(index)
+                .getPartialBookInfo();
+
+        given()
+                .baseUri(ProjectConstants.BASE_URL)
+                .basePath(basePathAPIBooks)
+        .when()
+                .get()
+        .then()
+                .statusCode(200)
+                .and()
+                .body("books.isbn[" + index + "]", equalTo(book.isbn))
+                .body("books.title[" + index + "]", equalTo(book.title))
+                .body("books.author[" + index + "]", equalTo(book.author));
     }
 }
