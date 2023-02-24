@@ -1,6 +1,5 @@
 package tests.BookStoreApplicationTest;
 
-
 import api.ApiHelpers;
 import api.model.Book;
 import base.BaseTest;
@@ -96,7 +95,7 @@ public class BookStoreAPITest extends BaseTest {
                     .concat(", "));
         }
         String expectedTitleOfAllBooks = titleOfAllBooks.toString().trim();
-        expectedTitleOfAllBooks = expectedTitleOfAllBooks.substring(0,expectedTitleOfAllBooks.length()-1);
+        expectedTitleOfAllBooks = expectedTitleOfAllBooks.substring(0, expectedTitleOfAllBooks.length() - 1);
 
         List<String> listTitleOfAllBooks = openBaseURL()
                 .clickBookStoreApplicationMenu()
@@ -107,15 +106,15 @@ public class BookStoreAPITest extends BaseTest {
         Assert.assertEquals(actualTitleOfAllBooks, expectedTitleOfAllBooks);
     }
 
-    @Test (dataProviderClass = TestData.class, dataProvider = "AllBooksList")
+    @Test(dataProviderClass = TestData.class, dataProvider = "AllBooksList")
     public void testCheckGetBooksAPIRequest(int index,
                                             String expectedISBN, String expectedTitle, String expectedAuthor) {
 
         given()
                 .baseUri(BASE_URI_API_BOOKS)
-        .when()
+                .when()
                 .get()
-        .then()
+                .then()
                 .statusCode(200)
                 .and()
                 .body("books.isbn[" + index + "]", equalTo(expectedISBN))
@@ -136,9 +135,9 @@ public class BookStoreAPITest extends BaseTest {
 
         given()
                 .baseUri(BASE_URI_API_BOOKS)
-        .when()
+                .when()
                 .get()
-        .then()
+                .then()
                 .statusCode(200)
                 .and()
                 .body("books.isbn[" + index + "]", equalTo(book.isbn))
