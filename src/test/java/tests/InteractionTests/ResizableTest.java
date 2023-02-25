@@ -33,9 +33,9 @@ public class ResizableTest extends BaseTest {
 
         Actions resize = new Actions(getDriver());
 
-        resize.dragAndDropBy(resizablePage.getResizableBox(), 300, 100).perform();
+        resize.dragAndDropBy(resizablePage.getResizableBox(), 200, 100).perform();
         Point pointMiddle = resizablePage.getResizableBox().getLocation();
-        resize.dragAndDropBy(resizablePage.getResizableBox(), -300, -100).perform();
+        resize.dragAndDropBy(resizablePage.getResizableBox(), -200, -100).perform();
         Point pointFinish = resizablePage.getResizableBox().getLocation();
 
         Assert.assertNotEquals(pointFinish, pointMiddle);
@@ -54,9 +54,9 @@ public class ResizableTest extends BaseTest {
         Actions resize = new Actions(getDriver());
 
         resize.dragAndDropBy(resizablePage.getResizablePlain(), 500, 0)
-                .dragAndDropBy(resizablePage.getResizablePlain(), 0, 200)
+                .dragAndDropBy(resizablePage.getResizablePlain(), 0, 100)
                 .dragAndDropBy(resizablePage.getResizablePlain(), -500, 0)
-                .dragAndDropBy(resizablePage.getResizablePlain(), 0, -200).perform();
+                .dragAndDropBy(resizablePage.getResizablePlain(), 0, -100).perform();
 
         Point pointFinish = resizablePage.getResizablePlain().getLocation();
 
