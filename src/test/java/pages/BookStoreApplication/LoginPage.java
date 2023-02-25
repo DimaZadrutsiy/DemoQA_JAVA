@@ -25,13 +25,28 @@ public class LoginPage extends BookStorePage {
         super(driver);
     }
 
-    public LoginPage inputUserName(String userName) {
-        input(userName, userNameField);
+    public LoginPage inputUserName() {
+        scrollByVisibleElement(userNameField);
+        inputAfterClear(userNameField, properties.getProperty("username"));
 
-        return new LoginPage(getDriver());
+        return this;
     }
 
-    public LoginPage inputPassword(String password) {
+    public LoginPage inputCustomUserName(String username) {
+        scrollByVisibleElement(userNameField);
+        inputAfterClear(userNameField, username);
+
+        return this;
+    }
+
+    public LoginPage inputPassword() {
+        scrollByVisibleElement(passwordField);
+        inputAfterClear(passwordField, properties.getProperty("password"));
+
+        return this;
+    }
+
+    public LoginPage inputCustomPassword(String password) {
         input(password, passwordField);
 
         return new LoginPage(getDriver());
@@ -75,11 +90,11 @@ public class LoginPage extends BookStorePage {
     }
 
     // sign in returns different pages - BookStorePage or ProfilePage
-    public ProfilePage signInAsRegularUser(String userName, String password) {
+    public ProfilePage signInAsRegularUser() {
         isElementDisplayed(userNameField);
-        inputUserName(userName);
+        inputUserName();
         isElementDisplayed(passwordField);
-        inputPassword(password);
+        inputPassword();
         clickLoginButton();
 
         return new ProfilePage(getDriver());
