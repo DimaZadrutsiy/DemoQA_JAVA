@@ -2,9 +2,9 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pages.Elements.WebTablesPage;
-
 
 public class WebTablesTest extends BaseTest {
 
@@ -77,5 +77,20 @@ public class WebTablesTest extends BaseTest {
                 .clickDeleteButton();
 
         Assert.assertFalse(webTablesPage.isTableContainsText(newEmail));
+    }
+
+    @Test()
+    public void test_CheckAddingPlus7NewUsers() {
+        final int expectedUsersPresented = 10;
+
+        WebTablesPage webTablesPage = openBaseURL()
+                .clickElementsMenu()
+                .openWebTablesPage()
+                .addNew7UsersWithEmail();
+
+        Reporter.log("Result = " + webTablesPage.getAmountOfEmailsInTheTable(), true);
+
+        Assert.assertFalse(getWebTablesPage().isAnyEmailEmpty());
+        Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(),expectedUsersPresented);
     }
 }

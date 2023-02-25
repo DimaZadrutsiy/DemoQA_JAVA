@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.ProjectConstants;
+import utils.TestUtils;
 
 import java.util.List;
 
@@ -168,4 +169,27 @@ public class WebTablesPage extends ElementsPage{
 
        return isElementsInListContainsText(tableCells, str);
     }
+
+    public WebTablesPage addNew7UsersWithEmail(){
+        addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
+        addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
+        addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
+        addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
+        addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
+        addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
+        addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
+
+        return this;
+    }
+
+    public int getAmountOfEmailsInTheTable() {
+
+           return getListSize(emailColumn);
+    }
+
+    public boolean isAnyEmailEmpty() {
+
+        return isElementEmpty(emailColumn);
+    }
+
  }
