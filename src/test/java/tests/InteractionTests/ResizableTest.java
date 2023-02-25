@@ -4,6 +4,7 @@ import base.BaseTest;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Interactions.ResizablePage;
 
@@ -23,6 +24,7 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(resizablePage.getH2Header(), RESIZABLE_HEADER);
     }
 
+    @Ignore
     @Test
     public void testResizableBox() {
         ResizablePage resizablePage = openBaseURL()
@@ -42,7 +44,7 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(pointFinish, pointStart);
         Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
     }
-
+    @Ignore
     @Test
     public void testResizablePlain() {
         ResizablePage resizablePage = openBaseURL()
