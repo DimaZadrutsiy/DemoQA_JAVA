@@ -2,9 +2,7 @@ package tests.BookStoreApplicationTest;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-import pages.BasePage;
 
 public class LoginTest extends BaseTest {
 
@@ -19,8 +17,8 @@ public class LoginTest extends BaseTest {
         openBaseURL()
                 .clickBookStoreApplicationMenu()
                 .clickLoginButtonBookStorePage()
-                .inputUserName(userName)
-                .inputPassword(password)
+                .inputCustomUserName(userName)
+                .inputCustomPassword(password)
                 .clickLoginButton();
 
         String actualErrorMessage = getLoginPage().getErrorMessage();
@@ -36,16 +34,14 @@ public class LoginTest extends BaseTest {
       */
     @Test
     public void testLoginValidData() {
-        String userName = "TesterUserName";
-        String password = "Tester_1234!";
 
         final String expectedUserNameValue = "TesterUserName";
 
         openBaseURL()
                 .clickBookStoreApplicationMenu()
                 .clickLoginButtonBookStorePage()
-                .inputUserName(userName)
-                .inputPassword(password)
+                .inputUserName()
+                .inputPassword()
                 .clickLoginButton();
 
         String actualUserNameValue = getProfilePage()
