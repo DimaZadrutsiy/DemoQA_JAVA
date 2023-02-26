@@ -15,6 +15,7 @@ import pages.BookStoreApplication.LoginPage;
 import pages.BookStoreApplication.ProfilePage;
 import pages.Elements.CheckBoxPage;
 import pages.Elements.ElementsPage;
+import pages.Elements.WebTablesPage;
 import pages.Forms.FormsPage;
 import pages.Interactions.InteractionsPage;
 import pages.Widgets.WidgetsPage;
@@ -172,6 +173,11 @@ public abstract class BaseTest {
     public ProfilePage getProfilePage() {
 
         return new ProfilePage(getDriver());
+    }
+
+    public WebTablesPage getWebTablesPage() {
+
+        return new WebTablesPage(getDriver());
     }
 
     // нужно пересмотреть все методы ниже и удалить ненужные

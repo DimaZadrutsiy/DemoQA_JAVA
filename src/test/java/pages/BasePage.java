@@ -451,5 +451,14 @@ public abstract class BasePage {
         }
         return salt.toString();
     }
+
+    protected boolean isElementEmpty(List<WebElement> list) {
+        for (WebElement element : list) {
+            if (element.getText().trim().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 

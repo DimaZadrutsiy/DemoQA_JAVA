@@ -41,7 +41,7 @@ public class BookStorePage extends BasePage {
     @FindBy(xpath = "//a[contains(@href,'/books?book=9781449325862')]")
     private WebElement gitPocketGuideBook;
 
-    @FindBy(xpath = "//div[@id='ISBN-wrapper']//label[@id ='userName-value']")
+    @FindBy(css = "[id='ISBN-wrapper']")
     private WebElement isbnValue;
 
     @FindBy(xpath = "//div[@id='title-wrapper']//label[@id ='userName-value']")

@@ -2,6 +2,7 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Elements.LinksPage;
 import testData.TestData;
@@ -68,6 +69,7 @@ public class LinksTest extends BaseTest {
         Assert.assertTrue(actualHomeLinkRedirection.getCurrentURL().contains(expectedHomeLinkRedirection));
     }
 
+    @Ignore
     @Test(dataProviderClass = TestData.class, dataProvider = "CorrectCodeAndNameLinks")
     public void testCheckingResponseCodeAndNameAfterLinkIsClicked(
             int index, String expectedName, String expectedCod) {

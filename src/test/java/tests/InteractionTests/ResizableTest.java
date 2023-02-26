@@ -65,4 +65,5 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(pointFinish, pointStart);
         Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
     }
+
 }
