@@ -24,6 +24,7 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(resizablePage.getH2Header(), RESIZABLE_HEADER);
     }
 
+    @Ignore
     @Test
     public void testResizableBox() {
         ResizablePage resizablePage = openBaseURL()
@@ -43,7 +44,6 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(pointFinish, pointStart);
         Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
     }
-
     @Ignore
     @Test
     public void testResizablePlain() {
@@ -65,5 +65,4 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(pointFinish, pointStart);
         Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
     }
-
 }

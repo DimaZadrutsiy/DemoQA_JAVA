@@ -8,8 +8,7 @@ public class ProfileTest extends BaseTest {
 
     @Test
     public void testAddingBookToUserCollection() {
-        final String userName = "TesterUserName";
-        final String password = "Tester_1234!";
+
         final int expectedBooksListSize = 1;
         final String expectedBookName = "Git Pocket Guide";
 
@@ -17,7 +16,7 @@ public class ProfileTest extends BaseTest {
                 .clickBookStoreApplicationMenu()
                 .clickProfileSubMenu()
                 .clickLoginLink()
-                .signInAsRegularUser(userName,password)
+                .signInAsRegularUser()
                 .clickDeleteAllBooksButtonIfCollectionIsNotEmpty()
                 .clickGoToStoreButton()
                 .selectGitPocketGuideBook()

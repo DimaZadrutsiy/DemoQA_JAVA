@@ -13,6 +13,12 @@ public class ModalDialogsPage extends AlertsFramesWindowsPage {
     @FindBy(xpath = "//div[@class='modal-body']")
     WebElement smallModalDialogBody;
 
+    @FindBy(xpath = "//button[@id='showLargeModal']")
+    WebElement largeModalButton;
+
+    @FindBy(xpath = "//div[@class='modal-body']")
+    WebElement largeModalDialogBody;
+
     public ModalDialogsPage(WebDriver driver) {
         super(driver);
     }
@@ -31,5 +37,21 @@ public class ModalDialogsPage extends AlertsFramesWindowsPage {
         getWait20().until(ExpectedConditions.visibilityOf(smallModalDialogBody));
 
         return smallModalDialogBody.getText();
+    }
+
+    public ModalDialogsPage clickLargeModalButton() {
+        if(largeModalButton.isEnabled() && largeModalButton.isDisplayed()) {
+            click(largeModalButton);
+
+            return new ModalDialogsPage(getDriver());
+        } else
+
+            return null;
+    }
+
+    public String getLargeModalBoxText() {
+        getWait20().until(ExpectedConditions.visibilityOf(largeModalDialogBody));
+
+        return largeModalDialogBody.getText();
     }
 }
