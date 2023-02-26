@@ -44,6 +44,10 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(pointFinish, pointStart);
         Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
     }
+<<<<<<<<< Temporary merge branch 1
+=========
+
+>>>>>>>>> Temporary merge branch 2
     @Ignore
     @Test
     public void testResizablePlain() {
@@ -65,4 +69,5 @@ public class ResizableTest extends BaseTest {
         Assert.assertEquals(pointFinish, pointStart);
         Assert.assertEquals(resizablePage.getCurrentURL(), RESIZABLE_URL);
     }
+
 }
