@@ -2,6 +2,7 @@ package tests.BookStoreApplicationTest;
 
 
 import api.ApiHelpers;
+import api.model.Book;
 import base.BaseTest;
 
 import org.json.JSONArray;
@@ -9,6 +10,8 @@ import org.json.JSONObject;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import testData.TestData;
+import utils.ProjectConstants;
 
 import java.io.IOException;
 import java.net.URI;
@@ -18,10 +21,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
 
 public class BookStoreAPITest extends BaseTest {
 
     static HttpResponse<String> response;
+    final static String BASE_URI_API_BOOKS = ProjectConstants.BASE_URL + "BookStore/v1/Books";
 
     @Test
     public void test_API_HttpRequestResponse_IsbnNumber_BookDesigning_Evolvable_Web_APIs_With_ASP_NET() {
@@ -98,5 +105,44 @@ public class BookStoreAPITest extends BaseTest {
         String actualTitleOfAllBooks = ApiHelpers.getFormattedResult(listTitleOfAllBooks);
 
         Assert.assertEquals(actualTitleOfAllBooks, expectedTitleOfAllBooks);
+    }
+
+    @Test (dataProviderClass = TestData.class, dataProvider = "AllBooksList")
+    public void testCheckGetBooksAPIRequest(int index,
+                                            String expectedISBN, String expectedTitle, String expectedAuthor) {
+
+        given()
+                .baseUri(BASE_URI_API_BOOKS)
+        .when()
+                .get()
+        .then()
+                .statusCode(200)
+                .and()
+                .body("books.isbn[" + index + "]", equalTo(expectedISBN))
+                .body("books.title[" + index + "]", equalTo(expectedTitle))
+                .body("books.author[" + index + "]", equalTo(expectedAuthor));
+    }
+
+    @Test
+    public void testCheckGetBooksAPIRequestV2() {
+        //index of a book in a list on the Book Store Page and also index in json.file with all books
+        final int index = 3;
+
+        Book book = openBaseURL()
+                .clickBookStoreApplicationMenu()
+                .clickBookStoreApplicationSubMenu()
+                .selectBook(index)
+                .getPartialBookInfo();
+
+        given()
+                .baseUri(BASE_URI_API_BOOKS)
+        .when()
+                .get()
+        .then()
+                .statusCode(200)
+                .and()
+                .body("books.isbn[" + index + "]", equalTo(book.isbn))
+                .body("books.title[" + index + "]", equalTo(book.title))
+                .body("books.author[" + index + "]", equalTo(book.author));
     }
 }

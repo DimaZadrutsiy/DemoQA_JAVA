@@ -106,4 +106,18 @@ public class TestData {
                 {6, "Not Found", "404"}
         };
     }
+
+    @DataProvider(name="AllBooksList")
+    public static Object[][] allBooksList(){
+        return new Object[][]{
+            {0,"9781449325862","Git Pocket Guide","Richard E. Silverman",},
+            {1,"9781449331818","Learning JavaScript Design Patterns","Addy Osmani"},
+            {2,"9781449337711","Designing Evolvable Web APIs with ASP.NET","Glenn Block et al."},
+            {3,"9781449365035","Speaking JavaScript", "Axel Rauschmayer"},
+            {4,"9781491904244","You Don't Know JS","Kyle Simpson"},
+            {5,"9781491950296","Programming JavaScript Applications","Eric Elliott"},
+            {6,"9781593275846","Eloquent JavaScript, Second Edition","Marijn Haverbeke"},
+            {7,"9781593277574","Understanding ECMAScript 6","Nicholas C. Zakas"}
+        };
+    }
 }

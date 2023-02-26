@@ -26,6 +26,12 @@ public class Book{
         this.website = website;
     }
 
+    public Book(String isbn, String title, String author) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+    }
+
     public String getIsbn() {
         return isbn;
     }

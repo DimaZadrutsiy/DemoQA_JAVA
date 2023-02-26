@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import service.ConfProperties;
+import service.LoggingConfProperties;
 
 import java.time.Duration;
 import java.util.*;
@@ -17,9 +19,11 @@ public abstract class BasePage {
     private WebDriverWait webDriverWait20;
     private WebDriverWait webDriverWait10;
     private Actions actions;
+    protected ConfProperties properties;
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
+        this.properties = new LoggingConfProperties(new ConfProperties());
         PageFactory.initElements(driver, this);
     }
 
