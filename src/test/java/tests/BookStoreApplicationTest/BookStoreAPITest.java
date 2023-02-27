@@ -151,17 +151,19 @@ public class BookStoreAPITest extends BaseTest {
     public void testFindBookByIsbnAPIRequest() {
         String isbn = "9781449331818";
         String endPoint = "https://demoqa.com/BookStore/v1/Book?ISBN="+ isbn;
-                given().
-                        get(endPoint).
+        given().
+                when().
+                    get(endPoint).
                 then().
-                        assertThat().
-                            statusCode(200).
-                            header("Content-Type", equalTo("application/json; charset=utf-8")).
-                            body("isbn", equalTo("9781449331818")).
-                            body("title", equalTo( "Learning JavaScript Design Patterns")).
-                            body("subTitle", equalTo("A JavaScript and jQuery Developer's Guide")).
-                            body("author", equalTo("Addy Osmani")).
-                            body("publisher", equalTo("O'Reilly Media"));
+                    assertThat().
+                        statusCode(200).
+                        contentType("application/json; charset=utf-8").
+                        body("isbn", equalTo("9781449331818")).
+                        body("title", equalTo( "Learning JavaScript Design Patterns")).
+                        body("subTitle", equalTo("A JavaScript and jQuery Developer's Guide")).
+                        body("author", equalTo("Addy Osmani")).
+                        body("publisher", equalTo("O'Reilly Media"));
     }
 }
+
 
