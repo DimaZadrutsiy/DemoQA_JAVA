@@ -5,6 +5,7 @@ import api.ApiHelpers;
 import api.model.Book;
 import base.BaseTest;
 
+import io.restassured.response.ValidatableResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -145,4 +146,22 @@ public class BookStoreAPITest extends BaseTest {
                 .body("books.title[" + index + "]", equalTo(book.title))
                 .body("books.author[" + index + "]", equalTo(book.author));
     }
+
+    @Test
+    public void testFindBookByIsbnAPIRequest() {
+        String isbn = "9781449331818";
+        String endPoint = "https://demoqa.com/BookStore/v1/Book?ISBN="+ isbn;
+                given().
+                        get(endPoint).
+                then().
+                        assertThat().
+                            statusCode(200).
+                            header("Content-Type", equalTo("application/json; charset=utf-8")).
+                            body("isbn", equalTo("9781449331818")).
+                            body("title", equalTo( "Learning JavaScript Design Patterns")).
+                            body("subTitle", equalTo("A JavaScript and jQuery Developer's Guide")).
+                            body("author", equalTo("Addy Osmani")).
+                            body("publisher", equalTo("O'Reilly Media"));
+    }
 }
+
