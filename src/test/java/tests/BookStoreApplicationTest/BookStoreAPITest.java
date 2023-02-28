@@ -22,6 +22,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -153,17 +154,18 @@ public class BookStoreAPITest extends BaseTest {
         String isbn = "9781449331818";
         String endPoint = "https://demoqa.com/BookStore/v1/Book?ISBN="+ isbn;
         given().
-                when().
-                    get(endPoint).
-                then().
-                    assertThat().
-                        statusCode(200).
-                        contentType("application/json; charset=utf-8").
-                        body("isbn", equalTo("9781449331818")).
-                        body("title", equalTo( "Learning JavaScript Design Patterns")).
-                        body("subTitle", equalTo("A JavaScript and jQuery Developer's Guide")).
-                        body("author", equalTo("Addy Osmani")).
-                        body("publisher", equalTo("O'Reilly Media"));
+                queryParams(Map.of("isbn", isbn)).
+        when().
+                get(endPoint).
+        then().
+                assertThat().
+                statusCode(200).
+                     contentType("application/json; charset=utf-8").
+                     body("isbn", equalTo("9781449331818")).
+                     body("title", equalTo( "Learning JavaScript Design Patterns")).
+                     body("subTitle", equalTo("A JavaScript and jQuery Developer's Guide")).
+                     body("author", equalTo("Addy Osmani")).
+                     body("publisher", equalTo("O'Reilly Media"));
     }
 }
 
