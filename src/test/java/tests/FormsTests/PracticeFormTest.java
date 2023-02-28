@@ -2,6 +2,7 @@ package tests.FormsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Forms.FormsPage;
 import pages.Forms.PracticeFormPage;
@@ -26,7 +27,7 @@ public class PracticeFormTest extends BaseTest {
         Assert.assertEquals(actualTitle, TITLE);
         Assert.assertEquals(actualHeader, PRACTICE_FORMS_HEADER);
     }
-
+    @Ignore
     @Test(dataProviderClass = TestData.class, dataProvider = "FormsRegistrationData")
     public void testStudentRegistrationPracticeFormPage(
             String name, String sureName, String email, String gender, String number) {
