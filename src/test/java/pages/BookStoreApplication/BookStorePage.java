@@ -4,6 +4,8 @@ import api.model.Book;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.BasePage;
 
 import java.util.Date;
@@ -41,7 +43,7 @@ public class BookStorePage extends BasePage {
     @FindBy(xpath = "//a[contains(@href,'/books?book=9781449325862')]")
     private WebElement gitPocketGuideBook;
 
-    @FindBy(css = "[id='ISBN-wrapper']")
+    @FindBy(xpath = "//div[@id ='ISBN-wrapper']//label[@id='userName-value']")
     private WebElement isbnValue;
 
     @FindBy(xpath = "//div[@id='title-wrapper']//label[@id ='userName-value']")
@@ -49,6 +51,9 @@ public class BookStorePage extends BasePage {
 
     @FindBy(xpath = "//div[@id='author-wrapper']//label[@id ='userName-value']")
     private WebElement authorValue;
+
+    @FindBy(xpath = "//label[@id ='userName-value']")
+    List<WebElement> bookValues;
 
     public BookStorePage(WebDriver driver) {
         super(driver);
@@ -144,6 +149,8 @@ public class BookStorePage extends BasePage {
     }
 
     public Book getPartialBookInfo() {
+        getWait20().until(ExpectedConditions.visibilityOfAllElements(bookValues));
+
         String isbn = isbnValue.getText();
         String title = titleValue.getText();
         String author = authorValue.getText();
