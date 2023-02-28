@@ -124,7 +124,6 @@ public class BookStoreAPITest extends BaseTest {
                 .body("books.author[" + index + "]", equalTo(expectedAuthor));
     }
 
-    @Ignore
     @Test
     public void testCheckGetBooksAPIRequestV2() {
         //index of a book in a list on the Book Store Page and also index in json.file with all books
