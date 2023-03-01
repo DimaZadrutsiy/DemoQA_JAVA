@@ -5,6 +5,7 @@ import api.ApiHelpers;
 import api.model.Book;
 import base.BaseTest;
 
+import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,7 +22,9 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -153,17 +156,37 @@ public class BookStoreAPITest extends BaseTest {
         String isbn = "9781449331818";
         String endPoint = "https://demoqa.com/BookStore/v1/Book?ISBN="+ isbn;
         given().
-                when().
-                    get(endPoint).
-                then().
-                    assertThat().
-                        statusCode(200).
-                        contentType("application/json; charset=utf-8").
-                        body("isbn", equalTo("9781449331818")).
-                        body("title", equalTo( "Learning JavaScript Design Patterns")).
-                        body("subTitle", equalTo("A JavaScript and jQuery Developer's Guide")).
-                        body("author", equalTo("Addy Osmani")).
-                        body("publisher", equalTo("O'Reilly Media"));
+                queryParams(Map.of("isbn", isbn)).
+        when().
+                get(endPoint).
+        then().
+                assertThat().
+                statusCode(200).
+                     contentType("application/json; charset=utf-8").
+                     body("isbn", equalTo("9781449331818")).
+                     body("title", equalTo( "Learning JavaScript Design Patterns")).
+                     body("subTitle", equalTo("A JavaScript and jQuery Developer's Guide")).
+                     body("author", equalTo("Addy Osmani")).
+                     body("publisher", equalTo("O'Reilly Media"));
+    }
+
+    @Test
+    public void testCreateUserApiRequestResponse() {
+        RestAssured.baseURI = "https://demoqa.com";
+
+        String userName = "TestUser1";
+        String password = "Test_pass@1234567";
+
+        given().
+                contentType("application/json").
+                body(Map.of("userName", userName,"password", password)).
+        when().
+                post("/Account/v1/User").
+        then().
+                assertThat().
+                statusCode(406).
+                body("code", equalTo("1204")).
+                body("message", equalTo("User exists!"));
     }
 }
 
