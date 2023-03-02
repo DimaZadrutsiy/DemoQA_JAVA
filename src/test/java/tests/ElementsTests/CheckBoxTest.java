@@ -2,10 +2,10 @@ package tests.ElementsTests;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Elements.CheckBoxPage;
 import pages.Elements.ElementsPage;
+import tests.retrytest.Retry;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,8 +44,7 @@ public class CheckBoxTest extends BaseTest {
         Assert.assertEquals(actualSelectedCheckboxes, expectedSelectedCheckboxes);
     }
 
-    @Ignore
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void test_ExpandListWithAllCheckBoxes() {
         final List<String> expectedTitleOfCheckboxes = Arrays.asList(
                 "Home", "Desktop", "Notes", "Commands", "Documents", "WorkSpace", "React",
