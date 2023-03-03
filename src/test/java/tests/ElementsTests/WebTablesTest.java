@@ -6,6 +6,9 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pages.Elements.WebTablesPage;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class WebTablesTest extends BaseTest {
 
     @Test(priority = 1)
@@ -92,5 +95,24 @@ public class WebTablesTest extends BaseTest {
 
         Assert.assertFalse(getWebTablesPage().isAnyEmailEmpty());
         Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(),expectedUsersPresented);
+    }
+    @Test()
+    public void testTablePresentOnly5Rows() {
+        final int EXPECTED_ROWS = 5;
+        final List<Integer> NOT_EXPECTED_ROWS = Arrays.asList(10, 20, 25, 50, 100);
+
+
+        WebTablesPage webTablesPage = openBaseURL()
+                .clickElementsMenu()
+                .openWebTablesPage()
+                .select5Rows(String.valueOf(EXPECTED_ROWS));
+
+        Reporter.log("Amount of emails = " + webTablesPage.getAmountOfEmailsInTheTable(), true);
+
+        Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(), EXPECTED_ROWS);
+
+        for (int notExpectedRow : NOT_EXPECTED_ROWS) {
+            Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), notExpectedRow);
+        }
     }
 }

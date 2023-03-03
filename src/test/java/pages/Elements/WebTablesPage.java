@@ -53,6 +53,9 @@ public class WebTablesPage extends ElementsPage{
     @FindBy(xpath = "//span[@title = 'Delete']")
     private WebElement deleteButtonOfFirstRow;
 
+    @FindBy(css = "select[aria-label]")
+    private WebElement rows;
+
     public WebTablesPage(WebDriver driver) {
         super(driver);
     }
@@ -190,6 +193,12 @@ public class WebTablesPage extends ElementsPage{
     public boolean isAnyEmailEmpty() {
 
         return isElementEmpty(emailColumn);
+    }
+
+    public WebTablesPage select5Rows(String str) {
+        selectOption(rows,str);
+
+        return this;
     }
 
  }
