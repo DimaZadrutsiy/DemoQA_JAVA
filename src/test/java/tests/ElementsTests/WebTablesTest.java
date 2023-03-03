@@ -105,15 +105,13 @@ public class WebTablesTest extends BaseTest {
         final int expectedRows25 = 25;
         final int expectedRows50 = 50;
         final int expectedRows100 = 100;
-//        final List<Integer> NOT_EXPECTED_ROWS = Arrays.asList(10, 20, 25, 50, 100);
-
 
         WebTablesPage webTablesPage = openBaseURL()
                 .clickElementsMenu()
                 .openWebTablesPage()
                 .select5Rows(String.valueOf(expectedRows5));
 
-        Reporter.log("Amount of emails = " + webTablesPage.getAmountOfEmailsInTheTable(), true);
+        Reporter.log("Rows in table = " + webTablesPage.getAmountOfEmailsInTheTable(), true);
 
         Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows5);
         Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows10);
@@ -121,9 +119,5 @@ public class WebTablesTest extends BaseTest {
         Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows25);
         Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows50);
         Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows100);
-
-//        for (int notExpectedRow : NOT_EXPECTED_ROWS) {
-//            Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), notExpectedRow);
-//        }
     }
 }
