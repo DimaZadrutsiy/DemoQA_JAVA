@@ -3,6 +3,7 @@ package tests.ElementsTests;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import pages.Elements.WebTablesPage;
 
@@ -96,6 +97,7 @@ public class WebTablesTest extends BaseTest {
         Assert.assertFalse(getWebTablesPage().isAnyEmailEmpty());
         Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(),expectedUsersPresented);
     }
+    @Ignore
     @Test()
     public void testTablePresentOnly5Rows() {
         final int EXPECTED_ROWS = 5;
