@@ -97,24 +97,33 @@ public class WebTablesTest extends BaseTest {
         Assert.assertFalse(getWebTablesPage().isAnyEmailEmpty());
         Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(),expectedUsersPresented);
     }
-    @Ignore
     @Test()
     public void testTablePresentOnly5Rows() {
-        final int EXPECTED_ROWS = 5;
-        final List<Integer> NOT_EXPECTED_ROWS = Arrays.asList(10, 20, 25, 50, 100);
+        final int expectedRows5 = 5;
+        final int expectedRows10 = 10;
+        final int expectedRows20 = 20;
+        final int expectedRows25 = 25;
+        final int expectedRows50 = 50;
+        final int expectedRows100 = 100;
+//        final List<Integer> NOT_EXPECTED_ROWS = Arrays.asList(10, 20, 25, 50, 100);
 
 
         WebTablesPage webTablesPage = openBaseURL()
                 .clickElementsMenu()
                 .openWebTablesPage()
-                .select5Rows(String.valueOf(EXPECTED_ROWS));
+                .select5Rows(String.valueOf(expectedRows5));
 
         Reporter.log("Amount of emails = " + webTablesPage.getAmountOfEmailsInTheTable(), true);
 
-        Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(), EXPECTED_ROWS);
+        Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows5);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows10);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows20);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows25);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows50);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows100);
 
-        for (int notExpectedRow : NOT_EXPECTED_ROWS) {
-            Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), notExpectedRow);
-        }
+//        for (int notExpectedRow : NOT_EXPECTED_ROWS) {
+//            Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), notExpectedRow);
+//        }
     }
 }
