@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CheckBoxTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class)
+    @Test
     public void testAllCheckBoxSelected() {
         CheckBoxPage checkBoxPage = openBaseURL()
                 .clickElementsMenu()
