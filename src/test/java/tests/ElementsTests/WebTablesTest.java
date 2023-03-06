@@ -1,12 +1,16 @@
 package tests.ElementsTests;
 
 import base.BaseTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pages.Elements.WebTablesPage;
 
 public class WebTablesTest extends BaseTest {
+
+    Logger logger = LoggerFactory.getLogger(WebTablesTest.class);
 
     @Test(priority = 1)
     public void test_CheckSearchBarWithValidData() {
@@ -18,6 +22,8 @@ public class WebTablesTest extends BaseTest {
                 .openWebTablesPage()
                 .inputFirstNameIntoSearchField(firstName)
                 .getTextFirstColumnRow();
+
+        logger.info("Actual First Name = " + actualFirstName);
 
         Assert.assertEquals(actualFirstName,expectedFirstName);
     }
@@ -88,7 +94,7 @@ public class WebTablesTest extends BaseTest {
                 .openWebTablesPage()
                 .addNew7UsersWithEmail();
 
-        Reporter.log("Result = " + webTablesPage.getAmountOfEmailsInTheTable(), true);
+        logger.info("Emails presented = " + webTablesPage.getAmountOfEmailsInTheTable());
 
         Assert.assertFalse(getWebTablesPage().isAnyEmailEmpty());
         Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(),expectedUsersPresented);
