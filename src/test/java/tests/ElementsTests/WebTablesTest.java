@@ -99,4 +99,28 @@ public class WebTablesTest extends BaseTest {
         Assert.assertFalse(getWebTablesPage().isAnyEmailEmpty());
         Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(),expectedUsersPresented);
     }
+
+    @Test()
+    public void testTablePresentOnly5Rows() {
+        final int expectedRows5 = 5;
+        final int expectedRows10 = 10;
+        final int expectedRows20 = 20;
+        final int expectedRows25 = 25;
+        final int expectedRows50 = 50;
+        final int expectedRows100 = 100;
+
+        WebTablesPage webTablesPage = openBaseURL()
+                .clickElementsMenu()
+                .openWebTablesPage()
+                .select5Rows(String.valueOf(expectedRows5));
+
+        Reporter.log("Rows in table = " + webTablesPage.getAmountOfEmailsInTheTable(), true);
+
+        Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows5);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows10);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows20);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows25);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows50);
+        Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows100);
+    }
 }
