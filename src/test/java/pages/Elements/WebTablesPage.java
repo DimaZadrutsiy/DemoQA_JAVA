@@ -84,7 +84,7 @@ public class WebTablesPage extends ElementsPage{
 
     public WebTablesPage clickOnAdd() {
         scrollByVisibleElement(addNewRecordButton);
-        click(addNewRecordButton);
+        click20(addNewRecordButton);
 
         return this;
     }
