@@ -217,7 +217,7 @@ public abstract class BasePage {
     }
 
     protected void inputAfterClear(WebElement element, String text) {
-        click(element);
+        click20(element);
         clear(element);
         input(text, element);
     }

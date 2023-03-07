@@ -56,6 +56,15 @@ public class WebTablesPage extends ElementsPage{
     @FindBy(css = "select[aria-label]")
     private WebElement rows;
 
+    @FindBy(css = "div[class = '-next'] [class = '-btn']")
+    private WebElement buttonNext;
+
+    @FindBy(css = "div[class = '-previous'] [class = '-btn']")
+    private WebElement buttonPrevious;
+
+    @FindBy(css = "div[class = '-pageJump'] [aria-label = 'jump to page']")
+    private WebElement pageJump;
+
     public WebTablesPage(WebDriver driver) {
         super(driver);
     }
@@ -75,7 +84,7 @@ public class WebTablesPage extends ElementsPage{
 
     public WebTablesPage clickOnAdd() {
         scrollByVisibleElement(addNewRecordButton);
-        click(addNewRecordButton);
+        click20(addNewRecordButton);
 
         return this;
     }
@@ -173,7 +182,7 @@ public class WebTablesPage extends ElementsPage{
        return isElementsInListContainsText(tableCells, str);
     }
 
-    public WebTablesPage addNew7UsersWithEmail(){
+    public WebTablesPage add7NewUsersWithEmail(){
         addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
         addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
         addNewUserWithEmail(TestUtils.getRandomName(5) + "@mailinator.com");
@@ -195,10 +204,27 @@ public class WebTablesPage extends ElementsPage{
         return isElementEmpty(emailColumn);
     }
 
-    public WebTablesPage select5Rows(String str) {
+    public WebTablesPage selectRows(String str) {
         selectOption(rows,str);
 
         return this;
+    }
+
+    public WebTablesPage goToNextPage() {
+        scrollByVisibleElement(buttonNext);
+        click(buttonNext);
+
+        return this;
+    }
+
+    public boolean isPreviousButtonEnabled() {
+
+        return isElementEnabled(buttonPrevious);
+    }
+
+    public String getCurrentPageNumber() {
+
+        return getAttribute(pageJump, "value");
     }
 
  }

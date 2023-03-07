@@ -4,7 +4,6 @@ import base.BaseTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pages.Elements.WebTablesPage;
 
@@ -92,7 +91,7 @@ public class WebTablesTest extends BaseTest {
         WebTablesPage webTablesPage = openBaseURL()
                 .clickElementsMenu()
                 .openWebTablesPage()
-                .addNew7UsersWithEmail();
+                .add7NewUsersWithEmail();
 
         logger.info("Emails presented = " + webTablesPage.getAmountOfEmailsInTheTable());
 
@@ -112,9 +111,9 @@ public class WebTablesTest extends BaseTest {
         WebTablesPage webTablesPage = openBaseURL()
                 .clickElementsMenu()
                 .openWebTablesPage()
-                .select5Rows(String.valueOf(expectedRows5));
+                .selectRows(String.valueOf(expectedRows5));
 
-        Reporter.log("Rows in table = " + webTablesPage.getAmountOfEmailsInTheTable(), true);
+        logger.info("Rows in table = " + webTablesPage.getAmountOfEmailsInTheTable());
 
         Assert.assertEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows5);
         Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows10);
@@ -122,5 +121,23 @@ public class WebTablesTest extends BaseTest {
         Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows25);
         Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows50);
         Assert.assertNotEquals(webTablesPage.getAmountOfEmailsInTheTable(), expectedRows100);
+    }
+
+    @Test()
+    public void testPreviousButtonIsEnabled() {
+        final int expectedRows5 = 5;
+        final String expectedPage = "2";
+
+        WebTablesPage webTablesPage = openBaseURL()
+                .clickElementsMenu()
+                .openWebTablesPage()
+                .add7NewUsersWithEmail()
+                .selectRows(String.valueOf(expectedRows5))
+                .goToNextPage();
+
+        logger.info("Current page = " + webTablesPage.getCurrentPageNumber());
+
+        Assert.assertTrue(getWebTablesPage().isPreviousButtonEnabled());
+        Assert.assertEquals(getWebTablesPage().getCurrentPageNumber(),expectedPage);
     }
 }
