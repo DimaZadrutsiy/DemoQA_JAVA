@@ -4,6 +4,8 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.security.AllPermission;
+
 public class ModalDialogsTest extends BaseTest {
 
     @Test
@@ -37,5 +39,29 @@ public class ModalDialogsTest extends BaseTest {
                 .getLargeModalBoxText();
 
         Assert.assertEquals(actualText, expectedText);
+    }
+
+    @Test
+    public void testCloseButtonLargeModalDialogBox() {
+
+        openBaseURL()
+                .clickAlertsFramesWindowsMenu()
+                .selectModalDialogSubMenu()
+                .clickLargeModalButton()
+                .clickCloseLargeModalDialogButton();
+
+        Assert.assertFalse(getModalDialogsPage().isLargeModalDialogBoxDisplayed());
+    }
+
+    @Test
+    public void testCloseButtonSmallModalDialogBox() {
+
+        openBaseURL()
+                .clickAlertsFramesWindowsMenu()
+                .selectModalDialogSubMenu()
+                .clickSmallModalButton()
+                .clickCloseSmallModalDialogButton();
+
+        Assert.assertFalse(getModalDialogsPage().isSmallModalDialogBoxDisplayed());
     }
 }
