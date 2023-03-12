@@ -30,6 +30,9 @@ public class ElementsPage extends BasePage {
     @FindBy(xpath = " //div[@class='element-list collapse show']//li[@id = 'item-5']")
     WebElement linksSubMenu;
 
+    @FindBy(xpath = " //div[@class='element-list collapse show']//li[@id = 'item-6']")
+    WebElement brokenLinksImagesSubMenu;
+
     public ElementsPage(WebDriver driver) {
         super(driver);
     }
@@ -94,6 +97,13 @@ public class ElementsPage extends BasePage {
         click(linksSubMenu);
 
         return new LinksPage(getDriver());
+    }
+
+    public BrokenLinks_ImagesPage navigateToBrokenLinksImagesPage() {
+        scrollByVisibleElement(brokenLinksImagesSubMenu);
+        click(brokenLinksImagesSubMenu);
+
+        return new BrokenLinks_ImagesPage(getDriver());
     }
 }
 

@@ -286,6 +286,7 @@ public abstract class BasePage {
     }
 
     protected boolean isElementDisplayed(WebElement element) {
+        wait20ElementToBeVisible(element);
 
         return element.isDisplayed();
     }
@@ -321,6 +322,7 @@ public abstract class BasePage {
     }
 
     protected boolean isTextContains(WebElement webElement, String text) {
+        wait20ElementToBeVisible(webElement);
 
         return getText(webElement).contains(text);
     }

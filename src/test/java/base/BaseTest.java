@@ -13,6 +13,7 @@ import pages.AlertsFramesWindows.*;
 import pages.BookStoreApplication.BookStorePage;
 import pages.BookStoreApplication.LoginPage;
 import pages.BookStoreApplication.ProfilePage;
+import pages.Elements.BrokenLinks_ImagesPage;
 import pages.Elements.CheckBoxPage;
 import pages.Elements.ElementsPage;
 import pages.Elements.WebTablesPage;
@@ -24,7 +25,6 @@ import utils.TestUtils;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
-import java.util.Random;
 
 public abstract class BaseTest {
     private static final String BASE_URL = "https://demoqa.com/";
@@ -178,6 +178,11 @@ public abstract class BaseTest {
     public WebTablesPage getWebTablesPage() {
 
         return new WebTablesPage(getDriver());
+    }
+
+    public BrokenLinks_ImagesPage getBrokenLinks_ImagesPage() {
+
+        return new BrokenLinks_ImagesPage(getDriver());
     }
 
     // нужно пересмотреть все методы ниже и удалить ненужные
