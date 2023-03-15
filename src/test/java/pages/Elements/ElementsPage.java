@@ -99,11 +99,11 @@ public class ElementsPage extends BasePage {
         return new LinksPage(getDriver());
     }
 
-    public BrokenLinks_ImagesPage navigateToBrokenLinksImagesPage() {
+    public BrokenLinksImagesPage navigateToBrokenLinksImagesPage() {
         scrollByVisibleElement(brokenLinksImagesSubMenu);
         click(brokenLinksImagesSubMenu);
 
-        return new BrokenLinks_ImagesPage(getDriver());
+        return new BrokenLinksImagesPage(getDriver());
     }
 }
 
