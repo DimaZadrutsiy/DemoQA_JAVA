@@ -13,7 +13,7 @@ import pages.AlertsFramesWindows.*;
 import pages.BookStoreApplication.BookStorePage;
 import pages.BookStoreApplication.LoginPage;
 import pages.BookStoreApplication.ProfilePage;
-import pages.Elements.BrokenLinks_ImagesPage;
+import pages.Elements.BrokenLinksImagesPage;
 import pages.Elements.CheckBoxPage;
 import pages.Elements.ElementsPage;
 import pages.Elements.WebTablesPage;
@@ -180,9 +180,9 @@ public abstract class BaseTest {
         return new WebTablesPage(getDriver());
     }
 
-    public BrokenLinks_ImagesPage getBrokenLinks_ImagesPage() {
+    public BrokenLinksImagesPage getBrokenLinks_ImagesPage() {
 
-        return new BrokenLinks_ImagesPage(getDriver());
+        return new BrokenLinksImagesPage(getDriver());
     }
 
     // нужно пересмотреть все методы ниже и удалить ненужные

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
-public class BrokenLinks_ImagesPage extends BasePage {
+public class BrokenLinksImagesPage extends BasePage {
 
     @FindBy(css = "//div/img[@src = '/images/Toolsqa.jpg']")
     WebElement validImage;
@@ -13,7 +13,7 @@ public class BrokenLinks_ImagesPage extends BasePage {
     @FindBy(css = ".main-header")
     WebElement mainHeader;
 
-    public BrokenLinks_ImagesPage(WebDriver driver) {
+    public BrokenLinksImagesPage(WebDriver driver) {
         super(driver);
     }
 
