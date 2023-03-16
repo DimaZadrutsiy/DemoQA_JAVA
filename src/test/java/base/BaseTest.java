@@ -23,11 +23,25 @@ import pages.Widgets.WidgetsPage;
 import utils.ReportUtils;
 import utils.TestUtils;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.Properties;
 
 public abstract class BaseTest {
-    private static final String BASE_URL = "https://demoqa.com/";
+    private static final Properties props = new Properties();
+    private static final String BASE_URL;
+
+    static {
+        try {
+            InputStream input = BaseTest.class.getResourceAsStream("/config.properties");
+            props.load(input);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        BASE_URL = props.getProperty("BASE_URL");
+    }
     private WebDriver driver;
     private WebDriverWait webDriverWait;
 
