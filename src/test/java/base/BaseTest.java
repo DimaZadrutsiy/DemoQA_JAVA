@@ -20,6 +20,7 @@ import pages.Elements.WebTablesPage;
 import pages.Forms.FormsPage;
 import pages.Interactions.InteractionsPage;
 import pages.Widgets.WidgetsPage;
+import utils.ConsoleColors;
 import utils.ReportUtils;
 import utils.TestUtils;
 
@@ -60,12 +61,16 @@ public abstract class BaseTest {
         driver = BaseUtils.createDriver();
 
         Reporter.log(ReportUtils.END_LINE, true);
-        Reporter.log("TEST RUN", true);
+        Reporter.log(ConsoleColors.YELLOW + "TEST RUN" + ConsoleColors.RESET, true);
         Reporter.log(ReportUtils.getClassNameTestName(method, result), true);
     }
 
     @AfterMethod
     protected void afterMethod(Method method, ITestResult result) {
+        if (!result.isSuccess() && BaseUtils.isServerRun()) {
+            BaseUtils.captureScreenFile(driver, method.getName(), this.getClass().getName());
+        }
+
         Reporter.log(ReportUtils.getTestStatistics(method, result), true);
 
         driver.quit();
@@ -88,7 +93,7 @@ public abstract class BaseTest {
         TestUtils.loadBaseUrlPage(getDriver(), getWait());
 
         if (TestUtils.isIMGHeaderExists(getDriver())) {
-            Reporter.log("BaseURL page was loaded successfully ", true);
+            Reporter.log(ConsoleColors.YELLOW_BOLD_BRIGHT + "BaseURL page was loaded successfully " + ConsoleColors.RESET, true);
         } else {
             TestUtils.reLoadBaseUrlPage(getDriver(), getWait());
         }
