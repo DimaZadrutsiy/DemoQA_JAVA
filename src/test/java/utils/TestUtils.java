@@ -5,6 +5,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
@@ -14,18 +15,12 @@ import java.util.stream.Collectors;
 
 public class TestUtils {
 
-//    private static final String BASE_URL = "https://demoqa.com/";
-//
-//    public static String getBaseUrl() {
-//
-//        return BASE_URL;
-//    }
-
     private final static By IMG_HEADER = By.xpath("//div [@id = 'app']//img[@src = '/images/Toolsqa.jpg']");
 
     public static void loadBaseUrlPage(WebDriver driver, WebDriverWait wait) {
         driver.get(BaseTest.getBaseUrl());
         waitForPageLoaded(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(IMG_HEADER));
     }
 
     public static void waitForPageLoaded(WebDriver driver) {
@@ -40,7 +35,7 @@ public class TestUtils {
         }
 
         if (count == 3 && !isIMGHeaderExists(driver)) {
-            Reporter.log("!!!!! Error !!!!! BaseURL page was NOT loaded. Re-Run jobs\n", true);
+            Reporter.log(ConsoleColors.BLUE_BRIGHT + "!!!!! Error !!!!! BaseURL page was NOT loaded. Re-Run jobs" + ConsoleColors.RESET + "\n", true);
         }
     }
 

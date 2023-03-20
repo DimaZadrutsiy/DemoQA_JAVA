@@ -10,12 +10,8 @@ import java.util.Date;
 
 public class ReportUtils {
 
-//    Reporter
-//    ITestContext
-//    ITestResult
-
-    private final static String H_LINE = " ==========================================================================================\n";
-    public final static String END_LINE = "\n______________________________________________________________________________________________________________________________";
+    private final static String H_LINE = ConsoleColors.CYAN + " ==========================================================================================\n";
+    public final static String END_LINE = ConsoleColors.PURPLE_BRIGHT + "\n______________________________________________________________________________________________________________________________" + ConsoleColors.RESET;
 
     private static String getTestStatus(ITestResult result) {
         int status = result.getStatus();
