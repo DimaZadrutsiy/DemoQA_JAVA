@@ -1,6 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Smoke" verbose="1" >
+    <listeners>
+        <listener class-name="Listeners.AnnotationTransformer"/>
+    </listeners>
     <test name="Smoke">
         <classes>
             <class name="tests.HomePageTest">

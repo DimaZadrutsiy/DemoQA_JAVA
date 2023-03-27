@@ -1,12 +1,13 @@
 package tests.BookStoreApplicationTest;
 
+import Listeners.RetryAnalyzer;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ProfileTest extends BaseTest {
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void testAddingBookToUserCollection() {
 
         final int expectedBooksListSize = 1;
