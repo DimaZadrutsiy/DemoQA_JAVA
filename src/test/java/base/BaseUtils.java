@@ -1,5 +1,6 @@
 package base;
 
+import com.epam.healenium.SelfHealingDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -75,7 +76,14 @@ public final class BaseUtils {
     }
 
     static WebDriver createDriver() {
-        WebDriver driver = new ChromeDriver(chromeOptions);
+        // old driver
+                WebDriver driver = new ChromeDriver(chromeOptions);
+
+//        //declare delegate - Healenium
+//        WebDriver delegate = new ChromeDriver(chromeOptions);
+//        //create Self-healing driver - Healenium
+//        SelfHealingDriver driver = SelfHealingDriver.create(delegate);
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         return driver;
